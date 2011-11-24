@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_menu>
+	<menu id="root-menu" label="OpenBox 3">
+		<menu id="1" label="Development">
+			<item label="Designer"> <action name="Execute">
+				<execute>designer</execute>
+			</action> </item>
+			<item label="Eclipse"> <action name="Execute">
+				<execute>eclipse</execute>
+			</action> </item>
+			<item label="Linguist"> <action name="Execute">
+				<execute>linguist</execute>
+			</action> </item>
+			<item label="Python"> <action name="Execute">
+				<execute>xterm -e python</execute>
+			</action> </item>
+		</menu>
+		<menu id="2" label="Editors">
+			<item label="GVim"> <action name="Execute">
+				<execute>gvim</execute>
+			</action> </item>
+			<item label="Vi"> <action name="Execute">
+				<execute>xterm -e vi</execute>
+			</action> </item>
+			<item label="Vim"> <action name="Execute">
+				<execute>xterm -e vim</execute>
+			</action> </item>
+		</menu>
+		<menu id="18" label="Games">
+			<menu id="17" label="Amusement">
+				<item label="bb"> <action name="Execute">
+					<execute>bb</execute>
+				</action> </item>
+			</menu>
+		</menu>
+		<menu id="6" label="Graphics">
+			<item label="Document Viewer"> <action name="Execute">
+				<execute>evince</execute>
+			</action> </item>
+			<item label="Mirage"> <action name="Execute">
+				<execute>mirage</execute>
+			</action> </item>
+		</menu>
+		<menu id="7" label="Multimedia">
+			<item label="ALSA mixer"> <action name="Execute">
+				<execute>xterm -e alsamixer</execute>
+			</action> </item>
+			<item label="Cinelerra"> <action name="Execute">
+				<execute>cinelerra</execute>
+			</action> </item>
+			<item label="VolWheel"> <action name="Execute">
+				<execute>volwheel</execute>
+			</action> </item>
+		</menu>
+		<menu id="5" label="Network">
+			<item label="Ekiga Softphone"> <action name="Execute">
+				<execute>ekiga</execute>
+			</action> </item>
+			<item label="ELinks"> <action name="Execute">
+				<execute>xterm -e elinks</execute>
+			</action> </item>
+			<item label="Emesene"> <action name="Execute">
+				<execute>emesene</execute>
+			</action> </item>
+			<item label="FireFox"> <action name="Execute">
+				<execute>firefox</execute>
+			</action> </item>
+			<item label="Google Earth"> <action name="Execute">
+				<execute>googleearth</execute>
+			</action> </item>
+			<item label="Irssi"> <action name="Execute">
+				<execute>xterm -e irssi</execute>
+			</action> </item>
+			<item label="Links"> <action name="Execute">
+				<execute>xterm -e links</execute>
+			</action> </item>
+			<item label="Mail Reader"> <action name="Execute">
+				<execute>exo-open --launch MailReader</execute>
+			</action> </item>
+			<item label="Mozilla Firefox (bin)"> <action name="Execute">
+				<execute>firefox-bin</execute>
+			</action> </item>
+			<item label="Mutt"> <action name="Execute">
+				<execute>xterm -e mutt</execute>
+			</action> </item>
+			<item label="Pidgin Internet Messenger"> <action name="Execute">
+				<execute>pidgin</execute>
+			</action> </item>
+			<item label="Skype VoIP"> <action name="Execute">
+				<execute>skype</execute>
+			</action> </item>
+			<item label="Thunderbird"> <action name="Execute">
+				<execute>thunderbird</execute>
+			</action> </item>
+			<item label="TkVNC"> <action name="Execute">
+				<execute>xterm -e tkvnc</execute>
+			</action> </item>
+			<item label="Web Browser"> <action name="Execute">
+				<execute>exo-open --launch WebBrowser</execute>
+			</action> </item>
+			<item label="Wicd Network Manager"> <action name="Execute">
+				<execute>wicd-gtk --no-tray</execute>
+			</action> </item>
+		</menu>
+		<menu id="39" label="Other">
+			<item label="GKrellM"> <action name="Execute">
+				<execute>gkrellm</execute>
+			</action> </item>
+			<item label="Hive Rise"> <action name="Execute">
+				<execute>/home/master/hiverise/hiverise</execute>
+			</action> </item>
+			<item label="Hive Rise Savemode"> <action name="Execute">
+				<execute>/home/master/hiverise/hiverise_save</execute>
+			</action> </item>
+			<item label="sandbox"> <action name="Execute">
+				<execute>xterm -e sandbox</execute>
+			</action> </item>
+			<item label="WiFi Radar"> <action name="Execute">
+				<execute>wifi-radar.sh</execute>
+			</action> </item>
+		</menu>
+		<menu id="19" label="Shells">
+			<item label="File Manager"> <action name="Execute">
+				<execute>pcmanfm</execute>
+			</action> </item>
+			<item label="GIT"> <action name="Execute">
+				<execute>xterm -e git</execute>
+			</action> </item>
+			<item label="Guake Terminal"> <action name="Execute">
+				<execute>guake</execute>
+			</action> </item>
+			<item label="LXTerminal"> <action name="Execute">
+				<execute>lxterminal</execute>
+			</action> </item>
+			<item label="Rxvt"> <action name="Execute">
+				<execute>rxvt</execute>
+			</action> </item>
+			<item label="Terminal"> <action name="Execute">
+				<execute>Terminal</execute>
+			</action> </item>
+			<item label="Terminator"> <action name="Execute">
+				<execute>terminator</execute>
+			</action> </item>
+			<item label="Tilda"> <action name="Execute">
+				<execute>tilda</execute>
+			</action> </item>
+			<item label="Xterm"> <action name="Execute">
+				<execute>xterm</execute>
+			</action> </item>
+		</menu>
+		<menu id="37" label="System">
+			<menu id="36" label="Settings">
+				<menu id="21" label="GNOME">
+					<item label="Adobe Flash Player"> <action name="Execute">
+						<execute>/opt/Adobe/flash-player/bin/flash-player-properties</execute>
+					</action> </item>
+					<item label="Guake Preferences"> <action name="Execute">
+						<execute>guake-prefs</execute>
+					</action> </item>
+				</menu>
+				<menu id="35" label="Xfce">
+					<item label="Preferred Applications"> <action name="Execute">
+						<execute>exo-preferred-applications</execute>
+					</action> </item>
+				</menu>
+				<item label="Customize Look and Feel"> <action name="Execute">
+					<execute>lxappearance</execute>
+				</action> </item>
+				<item label="Java Control Panel for Sun JDK 1.6"> <action name="Execute">
+					<execute>/opt/sun-jdk-1.6.0.26/jre/bin/ControlPanel</execute>
+				</action> </item>
+				<item label="Openbox Configuration Manager"> <action name="Execute">
+					<execute>obconf</execute>
+				</action> </item>
+				<item label="Preferred Applications"> <action name="Execute">
+					<execute>libfm-pref-apps</execute>
+				</action> </item>
+			</menu>
+			<item label="GParted"> <action name="Execute">
+				<execute>/usr/sbin/gparted</execute>
+			</action> </item>
+			<item label="Htop"> <action name="Execute">
+				<execute>xterm -e htop</execute>
+			</action> </item>
+			<item label="pstree"> <action name="Execute">
+				<execute>xterm -e pstree</execute>
+			</action> </item>
+			<item label="Top"> <action name="Execute">
+				<execute>xterm -e top</execute>
+			</action> </item>
+		</menu>
+		<menu id="38" label="Utilities">
+			<item label="File Manager"> <action name="Execute">
+				<execute>exo-open --launch FileManager</execute>
+			</action> </item>
+			<item label="gDevilspie"> <action name="Execute">
+				<execute>gdevilspie</execute>
+			</action> </item>
+			<item label="Info"> <action name="Execute">
+				<execute>xterm -e info</execute>
+			</action> </item>
+			<item label="Rclock"> <action name="Execute">
+				<execute>rclock</execute>
+			</action> </item>
+			<item label="Terminal Emulator"> <action name="Execute">
+				<execute>exo-open --launch TerminalEmulator</execute>
+			</action> </item>
+			<item label="Xev"> <action name="Execute">
+				<execute>xterm -e xev</execute>
+			</action> </item>
+			<item label="XFontSel"> <action name="Execute">
+				<execute>xfontsel</execute>
+			</action> </item>
+			<item label="Xsetroot"> <action name="Execute">
+				<execute>xsetroot</execute>
+			</action> </item>
+		</menu>
+		<separator/>
+		<menu id="40" label="OpenBox">
+			<menu id="client-list-menu"/>
+			<item label="Reconfigure"> <action name="Reconfigure"/> </item>
+			<separator/>
+			<item label="Exit"> <action name="Exit"/> </item>
+		</menu>
+	</menu>
+</openbox_menu>

@@ -1,0 +1,15 @@
+cat /proc/uptime >> .uptime
+xmodmap /home/master/.xmodmap &
+#xscreensaver -nosplash &
+xsetroot -cursor_name left_ptr &
+volwheel &
+tray &
+#(sleep 2 && tint2) &
+#conky -p 10 &
+(sleep 10 && ~/.dropbox-dist/dropboxd ) &
+wallpaper &
+#exec openbox
+#wmii
+#exec fluxbox 
+#exec /usr/bin/awesome
+exec ck-launch-session xmonad

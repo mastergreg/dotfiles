@@ -1,0 +1,43 @@
+Darkblue awesome theme installation jibber-jabber
+
+INSTALLATION
+===============================================================================
+
+This installation-howto assumes that your awesome configuration is placed under
+~/.config/awesome. If this is not the case, you most certainly have to make
+some changes to the theme-file.
+
+1. Get the theme data
+
+$> wget http://nevious.ch/dump/darkblue_theme.tar.gz
+
+2. Unpack and move to proper location
+
+If you have not yet created your user-specific theme folder, do so now.
+
+$> mkdir ~/.config/awesome/themes/
+$> tar xfvz darkblue_theme.tar.gz
+$> mv darkblue/ ~/.config/awesome/themes/
+
+
+3. Edit your rc.lua
+
+Replace (or better comment out) your current theme-load with the following:
+
+beautiful.init(awful.util.getdir("config") .. "/themes/darkblue/theme.lua")
+
+Its very important, that you have loaded the awful- and beatiful library before that.
+
+4. Finish
+
+You may want to check your configuration with `awesome -k`. I only tested it with 
+awesome version 3.4.10 (Exploder)...
+
+WALLPAPERS
+===============================================================================
+
+The theme will, by default, use a random wallpaper from within the 
+darkblue/wallpaper/ directory. You have to put some pictures in there first,
+it's empty by default.
+
+Hopefully you enjoy my little theme, if not, i won't be hurt :)

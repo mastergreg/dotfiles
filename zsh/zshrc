@@ -1,0 +1,93 @@
+autoload -Uz promptinit compinit -d .zcompdump vcs_info
+precmd() {
+  echo -ne '\a'
+  psvar=()
+  vcs_info
+  [[ -n $vcs_info_msg_0_ ]] && psvar[1]="$vcs_info_msg_0_"
+}
+
+PS1=$'%(?..[%F{red}%?%f] )%b%F{red}<%F{blue}%n%b%F{white}@%b%F{green}%m%b:%F{yellow}%~%F{red}>%f \n%b%# %b%f'
+RPS1=$'%b%(1v.%F{yellow}%1v%f.)%b%F{red}[%b%F{cyan}%T%F{red}]%F{red}[%F{green}%l%F{red}]%f%b%f'
+
+#PS1='%(?..[%F{red}%?%f] )%b%F{blue}%n%b%F{white}@%b%F{green}%m%b:%F{green}%~%f 
+#%B>>= %b%f'
+#RPS1='%B%(1v.%F{yellow}%1v%f.)%f%b %f%T%f,%F{red}%w%f%f'
+
+export TERM=rxvt-unicode
+
+bindkey -e
+# /etc/inputrc initialization file for readline
+bindkey "\e[1~" beginning-of-line
+bindkey "\e[4~" end-of-line
+bindkey "\e[5~" history-search-backward
+bindkey "\e[6~" history-search-forward
+bindkey "\e[3~" delete-char
+bindkey "\e[2~" quoted-insert
+bindkey "\e[5C" forward-word
+bindkey "\e[5D" backward-word
+bindkey "\e\e[C" forward-word
+bindkey "\e\e[D" backward-word
+bindkey "\e[1;5C" forward-word
+bindkey "\e[1;5D" backward-word
+bindkey "\eOc" forward-word
+bindkey "\eOd" backward-word
+bindkey "\e[1;3C" forward-word
+bindkey "\e[1;3D" backward-word
+bindkey "\e[8~" end-of-line
+bindkey "\eOH" beginning-of-line
+bindkey "\eOF" end-of-line
+bindkey "\e[H" beginning-of-line
+bindkey "\e[F" end-of-line
+bindkey "\e[7~" beginning-of-line
+bindkey "\e[8~" end-of-line
+
+
+alias ls='ls --color=auto'
+alias ll='ls -alFh'
+alias rl='rlwrap -Acr'
+[[ -x =time ]] && alias time='command time -p'
+alias ping='ping -c 4'
+alias grep='grep --color=auto'
+alias u='sudo apt-get update && sudo apt-get upgrade'
+alias x='exit'
+alias c='clear'
+
+
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+
+zstyle ':vcs_info:*' enable hg git bzr svn
+
+# Stuff to make my life easier
+#
+# allow approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+
+# cd not select parent dir
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+
+
+
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' menu select=2
+eval "$(dircolors -b)"
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' use-compctl false
+
+
+zstyle ':completion:*:processes-names' command 'ps -e -o comm='
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+
+compinit
+promptinit
