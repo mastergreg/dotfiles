@@ -211,7 +211,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	, ((mod4Mask             , xK_x     ), spawn myTerminal)
 	, ((mod4Mask             , xK_s     ), spawn "pidgin")
 	, ((mod4Mask             , xK_a     ), spawn "urxvt -e ncmpcpp")
-	, ((mod4Mask             , xK_m     ), spawn "thunderbird-bin")
+	, ((mod4Mask             , xK_m     ), spawn "thunderbird")
 	, ((mod4Mask             , xK_d     ), spawn "eclipse")
 	, ((mod4Mask             , xK_g     ), spawn "gvim")
 	, ((mod4Mask             , xK_F10     ), spawn "set_screen")
@@ -417,7 +417,7 @@ pythonDzenPP = defaultPP {
                      , ppVisible  = dzenColor "#000002" "#000020" . pad
                      , ppHidden   = dzenColor "" "" . pad
                      , ppHiddenNoWindows = const ""
-                     , ppUrgent   = dzenColor "#000005" "#000050"
+                     , ppUrgent   = dzenColor "#000005" "#000050" . pad
                      , ppWsSep    = ""
 -- Run xmonad with the settings you specify. No need to modify this.
                      , ppSep      = ""
