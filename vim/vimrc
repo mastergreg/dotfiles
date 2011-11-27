@@ -1,8 +1,8 @@
 syn on
 set number
 set et
-set sw=2
-set ts=2
+set sw=4
+set ts=4
 "set complete=.,w,b,u,t,i
 set nowrap
 filetype plugin indent on
@@ -97,6 +97,6 @@ autocmd bufwritepost,filewritepost *.py execute "normal `a"
 autocmd BufNewFile,BufRead *.tex set tw=78 noet
 autocmd BufNewFile,BufRead Makefile,makefile set ts=8 sw=8 noet nosi noai
 endif " has("autocmd")
-colorscheme torte
+"colorscheme dante
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
