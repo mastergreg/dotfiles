@@ -115,14 +115,14 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 #PS1='\[\e[1;31m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[0;31m\]\$ \[\e[m\]\[\e[1;32m\]'
-cow_images=(apt dragon-and-cow koala snowman beavis.zen duck kosh sodomized-sheep bong elephant luke-koala stegosaurus bud-frogs elephant-in-snake mech-and-cow stimpy bunny eyes meow suse calvin flaming-sheep milk three-eyes cheese ghostbusters moofasa turkey cock gnu moose turtle cower head-in mutilated tux daemon hellokitty ren vader default kiss sheep vader-koala dragon kitty skeleton www)
+#cow_images=(apt dragon-and-cow koala snowman beavis.zen duck kosh sodomized-sheep bong elephant luke-koala stegosaurus bud-frogs elephant-in-snake mech-and-cow stimpy bunny eyes meow suse calvin flaming-sheep milk three-eyes cheese ghostbusters moofasa turkey cock gnu moose turtle cower head-in mutilated tux daemon hellokitty ren vader default kiss sheep vader-koala dragon kitty skeleton www)
 
 
 
-cow_random=RANDOM%46
-PS1='\[\e[0;31m\]\u\[\e[m\] \[\e[0;32m\]\w\[\e[m\] \[\e[0;31m\]\$ \[\e[m\]\[\e[0;37m\]'
+#cow_random=RANDOM%46
+#PS1='\[\e[0;31m\]\u\[\e[m\] \[\e[0;32m\]\w\[\e[m\] \[\e[0;31m\]\$ \[\e[m\]\[\e[0;37m\]'
 
 #PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
 
-#PS1='\e[0;37m\[\e[1;31m\]\u \[\e[1;34m\]\w\e[0;37m\e[0;37m :\[\e[1;32m\]->\[\e[m\] '
+PS1='\e[0;37m\[\e[1;31m\]\u \[\e[1;34m\]\w\e[0;37m\e[0;37m :\[\e[1;32m\]->\[\e[m\] '
 #PS1='\e[1;34m\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[0;31m\]\$ \[\e[m\]' 
