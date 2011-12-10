@@ -1,4 +1,5 @@
-autoload -Uz promptinit compinit -d .zcompdump vcs_info
+#promptinit vcs_info && compinit
+autoload -U compinit vcs_info promptinit
 precmd() {
   echo -ne '\a'
   psvar=()
@@ -6,8 +7,8 @@ precmd() {
   [[ -n $vcs_info_msg_0_ ]] && psvar[1]="$vcs_info_msg_0_"
 }
 
-PS1=$'%(?..[%F{red}%?%f] )%b%F{red}<%F{blue}%n%b%F{white}@%b%F{green}%m%b:%F{yellow}%~%F{red}>%f \n%b%# %b%f'
-RPS1=$'%b%(1v.%F{yellow}%1v%f.)%b%F{red}[%b%F{cyan}%T%F{red}]%F{red}[%F{green}%l%F{red}]%f%b%f'
+PS1=$'%(?..[%F{red}%?%f] )%b%F{blue}%n%b%f@%b%F{green}%m%b%f%b%#%b%f '
+RPS1=$'%b%(1v.%F{yellow}%1v%f.)%b%F{red}%~%f'
 
 #PS1='%(?..[%F{red}%?%f] )%b%F{blue}%n%b%F{white}@%b%F{green}%m%b:%F{green}%~%f 
 #%B>>= %b%f'
@@ -45,10 +46,10 @@ bindkey "\e[8~" end-of-line
 alias ls='ls --color=auto'
 alias ll='ls -alFh'
 alias rl='rlwrap -Acr'
+alias files="ls -R | grep ':$' | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/' "
 [[ -x =time ]] && alias time='command time -p'
 alias ping='ping -c 4'
 alias grep='grep --color=auto'
-alias u='sudo apt-get update && sudo apt-get upgrade'
 alias x='exit'
 alias c='clear'
 
@@ -70,6 +71,8 @@ zstyle ':completion:*:cd:*' ignore-parents parent pwd
 
 
 
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
@@ -88,6 +91,18 @@ zstyle ':completion:*:processes-names' command 'ps -e -o comm='
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
+
+# format autocompletion style
+zstyle ':completion:*:descriptions' format "%{$fg_bold[green]%}%d%{$reset_color%}"
+zstyle ':completion:*:corrections' format "%{$fg_bold[yellow]%}%d%{$reset_color%}"
+zstyle ':completion:*:messages' format "%{$fg_bold[red]%}%d%{$reset_color%}"
+zstyle ':completion:*:warnings' format "%{$fg_bold[red]%}%d%{$reset_color%}"
+#
+# ignore apps i dont have
+zstyle ':completion:*:functions' ignored-patterns '_*'
+# kill menu
+zstyle ':completion:*:*:kill:*'               menu yes select
+zstyle ':completion:*:kill:*'                 force-list always
 
 promptinit
 compinit

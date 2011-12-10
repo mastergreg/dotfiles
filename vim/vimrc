@@ -4,6 +4,7 @@ set et
 set sw=4
 set ts=4
 "set complete=.,w,b,u,t,i
+set foldmethod=marker
 set nowrap
 filetype plugin indent on
 set ofu=syntaxcomplete#Complete
@@ -27,6 +28,8 @@ set showcmd             " show partial commands in status line
 " shows: filename, position, eof, syntax, encoding, format 
 set statusline=%-3.3n\ %f\ %r%#Error#%m%#Statusline#\ (%l/%L,\ %c)\ %P%=%h%w\ %y\ [%{&encoding}:%{&fileformat}]\ 
 
+set t_Co=256
+colorscheme leo
 call pathogen#infect()
 if has("autocmd")
 
@@ -97,6 +100,5 @@ autocmd bufwritepost,filewritepost *.py execute "normal `a"
 autocmd BufNewFile,BufRead *.tex set tw=78 noet
 autocmd BufNewFile,BufRead Makefile,makefile set ts=8 sw=8 noet nosi noai
 endif " has("autocmd")
-"colorscheme dante
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1

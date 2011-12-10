@@ -57,7 +57,7 @@ myBorderWidth   = 1
 	-- ("right alt"), which does not conflict with emacs keybindings. The
 	-- "windows key" is usually mod4Mask.
 	--
-	--myModMask       = mod1Mask
+--myModMask       = mod1Mask
 myModMask       = mod4Mask
 
 	-- The mask for the numlock key. Numlock status is "masked" from the
@@ -92,7 +92,7 @@ myWorkspaces = ["1","2","3","4","5","6","7","8","9","0"]
 	-- Border colors for unfocused and focused windows, respectively.
 	--
 myNormalBorderColor  = "#1c1c1c"
-myFocusedBorderColor = "red"
+myFocusedBorderColor = "#0077ff"
 
 	-- Default offset of drawable screen boundaries from each physical
 	-- screen. Anything non-zero here will leave a gap of that many pixels
@@ -271,7 +271,7 @@ tallLayout = named "tall" $ avoidStruts $ basicLayout
 wideLayout = named "wide" $ avoidStruts $ Mirror basicLayout
 singleLayout = named "single" $ avoidStruts $ noBorders Full
 circleLayout = named "circle" $ avoidStruts $ circleSimpleDwmStyle
-fullscreenLayout = named "fullscreen" $ avoidStruts $ noBorders Full
+fullscreenLayout = named "fullscreen" $ noBorders Full
 fullscreenVBoxLayout = named "fullVBox" $ noBorders Full
 imlayout = named "|#" $ avoidStruts $ withIM (1%4) (Title "Buddy List") $  tabbed_one
 dialayout = named "_" $ avoidStruts $ Mirror $ withIM (1%4) (Title "Dia v0.97.1") $  noBorders basicLayout
@@ -466,11 +466,11 @@ myxmobarPP = xmobarPP{
                      }
 
 main = do 
-  --xmproc <- spawnPipe "xmobar";
-  xmproc <- spawnPipe "killall python2.7; dzen_python"
+  xmproc <- spawnPipe "xmobar";
+  --xmproc <- spawnPipe "killall python2.7; dzen_python"
   xmonad $ withUrgencyHook  NoUrgencyHook defaults {
---		logHook   = dynamicLogWithPP $ myxmobarPP {
-      logHook   = dynamicLogWithPP $ pythonDzenPP {
+        logHook   = dynamicLogWithPP $ myxmobarPP {
+      --logHook   = dynamicLogWithPP $ pythonDzenPP {
 					ppOutput = hPutStrLn xmproc 
 				}	
 }
