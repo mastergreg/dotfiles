@@ -270,8 +270,8 @@ ratio   = 2/4
 tallLayout = named "tall" $ avoidStruts $ basicLayout
 wideLayout = named "wide" $ avoidStruts $ Mirror basicLayout
 singleLayout = named "single" $ avoidStruts $ noBorders Full
-circleLayout = named "circle" $ avoidStruts $ circleSimpleDwmStyle
-fullscreenLayout = named "fullscreen" $ noBorders Full
+circleLayout = named "circle" $  circleSimpleDwmStyle
+fullscreenLayout = named "fullscreen" $ avoidStruts $ noBorders Full
 fullscreenVBoxLayout = named "fullVBox" $ noBorders Full
 imlayout = named "|#" $ avoidStruts $ withIM (1%4) (Title "Buddy List") $  tabbed_one
 dialayout = named "_" $ avoidStruts $ Mirror $ withIM (1%4) (Title "Dia v0.97.1") $  noBorders basicLayout
@@ -466,11 +466,11 @@ myxmobarPP = xmobarPP{
                      }
 
 main = do 
-  xmproc <- spawnPipe "xmobar";
-  --xmproc <- spawnPipe "killall python2.7; dzen_python"
+  --xmproc <- spawnPipe "xmobar";
+  xmproc <- spawnPipe "killall python2.7; dzen_python"
   xmonad $ withUrgencyHook  NoUrgencyHook defaults {
-        logHook   = dynamicLogWithPP $ myxmobarPP {
-      --logHook   = dynamicLogWithPP $ pythonDzenPP {
+      --logHook   = dynamicLogWithPP $ myxmobarPP {
+      logHook   = dynamicLogWithPP $ pythonDzenPP {
 					ppOutput = hPutStrLn xmproc 
 				}	
 }

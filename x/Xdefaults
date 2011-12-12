@@ -27,7 +27,7 @@ URxvt*foreground: #FFFFFF
 URxvt*scrollBar:         false
 !URxvt*urgentOnBell: true
 !URxvt*font: xft:terminus:pixelsize=11:antialias=false
-URxvt*transparent: false
+URxvt*transparent: true
 URxvt*shading:     50
 URxvt*tint:         white
 !URxvt*inheritPixmap:true
@@ -69,7 +69,9 @@ URxvt*color12:#0077FF
 
 !}}}
 !URxvt*font: xft:Monospace:size=8:antialias=true
+
 !URxvt*font: 8x13
+
 URxvt*font: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso10646-1
 URxvt*boldFont: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso10646-1
 !URxvt*font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
