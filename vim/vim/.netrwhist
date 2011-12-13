@@ -1,7 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/home/master/Documents/Repos/hyde'
 let g:netrw_dirhist_2='/home/master/Documents/Repos/OS/.git'
 let g:netrw_dirhist_3='/home/master/.vim'
 let g:netrw_dirhist_4='/home/master/Repos/OS/ask_2/stage_1.2'
 let g:netrw_dirhist_5='/home/master/Repos/MicroPC/Ask/Ask_2/Tex/title'
+let g:netrw_dirhist_6='/home/master/.psi'

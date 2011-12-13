@@ -1,5 +1,4 @@
-#promptinit vcs_info && compinit
-autoload -U compinit vcs_info promptinit
+autoload -Uz compinit vcs_info promptinit
 precmd() {
   echo -ne '\a'
   psvar=()
@@ -68,7 +67,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
-zstyle ':vcs_info:*' enable hg git bzr svn
+zstyle ':vcs_info:*' enable hg git svn
 
 # Stuff to make my life easier
 #
@@ -81,41 +80,41 @@ zstyle ':completion:*:cd:*' ignore-parents parent pwd
 
 
 
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
-zstyle ':completion:*' auto-description 'specify: %d'
+#zstyle ':completion:*' use-cache true
+#zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
-zstyle ':completion:*' format '%d'
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' menu select=3
-eval "$(dircolors -b)"
+#zstyle ':completion:*' format '%d'
+#zstyle ':completion:*' group-name ''
+#zstyle ':completion:*' menu select=3
+#eval "$(dircolors -b)"
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+#zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
-zstyle ':completion:*' max-errors 3
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle ':completion:*' use-compctl false
+#zstyle ':completion:*' max-errors 3
+#zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+#zstyle ':completion:*' use-compctl false
 
 
-zstyle ':completion:*:processes-names' command 'ps -e -o comm='
+#zstyle ':completion:*:processes-names' command 'ps -e -o comm='
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 
 # format autocompletion style
-zstyle ':completion:*:descriptions' format "%{$fg_bold[green]%}%d%{$reset_color%}"
-zstyle ':completion:*:corrections' format "%{$fg_bold[yellow]%}%d%{$reset_color%}"
-zstyle ':completion:*:messages' format "%{$fg_bold[red]%}%d%{$reset_color%}"
-zstyle ':completion:*:warnings' format "%{$fg_bold[red]%}%d%{$reset_color%}"
+#zstyle ':completion:*:descriptions' format "%{$fg_bold[green]%}%d%{$reset_color%}"
+#zstyle ':completion:*:corrections' format "%{$fg_bold[yellow]%}%d%{$reset_color%}"
+#zstyle ':completion:*:messages' format "%{$fg_bold[red]%}%d%{$reset_color%}"
+#zstyle ':completion:*:warnings' format "%{$fg_bold[red]%}%d%{$reset_color%}"
 #
 # ignore apps i dont have
-zstyle ':completion:*:functions' ignored-patterns '_*'
+#zstyle ':completion:*:functions' ignored-patterns '_*'
 # kill menu
-zstyle ':completion:*:*:kill:*'               menu yes select
-zstyle ':completion:*:kill:*'                 force-list always
+#zstyle ':completion:*:*:kill:*'               menu yes select
+#zstyle ':completion:*:kill:*'                 force-list always
 
-setopt correctall
+setopt correct
 setopt hist_ignore_all_dups
 
 promptinit
 compinit
+echo "What is thy biding my master...?"

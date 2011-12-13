@@ -8,6 +8,7 @@ tray &
 #conky -p 10 &
 (sleep 10 && ~/.dropbox-dist/dropboxd ) &
 wallpaper &
+(sleep 2 && urxvt )&
 #exec openbox
 #wmii
 #exec fluxbox 
