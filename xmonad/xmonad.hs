@@ -217,7 +217,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	, ((mod4Mask             , xK_F10     ), spawn "set_screen")
 	, ((mod4Mask.|. shiftMask, xK_F10     ), spawn "set_screen_off")
 	, ((mod4Mask             ,xK_grave), spawn myTerminal)
-	, ((0                    ,xK_grave), scratchpadSpawnActionTerminal "urxvt -T term")
+	, ((0                    ,xK_grave), scratchpadSpawnActionTerminal "urxvt -pe tabbed -T term")
   , ((mod4Mask             ,xK_t), spawn "pcmanfm")
 	, ((0                    ,xK_Print), spawn  "scrot -e 'mv $f ~/Pictures/Screenshots'")
 	, ((mod4Mask             ,xK_Print), spawn  "scrot -e 'mv $f ~/Dropbox/Screenshots'")
@@ -334,7 +334,7 @@ myFloatHook = composeAll
   moveToDia = doF $ W.shift "6"
   moveToFull = doF $ W.shift "0"
 myscratchpadManageHook :: ManageHook
-myscratchpadManageHook = scratchpadManageHook (W.RationalRect 0.1 0.4 0.8 0.6)
+myscratchpadManageHook = scratchpadManageHook (W.RationalRect 0.05 0.625 0.9 0.35)
 	-- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = True

@@ -1,19 +1,57 @@
 autoload -Uz compinit vcs_info promptinit
 precmd() {
-  echo -ne '\a'
-  psvar=()
-  vcs_info
-  [[ -n $vcs_info_msg_0_ ]] && psvar[1]="$vcs_info_msg_0_"
+    echo -ne '\a'
+    psvar=()
+    vcs_info
+    [[ -n $vcs_info_msg_0_ ]] && psvar[1]="$vcs_info_msg_0_"
 }
 
-PS1=$'%(?..[%F{red}%?%f] )%b%F{blue}%n%b%f@%b%F{green}%m%b%f%b%#%b%f '
+PS1=$'%(?..[%F{red}%?%f] )%b%f%b%F{blue}%n%f %b%#%f%b '
 RPS1=$'%b%(1v.%F{yellow}%1v%f.)%b%F{red}%~%f'
 
 #PS1='%(?..[%F{red}%?%f] )%b%F{blue}%n%b%F{white}@%b%F{green}%m%b:%F{green}%~%f 
-#%B>>= %b%f'
+#%B%# %b%f'
 #RPS1='%B%(1v.%F{yellow}%1v%f.)%f%b %f%T%f,%F{red}%w%f%f'
 
-export TERM=rxvt-unicode
+case "${TERM}" in
+    dump)
+        PROMPT='%n@%m:%~%% '
+        ;;
+    linux)
+        echo -en "\e]P01e2320" # zenburn black (normal black)
+        echo -en "\e]P8709080" # bright-black  (darkgrey)
+        echo -en "\e]P1705050" # red           (darkred)
+        echo -en "\e]P9dca3a3" # bright-red    (red)
+        echo -en "\e]P260b48a" # green         (darkgreen)
+        echo -en "\e]PAc3bf9f" # bright-green  (green)
+        echo -en "\e]P3dfaf8f" # yellow        (brown)
+        echo -en "\e]PBf0dfaf" # bright-yellow (yellow)
+        echo -en "\e]P4506070" # blue          (darkblue)
+        echo -en "\e]PC94bff3" # bright-blue   (blue)
+        echo -en "\e]P5dc8cc3" # purple        (darkmagenta)
+        echo -en "\e]PDec93d3" # bright-purple (magenta)
+        echo -en "\e]P68cd0d3" # cyan          (darkcyan)
+        echo -en "\e]PE93e0e3" # bright-cyan   (cyan)
+        echo -en "\e]P7dcdccc" # white         (lightgrey)
+        echo -en "\e]PFffffff" # bright-white  (white)
+        ;;
+    *rxvt*)
+        export TERM=rxvt-unicode
+        ;;
+esac
+
+
+# {{{ Manual pages
+#     - colorize, since man-db fails to do so
+export LESS_TERMCAP_mb=$'\E[01;31m'   # begin blinking
+export LESS_TERMCAP_md=$'\E[01;31m'   # begin bold
+export LESS_TERMCAP_me=$'\E[0m'       # end mode
+export LESS_TERMCAP_se=$'\E[0m'       # end standout-mode
+export LESS_TERMCAP_so=$'\E[1;33;40m' # begin standout-mode - info box
+export LESS_TERMCAP_ue=$'\E[0m'       # end underline
+export LESS_TERMCAP_us=$'\E[1;32m'    # begin underline
+# }}}
+                                                                                                                                                                                                           
 
 bindkey -v
 # /etc/inputrc initialization file for readline
@@ -43,16 +81,19 @@ bindkey "\e[8~" end-of-line
 
 
 alias ls='ls --color=auto'
+alias l='ls --color=auto'
+alias la='ls -A'
 alias ll='ls -alFh'
 alias rl='rlwrap -Acr'
 alias files="ls -R | grep ':$' | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/' "
-[[ -x =time ]] && alias time='command time -p'
+[[ -x =time ]] && alias time='command time'
 alias ping='ping -c 4'
 alias grep='grep --color=auto'
 alias x='exit'
 alias c='clear'
 alias s='source ~/.zshrc'
 alias gpl='git pull'
+alias gch='git checkout'
 alias gp='git push'
 alias gm='git merge'
 alias gf='git fetch'
@@ -63,39 +104,38 @@ alias e='sudo emerge'
 alias eu='sudo emerge -avuND world'
 
 
-HISTSIZE=1000
-SAVEHIST=1000
-HISTFILE=~/.zsh_history
 
 zstyle ':vcs_info:*' enable hg git svn
+zstyle ':vcs_info:*' branchformat '%b-%r'
+zstyle ':vcs_info:*' get-revision true
+
 
 # Stuff to make my life easier
 #
 # allow approximate
 zstyle ':completion:*:match:*' original only
-zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
 # cd not select parent dir
 zstyle ':completion:*:cd:*' ignore-parents parent pwd
 
 
 
-#zstyle ':completion:*' use-cache true
+zstyle ':completion:*' use-cache true
 #zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 #zstyle ':completion:*' format '%d'
 #zstyle ':completion:*' group-name ''
 #zstyle ':completion:*' menu select=3
-#eval "$(dircolors -b)"
+eval "$(dircolors -b)"
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 #zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
-#zstyle ':completion:*' max-errors 3
+zstyle ':completion:*' max-errors 3
 #zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 #zstyle ':completion:*' use-compctl false
 
 
-#zstyle ':completion:*:processes-names' command 'ps -e -o comm='
+zstyle ':completion:*:processes-names' command 'ps -e -o comm='
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
@@ -112,8 +152,44 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 #zstyle ':completion:*:*:kill:*'               menu yes select
 #zstyle ':completion:*:kill:*'                 force-list always
 
+function extract () {
+if [[ -f "$1" ]]; then
+    case "$1" in
+        *.tbz2 | *.tar.bz2) tar -xvjf  "$1"     ;;
+        *.txz | *.tar.xz)   tar -xvJf  "$1"     ;;
+        *.tgz | *.tar.gz)   tar -xvzf  "$1"     ;;
+        *.tar | *.cbt)      tar -xvf   "$1"     ;;
+        *.zip | *.cbz)      unzip      "$1"     ;;
+        *.rar | *.cbr)      unrar x    "$1"     ;;
+        *.arj)              unarj x    "$1"     ;;
+        *.ace)              unace x    "$1"     ;;
+        *.bz2)              bunzip2    "$1"     ;;
+        *.xz)               unxz       "$1"     ;;
+        *.gz)               gunzip     "$1"     ;;
+        *.7z)               7z x       "$1"     ;;
+        *.Z)                uncompress "$1"     ;;
+        *.gpg)       gpg2 -d "$1" | tar -xvzf - ;;
+        *) echo "Error: failed to extract $1" ;;
+    esac
+else
+  echo "Error: $1 is not a valid file for extraction"
+fi
+}
+
+function open () {
+if [[ -f "$1" ]]; then
+    case "$1" in
+        *.pdf)               zathura     "$1"     ;;
+        *.odt | *.doc)       libreoffice "$1"     ;;
+        *) echo "Error: failed to open $1" ;;
+    esac
+else
+  echo "Error: $1 is not a valid file for extraction"
+fi
+}
 setopt correct
 setopt hist_ignore_all_dups
+setopt nohup
 
 promptinit
 compinit

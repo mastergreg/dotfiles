@@ -4,7 +4,7 @@ set et
 set sw=4
 set ts=4
 "set complete=.,w,b,u,t,i
-set foldmethod=marker
+"set foldmethod=syntax
 set nowrap
 filetype plugin indent on
 set ofu=syntaxcomplete#Complete
@@ -28,8 +28,10 @@ set showcmd             " show partial commands in status line
 " shows: filename, position, eof, syntax, encoding, format 
 set statusline=%-3.3n\ %f\ %r%#Error#%m%#Statusline#\ (%l/%L,\ %c)\ %P%=%h%w\ %y\ [%{&encoding}:%{&fileformat}]\ 
 
+"colo slate
 set t_Co=256
-colorscheme leo
+"colo leo
+colo zenburn 
 call pathogen#infect()
 if has("autocmd")
 
@@ -86,7 +88,7 @@ autocmd Bufwritepre,filewritepre *.java exe "1," . 10 . "g/Last Modified :.*/s/L
 autocmd bufwritepost,filewritepost *.java execute "normal `a"
 
 "Templates indentation and syntax for python
-autocmd BufNewFile,BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+autocmd BufNewFile,BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class sw=4 ts=4
 autocmd BufNewFile *.py so /home/master/.vim/python_template
 autocmd BufNewFile *.py set smartindent 
 autocmd BufNewFile *.py exe "1," . 10 . "g/File Name :.*/s//File Name : " .expand("%")

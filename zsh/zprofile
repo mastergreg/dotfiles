@@ -1,3 +1,7 @@
 PYTHON_CMD=/bin/python
 export PYTHON_CMD
 export PATH=$PATH:~/bin
+export PAGER="less"
+export HISTSIZE=1000
+export SAVEHIST=1000
+export HISTFILE=~/.zsh_history

@@ -5,12 +5,14 @@ xsetroot -cursor_name left_ptr &
 volwheel &
 tray &
 #(sleep 2 && tint2) &
-#conky -p 10 &
+conky -p 10 &
 (sleep 10 && ~/.dropbox-dist/dropboxd ) &
 wallpaper &
+parcellite &
 (sleep 2 && urxvt )&
+#wpa_gui -t &
 #exec openbox
 #wmii
 #exec fluxbox 
 #exec /usr/bin/awesome
-exec ck-launch-session xmonad
+exec xmonad
