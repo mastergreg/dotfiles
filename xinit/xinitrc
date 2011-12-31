@@ -15,4 +15,4 @@ parcellite &
 #wmii
 #exec fluxbox 
 #exec /usr/bin/awesome
-exec xmonad
+exec xmonad &>> /home/master/.xmonad/xmonad.log

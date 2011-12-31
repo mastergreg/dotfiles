@@ -201,10 +201,10 @@ URxvt*color15:     #ffffff
 
 !URxvt*font: 8x13
 
-URxvt*font: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso10646-1
-URxvt*boldFont: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso10646-1
-!URxvt*font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
-!URxvt*boldFont: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
+!URxvt*font: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso10646-1
+!URxvt*boldFont: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso10646-1
+URxvt*font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
+URxvt*boldFont: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
 !URxvt*font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-70-iso10646-1
 !URxvt*boldFont: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-70-iso10646-1
 !URxvt*font: 7x13

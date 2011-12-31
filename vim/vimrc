@@ -4,7 +4,7 @@ set et
 set sw=4
 set ts=4
 "set complete=.,w,b,u,t,i
-"set foldmethod=syntax
+set foldmethod=syntax
 set nowrap
 filetype plugin indent on
 set ofu=syntaxcomplete#Complete
