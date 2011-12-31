@@ -1,17 +1,43 @@
-autoload -Uz compinit vcs_info promptinit
-precmd() {
-    echo -ne '\a'
-    psvar=()
-    vcs_info
-    [[ -n $vcs_info_msg_0_ ]] && psvar[1]="$vcs_info_msg_0_"
-}
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
 
-PS1=$'%(?..[%F{red}%?%f] )%b%f%b%F{blue}%n%f %b%#%f%b '
-RPS1=$'%b%(1v.%F{yellow}%1v%f.)%b%F{red}%~%f'
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+#ZSH_THEME="fox"
+ZSH_THEME="master"
+#ZSH_THEME="trapd00r"
+#ZSH_THEME="juanghurtado"
 
-#PS1='%(?..[%F{red}%?%f] )%b%F{blue}%n%b%F{white}@%b%F{green}%m%b:%F{green}%~%f 
-#%B%# %b%f'
-#RPS1='%B%(1v.%F{yellow}%1v%f.)%f%b %f%T%f,%F{red}%w%f%f'
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Set to this to use case-sensitive completion
+# CASE_SENSITIVE="true"
+
+# Comment this out to disable weekly auto-update checks
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS="true"
+
+# Uncomment following line if you want to disable autosetting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+# COMPLETION_WAITING_DOTS="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# Customize to your needs...
+export PATH=/home/master/bin:/usr/local/bin:/usr/bin:/bin:/opt/bin:/usr/i686-pc-linux-gnu/gcc-bin/4.5.3:/usr/games/bin
 
 case "${TERM}" in
     dump)
@@ -34,9 +60,6 @@ case "${TERM}" in
         echo -en "\e]PE93e0e3" # bright-cyan   (cyan)
         echo -en "\e]P7dcdccc" # white         (lightgrey)
         echo -en "\e]PFffffff" # bright-white  (white)
-        ;;
-    *rxvt*)
-        export TERM=rxvt-unicode
         ;;
 esac
 
@@ -79,7 +102,6 @@ bindkey "\e[F" end-of-line
 bindkey "\e[7~" beginning-of-line
 bindkey "\e[8~" end-of-line
 
-
 alias ls='ls --color=auto'
 alias l='ls --color=auto'
 alias la='ls -A'
@@ -102,55 +124,6 @@ alias es='sudo layman -S && sudo emerge --sync'
 alias ep='sudo emerge portage'
 alias e='sudo emerge'
 alias eu='sudo emerge -avuND world'
-
-
-
-zstyle ':vcs_info:*' enable hg git svn
-zstyle ':vcs_info:*' branchformat '%b-%r'
-zstyle ':vcs_info:*' get-revision true
-
-
-# Stuff to make my life easier
-#
-# allow approximate
-zstyle ':completion:*:match:*' original only
-
-# cd not select parent dir
-zstyle ':completion:*:cd:*' ignore-parents parent pwd
-
-
-
-zstyle ':completion:*' use-cache true
-#zstyle ':completion:*' auto-description 'specify: %d'
-zstyle ':completion:*' completer _expand _complete _correct _approximate
-#zstyle ':completion:*' format '%d'
-#zstyle ':completion:*' group-name ''
-#zstyle ':completion:*' menu select=3
-eval "$(dircolors -b)"
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-#zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
-zstyle ':completion:*' max-errors 3
-#zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-#zstyle ':completion:*' use-compctl false
-
-
-zstyle ':completion:*:processes-names' command 'ps -e -o comm='
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
-
-
-# format autocompletion style
-#zstyle ':completion:*:descriptions' format "%{$fg_bold[green]%}%d%{$reset_color%}"
-#zstyle ':completion:*:corrections' format "%{$fg_bold[yellow]%}%d%{$reset_color%}"
-#zstyle ':completion:*:messages' format "%{$fg_bold[red]%}%d%{$reset_color%}"
-#zstyle ':completion:*:warnings' format "%{$fg_bold[red]%}%d%{$reset_color%}"
-#
-# ignore apps i dont have
-#zstyle ':completion:*:functions' ignored-patterns '_*'
-# kill menu
-#zstyle ':completion:*:*:kill:*'               menu yes select
-#zstyle ':completion:*:kill:*'                 force-list always
 
 function extract () {
 if [[ -f "$1" ]]; then
@@ -179,18 +152,17 @@ fi
 function open () {
 if [[ -f "$1" ]]; then
     case "$1" in
-        *.pdf)               zathura     "$1"     ;;
-        *.odt | *.doc)       libreoffice "$1"     ;;
+        *.pdf)               zathura     "$1" &> /dev/null &   ;;
+        *.odt | *.doc)       libreoffice "$1" &> /dev/null &   ;;
         *) echo "Error: failed to open $1" ;;
     esac
 else
   echo "Error: $1 is not a valid file for extraction"
 fi
 }
+
+
 setopt correct
 setopt hist_ignore_all_dups
 setopt nohup
-
-promptinit
-compinit
-echo "What is thy biding my master...?"
+setopt NO_cdable_vars

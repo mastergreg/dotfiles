@@ -19,6 +19,14 @@ noremap : ;
 
 " statusline -----------------------------------------------------------
 
+set wildmenu
+set incsearch
+set scrolloff=10
+set sidescrolloff=10
+set shortmess=aOstT
+set backup
+set backupdir=~/.vim/backup
+set directory=~/.vim/tmp
 set cmdheight=1         " command line height
 set laststatus=2        " condition to show status line, 2=always.
 set ruler               " show cursor position in status line
@@ -28,10 +36,13 @@ set showcmd             " show partial commands in status line
 " shows: filename, position, eof, syntax, encoding, format 
 set statusline=%-3.3n\ %f\ %r%#Error#%m%#Statusline#\ (%l/%L,\ %c)\ %P%=%h%w\ %y\ [%{&encoding}:%{&fileformat}]\ 
 
+colo delek
 "colo slate
 set t_Co=256
 "colo leo
-colo zenburn 
+"colo dante
+"colo zenburn 
+"colo vimbrant
 call pathogen#infect()
 if has("autocmd")
 
