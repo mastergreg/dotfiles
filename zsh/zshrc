@@ -120,10 +120,11 @@ alias gp='git push'
 alias gm='git merge'
 alias gf='git fetch'
 alias gst='git status'
-alias es='sudo layman -S && sudo emerge --sync'
-alias ep='sudo emerge portage'
-alias e='sudo emerge'
-alias eu='sudo emerge -avuND world'
+alias es='sudo eix-sync'
+alias ef='eix'
+alias ep='sudo emerge --quiet-build y portage'
+alias e='sudo emerge -av --quiet-build y'
+alias eu='sudo emerge -avuND --quiet-build y world'
 
 function extract () {
 if [[ -f "$1" ]]; then
@@ -152,15 +153,29 @@ fi
 function open () {
 if [[ -f "$1" ]]; then
     case "$1" in
-        *.pdf)               zathura     "$1" &> /dev/null &   ;;
-        *.odt | *.doc)       libreoffice "$1" &> /dev/null &   ;;
-        *) echo "Error: failed to open $1" ;;
+        *.png)              mirage     "$1" &   ;;
+        *.jpeg)             mirage     "$1" &   ;;
+        *.jpg)              mirage     "$1" &   ;;
+        *.pdf)              zathura     "$1" &> /dev/null &   ;;
+        *.odt | *.doc)      libreoffice "$1" &> /dev/null &   ;;
+        *)                  vim "$1"            ;;
     esac
 else
   echo "Error: $1 is not a valid file for extraction"
 fi
 }
 
+function play () {
+if [[ -f "$1" ]]; then
+    case "$1" in
+        *.mp3 | *.ogg)          mplayer "$1"   ;;
+        *.pls | *.m3u)          mplayer -playlist "$1"   ;;
+        *) echo "Error: failed to open $1" ;;
+    esac
+else
+  echo "Error: $1 is not a valid file for extraction"
+fi
+}
 
 setopt correct
 setopt hist_ignore_all_dups

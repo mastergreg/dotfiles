@@ -5,6 +5,11 @@ set sw=4
 set ts=4
 "set complete=.,w,b,u,t,i
 set foldmethod=syntax
+"set foldmethod=marker
+"set foldmarker={{{,}}}
+"set foldlevel=1
+set foldnestmax=2
+"set foldmethod=indent
 set nowrap
 filetype plugin indent on
 set ofu=syntaxcomplete#Complete
@@ -12,7 +17,7 @@ set backspace=2
 set showmatch
 set ttyfast
 set autowrite
-set ai
+set autoindent
 set encoding=utf8
 noremap ; :
 noremap : ;
@@ -99,7 +104,7 @@ autocmd Bufwritepre,filewritepre *.java exe "1," . 10 . "g/Last Modified :.*/s/L
 autocmd bufwritepost,filewritepost *.java execute "normal `a"
 
 "Templates indentation and syntax for python
-autocmd BufNewFile,BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class sw=4 ts=4
+autocmd BufNewFile,BufRead *.py set foldmethod=indent smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class sw=4 ts=4
 autocmd BufNewFile *.py so /home/master/.vim/python_template
 autocmd BufNewFile *.py set smartindent 
 autocmd BufNewFile *.py exe "1," . 10 . "g/File Name :.*/s//File Name : " .expand("%")
@@ -110,7 +115,7 @@ autocmd bufwritepost,filewritepost *.py execute "normal `a"
 
 
 
-autocmd BufNewFile,BufRead *.tex set tw=78 noet
+autocmd BufNewFile,BufRead *.tex set foldmethod=marker foldmarker={{{,}}} smartindent tw=78 noet
 autocmd BufNewFile,BufRead Makefile,makefile set ts=8 sw=8 noet nosi noai
 endif " has("autocmd")
 let g:indent_guides_start_level = 2

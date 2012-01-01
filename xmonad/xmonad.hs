@@ -431,7 +431,7 @@ pythonDzenPP = defaultPP {
                                               "fullscreen"  -> " "
                                               _                      -> pad x
                                     )
-                     , ppTitle    = dzenColor "#000006" "#000060" . shorten 20
+                     , ppTitle    = dzenColor "#000006" "#000060"
                      , ppSort = fmap (.scratchpadFilterOutWorkspace) $ ppSort defaultPP
                      }
 
