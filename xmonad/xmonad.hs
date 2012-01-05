@@ -95,8 +95,8 @@ myWorkspaces = ["1","2","3","4","5","6","7","8","9","0"]
 
 	-- Border colors for unfocused and focused windows, respectively.
 	--
-myNormalBorderColor  = "#1c1c1c"
-myFocusedBorderColor = "#0077ff"
+myNormalBorderColor  = "#222222"
+myFocusedBorderColor = "#285577"
 
 	-- Default offset of drawable screen boundaries from each physical
 	-- screen. Anything non-zero here will leave a gap of that many pixels
@@ -278,8 +278,8 @@ ratioW = 80/100
 tallLayout = named "|=" $ basicLayout
 wideLayout = named "=" $ myWide
 circleLayout = named "O" $ avoidStruts $ circleDwmStyle shrinkText (theme wfarrTheme)
-imlayout = named "|#" $ withIM (1%4) (Title "Buddy List") $  tabbed_one
-codeLayout = named "C++" $ avoidStruts $ limitWindows 3 $ magnifiercz' 1.4 $ FixedColumn 1 20 80 10
+imlayout = named "|#" $ avoidStruts $ withIM (1%4) (Title "Buddy List") $  tabbed_one
+codeLayout = named "C++" $ avoidStruts $ limitWindows 3 $ magnifiercz' 1.7 $ FixedColumn 1 10 110 10
 
 tabbed_one = named "T1" $ avoidStruts $ tabbed shrinkText (theme wfarrTheme)
 tabbed_two = named "T2" $ combineTwo (TwoPane 0.03 0.5) tabbed_one tabbed_one
