@@ -22,12 +22,16 @@ import XMonad.Hooks.UrgencyHook
 import XMonad.Hooks.FadeInactive as FI
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Util.Themes
 import XMonad.Layout.Grid
 import XMonad.Layout.Named
 import XMonad.Layout.NoBorders
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.DecorationMadness
 import XMonad.Layout.TwoPane
+import XMonad.Layout.LimitWindows
+import XMonad.Layout.Magnifier
+import XMonad.Layout.FixedColumn
 import XMonad.Layout.Combo
 import XMonad.Layout.ComboP
 import XMonad.Layout.Tabbed
@@ -257,32 +261,34 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 	--
 
 	-- default tiling algorithm partitions the screen into two panes
-basicLayout = Tall nmaster delta ratio where
+basicLayout = avoidStruts $ smartBorders  $ Tall nmaster delta ratio where
 	-- The default number of windows in the master pane
 nmaster = 1
 	-- Percent of screen to increment by when resizing panes
 delta   = 3/100
 	-- Default proportion of screen occupied by master pane
-ratio   = 2/4
-tallLayout = named "tall" $ avoidStruts $ basicLayout
-wideLayout = named "wide" $ avoidStruts $ Mirror basicLayout
-singleLayout = named "single" $ avoidStruts $ noBorders Full
-circleLayout = named "circle" $  circleSimpleDwmStyle
-fullscreenLayout = named "fullscreen" $ avoidStruts $ noBorders Full
-fullscreenVBoxLayout = named "fullVBox" $ noBorders Full
-imlayout = named "|#" $ avoidStruts $ withIM (1%4) (Title "Buddy List") $  tabbed_one
-dialayout = named "_" $ avoidStruts $ Mirror $ withIM (1%4) (Title "Dia v0.97.1") $  noBorders basicLayout
---gimpL = named "gimp" $ avoidStruts $ withIM (0.15) (Role "gimp-toolbox") $ reflectHoriz $ withIM (0.20) (Role "gimp-dock" ) Full
-	-- special layout on certain workspaces 
-myLayout =  fullscreen $ chat $ dial $ normal where
-normal     =tallLayout ||| wideLayout ||| tabbed_one ||| tabbed_two 
---gimpLayout = onWorkspace "9" gimpL
---circ = onWorkspace "1" circleLayout
+ratio   = 3/5
+
+myWide = avoidStruts $ Mirror $ smartBorders  $ Tall nmasterW deltaW ratioW where
+nmasterW = 1
+deltaW   = 3/100
+ratioW = 80/100
+
+
+tallLayout = named "|=" $ basicLayout
+wideLayout = named "=" $ myWide
+circleLayout = named "O" $ avoidStruts $ circleDwmStyle shrinkText (theme wfarrTheme)
+imlayout = named "|#" $ withIM (1%4) (Title "Buddy List") $  tabbed_one
+codeLayout = named "C++" $ avoidStruts $ limitWindows 3 $ magnifiercz' 1.4 $ FixedColumn 1 20 80 10
+
+tabbed_one = named "T1" $ avoidStruts $ tabbed shrinkText (theme wfarrTheme)
+tabbed_two = named "T2" $ combineTwo (TwoPane 0.03 0.5) tabbed_one tabbed_one
+
+myLayout =  chat $ code $ circ $ normal where
+normal = tallLayout ||| wideLayout ||| tabbed_one ||| tabbed_two 
 chat = onWorkspace "7" imlayout 
-dial = onWorkspace "6" dialayout
-fullscreen = onWorkspace "0" fullscreenLayout
-tabbed_one = named "T1" $ avoidStruts $ tabbed shrinkText defaultTheme
-tabbed_two = named "T2" $ avoidStruts $ combineTwo (TwoPane 0.03 0.5) tabbed_one tabbed_one
+code = onWorkspace "3" codeLayout
+circ = onWorkspace "1" circleLayout
 
 
 	------------------------------------------------------------------------

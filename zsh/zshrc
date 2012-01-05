@@ -155,6 +155,7 @@ if [[ -f "$1" ]]; then
     case "$1" in
         *.png)              mirage     "$1" &   ;;
         *.jpeg)             mirage     "$1" &   ;;
+        *.JPG)              mirage     "$1" &   ;;
         *.jpg)              mirage     "$1" &   ;;
         *.pdf)              zathura     "$1" &> /dev/null &   ;;
         *.odt | *.doc)      libreoffice "$1" &> /dev/null &   ;;
