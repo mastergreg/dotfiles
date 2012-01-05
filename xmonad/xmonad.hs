@@ -261,7 +261,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 	--
 
 	-- default tiling algorithm partitions the screen into two panes
-basicLayout = avoidStruts $ smartBorders  $ Tall nmaster delta ratio where
+basicLayout =  magnifiercz' 1.5 $ smartBorders  $ Tall nmaster delta ratio where
 	-- The default number of windows in the master pane
 nmaster = 1
 	-- Percent of screen to increment by when resizing panes
@@ -269,25 +269,18 @@ delta   = 3/100
 	-- Default proportion of screen occupied by master pane
 ratio   = 3/5
 
-myWide = avoidStruts $ Mirror $ smartBorders  $ Tall nmasterW deltaW ratioW where
-nmasterW = 1
-deltaW   = 3/100
-ratioW = 80/100
 
-
-tallLayout = named "|=" $ basicLayout
-wideLayout = named "=" $ myWide
+tallLayout = named "|=" $ avoidStruts $ basicLayout
+wideLayout = named "=" $ avoidStruts $ Mirror basicLayout
 circleLayout = named "O" $ avoidStruts $ circleDwmStyle shrinkText (theme wfarrTheme)
 imlayout = named "|#" $ avoidStruts $ withIM (1%4) (Title "Buddy List") $  tabbed_one
-codeLayout = named "C++" $ avoidStruts $ limitWindows 3 $ magnifiercz' 1.7 $ FixedColumn 1 10 110 10
 
 tabbed_one = named "T1" $ avoidStruts $ tabbed shrinkText (theme wfarrTheme)
 tabbed_two = named "T2" $ combineTwo (TwoPane 0.03 0.5) tabbed_one tabbed_one
 
-myLayout =  chat $ code $ circ $ normal where
+myLayout =  chat $ circ $ normal where
 normal = tallLayout ||| wideLayout ||| tabbed_one ||| tabbed_two 
 chat = onWorkspace "7" imlayout 
-code = onWorkspace "3" codeLayout
 circ = onWorkspace "1" circleLayout
 
 
