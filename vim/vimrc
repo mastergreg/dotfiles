@@ -8,7 +8,7 @@ set foldmethod=syntax
 "set foldmethod=marker
 "set foldmarker={{{,}}}
 "set foldlevel=1
-set foldnestmax=2
+"set foldnestmax=2
 "set foldmethod=indent
 set nowrap
 filetype plugin indent on

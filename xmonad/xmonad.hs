@@ -37,6 +37,8 @@ import XMonad.Layout.ComboP
 import XMonad.Layout.Tabbed
 import XMonad.Layout.IM
 import XMonad.Layout.Reflect
+import XMonad.Actions.GridSelect
+import XMonad.Util.NamedScratchpad
 import Data.Ratio ((%))
 import XMonad.Util.Scratchpad 
 import XMonad.Hooks.SetWMName
@@ -130,6 +132,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
 	-- close focused window 
 	, ((modMask .|. shiftMask, xK_c     ), kill)
+     
+    -- use gridselect
+	, ((modMask,               xK_g ), goToSelected defaultGSConfig)
 
 	-- Rotate through the available layout algorithms
 	, ((modMask,               xK_space ), sendMessage NextLayout)
@@ -218,6 +223,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	, ((mod4Mask             , xK_F10     ), spawn "set_screen")
 	, ((mod4Mask.|. shiftMask, xK_F10     ), spawn "set_screen_off")
 	, ((mod4Mask             ,xK_guillemotleft), spawn myTerminal)
+	, ((mod4Mask             , xK_n     ), namedScratchpadAction myScratchpads "notes")
 	, ((0             ,xK_guillemotleft), scratchpadSpawnActionTerminal "urxvt -pe tabbed -T term")
   , ((mod4Mask             ,xK_t), spawn "pcmanfm")
 	, ((0                    ,xK_Print), spawn  "scrot -e 'mv $f ~/Pictures/Screenshots'")
@@ -225,6 +231,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	, ((0                    ,0x1008ff11),spawn "volbar -d 1")
 	, ((0                    ,0x1008ff13),spawn "volbar -i 1")
 	, ((0                    ,0x1008ff12),spawn "volbar -t")
+	, ((mod4Mask            ,xK_a),spawn "urxvt -e ncmpcpp")
   , ((0                    ,0x1008ff14),spawn "mpd_extra_buttons toggle")
   , ((0                    ,0x1008ff16),spawn "mpd_extra_buttons prev")
   , ((0                    ,0x1008ff17),spawn "mpd_extra_buttons next")
@@ -261,7 +268,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 	--
 
 	-- default tiling algorithm partitions the screen into two panes
-basicLayout =  magnifiercz' 1.5 $ smartBorders  $ Tall nmaster delta ratio where
+basicLayout =  magnifiercz' 1.4 $ smartBorders  $ Tall nmaster delta ratio where
 	-- The default number of windows in the master pane
 nmaster = 1
 	-- Percent of screen to increment by when resizing panes
@@ -272,7 +279,7 @@ ratio   = 3/5
 
 tallLayout = named "|=" $ avoidStruts $ basicLayout
 wideLayout = named "=" $ avoidStruts $ Mirror basicLayout
-circleLayout = named "O" $ avoidStruts $ circleDwmStyle shrinkText (theme wfarrTheme)
+circleLayout = named "O" $ avoidStruts $ magnifiercz' 1.4 $ circleDwmStyle shrinkText (theme wfarrTheme)
 imlayout = named "|#" $ avoidStruts $ withIM (1%4) (Title "Buddy List") $  tabbed_one
 
 tabbed_one = named "T1" $ avoidStruts $ tabbed shrinkText (theme wfarrTheme)
@@ -299,6 +306,16 @@ circ = onWorkspace "1" circleLayout
 	-- To match on the WM_NAME, you can use 'title' in the same way that
 	-- 'className' and 'resource' are used below.
 	--
+    --
+    --
+    --
+
+myScratchpads = [
+  -- run gvim, find by role, don't float
+  NS "notes" "gvim --role notes ~/notes.txt" (role =? "notes") defaultFloating
+  ] where role = stringProperty "WM_WINDOW_ROLE"
+
+
 myManageHook = manageDocks <+> myFloatHook <+> myscratchpadManageHook <+> manageHook defaultConfig
 myFloatHook = composeAll
 	[
@@ -311,6 +328,7 @@ myFloatHook = composeAll
   , className =? "mplayer" --> moveToFull
   , className =? "mplayer" --> unfloat
 	, resource =? "pidgin" --> moveToIM
+	, resource =? "mumble" --> moveToIM
 	--, [ className =? "Skype" <&&> title ~? "Call with " -?> doSideFloat' CE ]
   , className =? "Pidgin" --> moveToIM
   , className =? "dia" --> moveToDia
