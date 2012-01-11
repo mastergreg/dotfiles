@@ -41,10 +41,10 @@ set showcmd             " show partial commands in status line
 " shows: filename, position, eof, syntax, encoding, format 
 set statusline=%-3.3n\ %f\ %r%#Error#%m%#Statusline#\ (%l/%L,\ %c)\ %P%=%h%w\ %y\ [%{&encoding}:%{&fileformat}]\ 
 
-colo delek
+"colo delek
 "colo slate
 set t_Co=256
-"colo leo
+colo leo
 "colo dante
 "colo zenburn 
 "colo vimbrant
