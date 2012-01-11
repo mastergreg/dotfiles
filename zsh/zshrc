@@ -5,9 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="fox"
 ZSH_THEME="master"
-#ZSH_THEME="trapd00r"
 #ZSH_THEME="juanghurtado"
 
 # Example aliases
@@ -153,10 +151,10 @@ fi
 function open () {
 if [[ -f "$1" ]]; then
     case "$1" in
-        *.png)              mirage     "$1" &   ;;
-        *.jpeg)             mirage     "$1" &   ;;
-        *.JPG)              mirage     "$1" &   ;;
-        *.jpg)              mirage     "$1" &   ;;
+        *.png)              gpicview     "$1" &   ;;
+        *.jpeg)             gpicview     "$1" &   ;;
+        *.JPG)              gpicview     "$1" &   ;;
+        *.jpg)              gpicview     "$1" &   ;;
         *.pdf)              zathura     "$1" &> /dev/null &   ;;
         *.odt | *.doc)      libreoffice "$1" &> /dev/null &   ;;
         *)                  vim "$1"            ;;
@@ -182,3 +180,8 @@ setopt correct
 setopt hist_ignore_all_dups
 setopt nohup
 setopt NO_cdable_vars
+
+echo -en '\033[0;33m'
+figlet "Gentoo"
+echo -en '\033[0m'
+
