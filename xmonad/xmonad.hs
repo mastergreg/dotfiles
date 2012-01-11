@@ -232,9 +232,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	, ((0                    ,0x1008ff13),spawn "volbar -i 1")
 	, ((0                    ,0x1008ff12),spawn "volbar -t")
 	, ((mod4Mask            ,xK_a),spawn "urxvt -e ncmpcpp")
-  , ((0                    ,0x1008ff14),spawn "mpd_extra_buttons toggle")
-  , ((0                    ,0x1008ff16),spawn "mpd_extra_buttons prev")
-  , ((0                    ,0x1008ff17),spawn "mpd_extra_buttons next")
+  , ((0                    ,0x1008ff14),spawn "mpc toggle")
+  , ((0                    ,0x1008ff16),spawn "mpc prev")
+  , ((0                    ,0x1008ff17),spawn "mpc next")
 	]	
 
 
