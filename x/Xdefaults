@@ -29,7 +29,7 @@ URxvt*scrollBar:         false
 !URxvt*urgentOnBell: true
 !URxvt*font: xft:terminus:pixelsize=11:antialias=false
 URxvt*transparent: true
-URxvt*shading:     30
+URxvt*shading:     20
 !URxvt*tint:         #333333
 !URxvt*inheritPixmap:true
 URxvt*geometry: 80x33
@@ -49,10 +49,10 @@ URxvt*tabbed*tab-fg: 3
 
 ! terminal colors ------------------------------------------------------------
 
-! tangoesque scheme
-URxvt*background:  #030303
-URxvt*foreground:  #aaaaaa
-!URxvt*.cursorColor: #aeafad
+!! tangoesque scheme
+!URxvt*background:  #030303
+!URxvt*foreground:  #aaaaaa
+!URxvt*cursorColor: #aeafad
 URxvt*cursorColor: #009900
 ! Black
 URxvt*color0:      #000000
@@ -67,7 +67,8 @@ URxvt*color10:     #c8e7a8
 URxvt*color3:      #eab93d
 URxvt*color11:     #ffc123
 ! Blue
-URxvt*color4:      #204a87
+#URxvt*color4:      #204a87
+URxvt*color4:      #3465a4
 URxvt*color12:     #3465a4
 ! Mangenta
 URxvt*color5:      #ce5c00
@@ -102,6 +103,8 @@ URxvt*color15:     #ffffff
 !*.color13: #b294bb
 !*.color14: #8abeb7
 !*.color15: #ecebec
+
+
 !URxvt*foreground: #f2f2f2
 !URxvt*background: #101010
 !URxvt*color0: #101010
@@ -120,6 +123,13 @@ URxvt*color15:     #ffffff
 !URxvt*color13: #ef0051
 !URxvt*color14: #4bb8fd
 !URxvt*color15: #a020f0
+!
+!
+URxvt*foreground:#DDDDDD
+URxvt*background:#080808
+
+URxvt*cursorColor:#999999
+
 !URxvt*color0:#000000
 !URxvt*color1:#AA0000
 !URxvt*color2:#00AA00
@@ -132,16 +142,16 @@ URxvt*color15:     #ffffff
 !!URxvt*color9:#AA0000
 !!URxvt*color10:#00AA00
 !!URxvt*color11:#AA5500
-!URxvt*color12:#0077FF
+!!URxvt*color12:#0077FF
 !!URxvt*color13:#AA00AA
 !!URxvt*color14:#00AAAA
 !!URxvt*color15:#AAAAAA
-!
+!!
 !URxvt*color8:#555555
 !URxvt*color9:#FF5555
 !URxvt*color10:#55FF55
 !URxvt*color11:#FFFF55
-!!URxvt*color12:#3399FF
+!URxvt*color12:#3399FF
 !URxvt*color13:#FF55FF
 !URxvt*color14:#55FFFF
 !URxvt*color15:#FFFFFF
@@ -203,13 +213,13 @@ URxvt*color15:     #ffffff
 
 !URxvt*font: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso10646-1
 !URxvt*boldFont: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso10646-1
-URxvt*font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
-URxvt*boldFont: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
-!URxvt*font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-70-iso10646-1
-!URxvt*boldFont: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-70-iso10646-1
-!URxvt*font: 7x13
-!URxvt*boldFont: 7x13
+!URxvt*font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
+!URxvt*boldFont: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
+URxvt*font: 7x13
+URxvt*boldFont: 7x13
 !URxvt*font: -misc-fixed-medium-r-normal--13-120-75-75-c-70-iso10646-1
+
+!URxvt*font: xft:Inconsolata:size=11:antialias=true
 
 !{{{ alsamixer scheme
 alsamixer*color1:   #ff2759
