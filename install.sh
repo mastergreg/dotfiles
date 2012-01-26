@@ -15,6 +15,14 @@ function xinit
     echo installing xinitrc
     cp xinit/xinitrc ~/.xinitrc
 }
+function conky
+{
+    echo installing conky config
+    mkdir -p ~/.conky
+    cp -r conky/conky/* ~/.conky
+    cp conky/.conkyrc ~/
+
+}
 function xmonad
 {
     echo installing xmonad config

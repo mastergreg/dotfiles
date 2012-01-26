@@ -1,0 +1,59 @@
+# conky configuration
+#
+# The list of variables has been removed from this file in favour
+# of keeping the documentation more maintainable.
+# Check http://conky.sf.net for an up-to-date-list.
+#
+# For ideas about how to modify conky, please see:
+# http://crunchbanglinux.org/forums/topic/59/my-conky-config/
+#
+# For help with conky, please see:
+# http://crunchbanglinux.org/forums/topic/2047/conky-help/
+#
+# Enjoy! :)
+##############################################
+#  Settings
+##############################################
+background yes
+use_xft yes
+#xftfont Sans:pixelsize=10
+#xftfont Vibrocentric:size=9
+xftfont D3 Euronism:pixelsize=11
+xftalpha 1
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_transparent yes
+own_window_colour 8F8F8F
+own_window_type override
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 352 11
+maximum_width 500
+draw_shades no
+draw_outline no
+draw_borders no
+border_inner_margin 0
+border_outer_margin 1
+border_width 0
+draw_graph_borders no
+default_color 7B7B7B
+default_shade_color grey10
+default_outline_color white
+alignment tl
+gap_x 0
+gap_y 0
+no_buffers yes
+uppercase no
+text_buffer_size 1024
+cpu_avg_samples 2
+show_graph_scale no
+show_graph_range no
+short_units yes
+override_utf8_locale yes
+use_spacer left
+##############################################
+#  Output
+##############################################
+TEXT
+${goto 4}L${ibm_brightness} ${color 05A608}S${offset 2}${ibm_volume}${color grey60}${goto 85}M${offset 2}${texeci 120 python ~/scripts/g-mail.py}${goto 115}${color 30DEFF}Ram ${memperc}%${color F27A02}${goto 197}Cpu ${cpu}%${goto 270}${cpugraph 9,20 2F2F2F F27A02}${color}${goto 300}I/O ${diskiograph 9,20 2F2F2F DFDFDF}

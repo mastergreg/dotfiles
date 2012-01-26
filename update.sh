@@ -15,6 +15,13 @@ function xinit
     echo taking backup of xinitrc
     cp ~/.xinitrc xinit/xinitrc
 }
+function conky
+{
+    echo taking backup of conky config
+    rm -rf conky/conky
+    cp -r ~/.conky conky/conky
+    cp ~/.conkyrc conky/conkyrc
+}
 function xmonad
 {
     echo taking backup of xmonad config
@@ -45,6 +52,7 @@ function all
     xmonad
     vim
     openbox
+    conky
     x
 }
 $1

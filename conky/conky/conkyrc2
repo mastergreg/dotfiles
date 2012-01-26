@@ -1,0 +1,60 @@
+# — Conky settings — #
+background no
+update_interval 1
+
+cpu_avg_samples 2
+net_avg_samples 2
+
+override_utf8_locale yes
+
+double_buffer yes
+no_buffers yes
+
+text_buffer_size 2048
+
+# — Window specifications — #
+
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_colour 3B3B3B
+own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
+
+border_inner_margin 0
+border_outer_margin 0
+
+minimum_size 300 620
+maximum_width 300
+
+alignment tl
+gap_x 55
+gap_y 110
+
+# — Graphics settings — #
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+
+# — Text settings — #
+use_xft yes
+xftfont D3 Euronism:size=44
+xftalpha 0.8
+
+uppercase no
+
+default_color A0A0A0
+
+# — Lua Load — #
+lua_load ~/.conky/zen-rings1.lua
+lua_draw_hook_pre ring_stats
+
+TEXT
+${alignr 7}${color 5054F8}${time %I}
+${voffset -20}${alignr 7}${color 828282}${time %M}
+${voffset 10}${goto 70}${font Aller:size10:italic}up: ${uptime_short}${alignr 42}${voffset -5}${time %S}${color}${font}
+${voffset 105}${font D3 Euronism:size=16:italic}    ${color}${time %a}
+    ${time %d}   
+    ${time %b}  
+#${voffset 75}${goto 160}${if_match ${battery_percent} > 20}${color 60ADA2}PW${color}${endif}${if_match ${battery_percent} <= 20}${color red}PW${color}${endif}
+#${goto 150}${if_match ${battery_percent} > 10}${color 7ECCC0}${battery_percent}%${color}${endif}${if_match ${battery_percent} <= 10}${color red}${battery_percent}%${color}${endif}
