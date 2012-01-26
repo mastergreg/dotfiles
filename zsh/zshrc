@@ -112,12 +112,24 @@ alias grep='grep --color=auto'
 alias x='exit'
 alias c='clear'
 alias s='source ~/.zshrc'
+
+
+
+alias -s c=vim
+alias -s cpp=vim
+alias -s h=vim
+alias -s html=vim
+alias -s xml=vim
+
+#git stuff
 alias gpl='git pull'
 alias gch='git checkout'
 alias gp='git push'
 alias gm='git merge'
 alias gf='git fetch'
 alias gst='git status'
+
+#emerge eix gentoo stuff
 alias es='sudo eix-sync'
 alias ef='eix'
 alias ep='sudo emerge --quiet-build y portage'
@@ -160,7 +172,7 @@ if [[ -f "$1" ]]; then
         *)                  vim "$1"            ;;
     esac
 else
-  echo "Error: $1 is not a valid file for extraction"
+  echo "Error: $1 is not a valid file to open"
 fi
 }
 
@@ -172,7 +184,7 @@ if [[ -f "$1" ]]; then
         *) echo "Error: failed to open $1" ;;
     esac
 else
-  echo "Error: $1 is not a valid file for extraction"
+  echo "Error: $1 could not play file"
 fi
 }
 
@@ -184,4 +196,7 @@ setopt NO_cdable_vars
 echo -en '\033[0;33m'
 figlet "Gentoo"
 echo -en '\033[0m'
+
+
+eval $(keychain -q --eval --agents ssh -Q ~/.ssh/id_rsa ~/.ssh/id_rsa_cloudfront ~/.ssh/id_rsa_europa ~/.ssh/id_rsa_foss ~/.ssh/id_rsa_freebsd ~/.ssh/id_rsa_git ~/.ssh/id_rsa_ps3)
 

@@ -1,6 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/home/master/.ssh'
-let g:netrw_dirhist_2='/usr/lib/wine'
-let g:netrw_dirhist_3='/home/master/Repos/MicroPC/Ask/Ask_3/Tex'
-let g:netrw_dirhist_4='/home/master/.xmonad'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/master/.vim'
+let g:netrw_dirhist_2='/home/master/Repos/OS/ask_3/tex'
+let g:netrw_dirhist_3='/home/master/Repos/OS/ask_3/tex/title'
+let g:netrw_dirhist_4='/home/master/Repos/OS/ask_3/tex'
+let g:netrw_dirhist_5='/home/master/Repos/OS/ask_3'

@@ -1,26 +1,30 @@
 syn on
 set number
 set et
+set nocp
 set sw=4
 set ts=4
-"set complete=.,w,b,u,t,i
+set complete=.,w,b,u,t,i
 set foldmethod=syntax
-"set foldmethod=marker
-"set foldmarker={{{,}}}
 "set foldlevel=1
 "set foldnestmax=2
+
 "set foldmethod=indent
 set nowrap
 filetype plugin indent on
-set ofu=syntaxcomplete#Complete
 set backspace=2
 set showmatch
 set ttyfast
 set autowrite
 set autoindent
+set mouse=a
 set encoding=utf8
 noremap ; :
 noremap : ;
+imap ,/ </<C-X><C-O>
+imap ./ <C-X><C-O>
+noremap <F12> :NERDTreeToggle<CR>
+
 
 " statusline -----------------------------------------------------------
 
@@ -44,7 +48,8 @@ set statusline=%-3.3n\ %f\ %r%#Error#%m%#Statusline#\ (%l/%L,\ %c)\ %P%=%h%w\ %y
 "colo delek
 "colo slate
 set t_Co=256
-colo leo
+colo ir_black
+"colo leo
 "colo dante
 "colo zenburn 
 "colo vimbrant
@@ -94,7 +99,7 @@ autocmd BufNewFile,BufRead *.yap colo slate
 
 
 "Templates indentation and syntax for java
-autocmd BufNewFile,BufRead *.java set tags=~/.tags smartindent cinwords cinwords=if,else,for,do,while,switch,class,try,finally 
+autocmd BufNewFile,BufRead *.java set smartindent cinwords cinwords=if,else,for,do,while,switch,class,try,finally 
 autocmd BufNewFile *.java so /home/master/.vim/java_template
 autocmd BufNewFile *.java set smartindent 
 autocmd BufNewFile *.java exe "1," . 10 . "g/File Name :.*/s//File Name : " .expand("%")
@@ -112,8 +117,6 @@ autocmd BufNewFile *.py exe "1," . 10 . "g/Creation Date :.*/s//Creation Date : 
 autocmd Bufwritepre,filewritepre *.py execute "normal ma"
 autocmd Bufwritepre,filewritepre *.py exe "1," . 10 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
 autocmd bufwritepost,filewritepost *.py execute "normal `a"
-
-
 
 autocmd BufNewFile,BufRead *.tex set foldmethod=marker foldmarker={{{,}}} smartindent tw=78 noet
 autocmd BufNewFile,BufRead Makefile,makefile set ts=8 sw=8 noet nosi noai

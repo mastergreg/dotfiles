@@ -348,7 +348,7 @@ myFloatHook = composeAll
   moveToDia = doF $ W.shift "6"
   moveToFull = doF $ W.shift "0"
 myscratchpadManageHook :: ManageHook
-myscratchpadManageHook = scratchpadManageHook (W.RationalRect 0.05 0.625 0.9 0.35)
+myscratchpadManageHook = scratchpadManageHook (W.RationalRect 0.10 0.05 0.8 0.55)
 	-- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = True

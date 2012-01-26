@@ -5,7 +5,8 @@ xsetroot -cursor_name left_ptr &
 volwheel &
 tray &
 #(sleep 2 && tint2) &
-#conky -p 10 &
+conky -p 10 -c ~/.conky/conkyrc2 &
+conky -p 10 -c ~/.conky/conkyrc3 &
 (sleep 10 && ~/.dropbox-dist/dropboxd ) &
 wallpaper &
 #parcellite &
@@ -15,4 +16,4 @@ wallpaper &
 #wmii
 #exec fluxbox 
 #exec /usr/bin/awesome
-exec xmonad &>> /home/master/.xmonad/xmonad.log
+exec xmonad 
