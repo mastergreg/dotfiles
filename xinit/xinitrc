@@ -16,4 +16,5 @@ wallpaper &
 #wmii
 #exec fluxbox 
 #exec /usr/bin/awesome
-exec xmonad 
+export XDG_MENU_PREFIX=lxde-
+exec dbus-launch xmonad 

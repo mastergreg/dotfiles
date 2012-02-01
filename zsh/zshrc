@@ -8,6 +8,8 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="master"
 #ZSH_THEME="juanghurtado"
 
+
+DISABLE_AUTO_TITLE="true" 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -42,22 +44,6 @@ case "${TERM}" in
         PROMPT='%n@%m:%~%% '
         ;;
     linux)
-        echo -en "\e]P01e2320" # zenburn black (normal black)
-        echo -en "\e]P8709080" # bright-black  (darkgrey)
-        echo -en "\e]P1705050" # red           (darkred)
-        echo -en "\e]P9dca3a3" # bright-red    (red)
-        echo -en "\e]P260b48a" # green         (darkgreen)
-        echo -en "\e]PAc3bf9f" # bright-green  (green)
-        echo -en "\e]P3dfaf8f" # yellow        (brown)
-        echo -en "\e]PBf0dfaf" # bright-yellow (yellow)
-        echo -en "\e]P4506070" # blue          (darkblue)
-        echo -en "\e]PC94bff3" # bright-blue   (blue)
-        echo -en "\e]P5dc8cc3" # purple        (darkmagenta)
-        echo -en "\e]PDec93d3" # bright-purple (magenta)
-        echo -en "\e]P68cd0d3" # cyan          (darkcyan)
-        echo -en "\e]PE93e0e3" # bright-cyan   (cyan)
-        echo -en "\e]P7dcdccc" # white         (lightgrey)
-        echo -en "\e]PFffffff" # bright-white  (white)
         ;;
 esac
 
@@ -99,6 +85,10 @@ bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
 bindkey "\e[7~" beginning-of-line
 bindkey "\e[8~" end-of-line
+
+
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
 
 alias ls='ls --color=auto'
 alias l='ls --color=auto'
@@ -198,5 +188,5 @@ figlet "Gentoo"
 echo -en '\033[0m'
 
 
-eval $(keychain -q --eval --agents ssh -Q ~/.ssh/id_rsa ~/.ssh/id_rsa_cloudfront ~/.ssh/id_rsa_europa ~/.ssh/id_rsa_foss ~/.ssh/id_rsa_freebsd ~/.ssh/id_rsa_git ~/.ssh/id_rsa_ps3)
+eval $(keychain -q --eval --agents ssh -Q ~/.ssh/id_rsa ~/.ssh/id_rsa_cloudfront ~/.ssh/id_rsa_europa ~/.ssh/id_rsa_foss ~/.ssh/id_rsa_freebsd ~/.ssh/id_rsa_git ~/.ssh/id_rsa_mac ~/.ssh/id_rsa_ps3)
 

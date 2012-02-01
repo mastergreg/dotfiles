@@ -21,9 +21,10 @@ set mouse=a
 set encoding=utf8
 noremap ; :
 noremap : ;
-imap ,/ </<C-X><C-O>
-imap ./ <C-X><C-O>
+noremap ,/ </<C-X><C-O>
+noremap ./ <C-X><C-O>
 noremap <F12> :NERDTreeToggle<CR>
+noremap <F5> :make<CR>
 
 
 " statusline -----------------------------------------------------------
@@ -41,15 +42,16 @@ set laststatus=2        " condition to show status line, 2=always.
 set ruler               " show cursor position in status line
 set showmode            " show mode in status line
 set showcmd             " show partial commands in status line
-" set statusline=%r%h%w\ %([%{&ff}]%)%(:%y%)%(:[%{&fenc}]%)\ BUFF[%1.20n]%=%1.7l,%1.7c\ \ [%p%%]
+"set statusline=%r%h%w\ %([%{&ff}]%)%(:%y%)%(:[%{&fenc}]%)\ BUFF[%1.20n]%=%1.7l,%1.7c\ \ [%p%%]
 " shows: filename, position, eof, syntax, encoding, format 
-set statusline=%-3.3n\ %f\ %r%#Error#%m%#Statusline#\ (%l/%L,\ %c)\ %P%=%h%w\ %y\ [%{&encoding}:%{&fileformat}]\ 
+set statusline=%-3.3n\ %f\ %r%#Error#%m%#Statusline#\ (%l/%L,\ %c)\ %P%=%h%w\ %y\ [%1.20n]:[%{&encoding}:%{&fileformat}]\ 
 
 "colo delek
 "colo slate
 set t_Co=256
-colo ir_black
-"colo leo
+"colo wombat256mod
+"colo ir_black
+colo leo
 "colo dante
 "colo zenburn 
 "colo vimbrant

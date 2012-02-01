@@ -24,6 +24,7 @@ import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Util.Themes
 import XMonad.Layout.Grid
+import XMonad.Layout.Cross
 import XMonad.Layout.Named
 import XMonad.Layout.NoBorders
 import XMonad.Layout.PerWorkspace
@@ -128,7 +129,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 --	, ((modMask,               xK_p     ), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
 
 	-- launch gmrun
-	, ((modMask , xK_p     ), spawn "gmrun")
+	--, ((modMask , xK_p     ), spawn "gmrun")
+
+    --launch dmenu
+	, ((modMask , xK_p     ), spawn "dmenu_run")
 
 	-- close focused window 
 	, ((modMask .|. shiftMask, xK_c     ), kill)
@@ -279,7 +283,7 @@ ratio   = 3/5
 
 tallLayout = named "|=" $ avoidStruts $ basicLayout
 wideLayout = named "=" $ avoidStruts $ Mirror basicLayout
-circleLayout = named "O" $ avoidStruts $ magnifiercz' 1.4 $ circleDwmStyle shrinkText (theme wfarrTheme)
+circleLayout = named "O" $ avoidStruts $ simpleCross --crossDwmStyle shrinkText (theme wfarrTheme)
 imlayout = named "|#" $ avoidStruts $ withIM (1%4) (Title "Buddy List") $  tabbed_one
 
 tabbed_one = named "T1" $ avoidStruts $ tabbed shrinkText (theme wfarrTheme)
