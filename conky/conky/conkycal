@@ -1,0 +1,44 @@
+
+background yes
+#use_xft no
+use_xft yes
+xftalpha 1.0
+update_interval 600.0
+total_run_times 0
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+draw_shades no 
+draw_outline no
+draw_borders no
+draw_graph_borders no
+alignment top_right
+
+gap_x 5
+gap_y 350
+net_avg_samples 2
+out_to_console no
+stippled_borders 2
+uppercase no
+use_spacer yes
+xftfont DejaVu Sans Mono:style=Bold:pixelsize=10
+#font 6x10
+# ${color2}ApacheLog:
+#${color0}${exec debboxApacheLog}
+#
+
+#lua_load ~/.conky/draw_bg.lua
+#lua_draw_hook_pre draw_bg
+
+default_color 555555
+
+color0  555555
+color1  0055FF 
+color2  0055FF 
+color3  005500
+
+TEXT
+ ${color3}cal${color0}:
+${exec gcalcli --nc agenda '8am' '10pm'}

@@ -1,15 +1,17 @@
 syn on
 set number
-set et
+set expandtab
 set nocp
-set sw=4
-set ts=4
+set shiftwidth=4
+set tabstop=4
 set complete=.,w,b,u,t,i
-set foldmethod=syntax
+"set foldmethod=syntax
 "set foldlevel=1
 "set foldnestmax=2
 
 "set foldmethod=indent
+set foldmethod=marker
+set foldmarker={{{,}}}
 set nowrap
 filetype plugin indent on
 set backspace=2
@@ -19,11 +21,18 @@ set autowrite
 set autoindent
 set mouse=a
 set encoding=utf8
+set splitbelow
 noremap ; :
 noremap : ;
-noremap ,/ </<C-X><C-O>
-noremap ./ <C-X><C-O>
+noremap <space> za
+
 noremap <F12> :NERDTreeToggle<CR>
+let NERDTreeIgnore=['.*\.o$']
+let NERDTreeIgnore+=['.*\~$']
+let NERDTreeIgnore+=['.*\.out$']
+let NERDTreeIgnore+=['.*\.so$', '.*\.a$']
+
+noremap <F11> :TlistToggle<CR>
 noremap <F5> :make<CR>
 
 
@@ -31,6 +40,8 @@ noremap <F5> :make<CR>
 
 set wildmenu
 set incsearch
+set ignorecase
+set smartcase
 set scrolloff=10
 set sidescrolloff=10
 set shortmess=aOstT
@@ -45,72 +56,89 @@ set showcmd             " show partial commands in status line
 "set statusline=%r%h%w\ %([%{&ff}]%)%(:%y%)%(:[%{&fenc}]%)\ BUFF[%1.20n]%=%1.7l,%1.7c\ \ [%p%%]
 " shows: filename, position, eof, syntax, encoding, format 
 set statusline=%-3.3n\ %f\ %r%#Error#%m%#Statusline#\ (%l/%L,\ %c)\ %P%=%h%w\ %y\ [%1.20n]:[%{&encoding}:%{&fileformat}]\ 
+set cursorline
 
-"colo delek
-"colo slate
-set t_Co=256
-"colo wombat256mod
-"colo ir_black
-colo leo
-"colo dante
-"colo zenburn 
-"colo vimbrant
+if &term=~"linux"
+    colo default
+else
+    set t_Co=256
+    "colo wombat256mod
+    "colo delek
+    "colo slate
+    "colo ir_black
+    "colo leo
+    "colo vimbrant
+    "colo dante
+    "colo zenburn 
+    colo vimbrant
+endif
+
+
+let Tlist_Use_Right_Window=1
+
+
 call pathogen#infect()
+
+
+
+
 if has("autocmd")
 
-
-
-"Templates for c and c++ files
+"{{{"Templates for c and c++ files
 autocmd BufNewFile *.c,*.cpp,*.h so /home/master/.vim/c_template
-autocmd BufNewFile *.c,*.cpp,*.h exe "1," . 10 . "g/File Name :.*/s//File Name : " .expand("%")
-autocmd BufNewFile *.c,*.cpp,*.h exe "1," . 10 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
+autocmd BufNewFile *.c,*.cpp,*.h exe "1," . 6 . "g/File Name :.*/s//File Name : " .expand("%")
+autocmd BufNewFile *.c,*.cpp,*.h exe "1," . 6 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
 autocmd Bufwritepre,filewritepre *.c,*.cpp,*.h execute "normal ma"
-autocmd Bufwritepre,filewritepre *.c,*.cpp,*.h exe "1," . 10 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
+autocmd Bufwritepre,filewritepre *.c,*.cpp,*.h exe "1," . 6 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
 autocmd bufwritepost,filewritepost *.c,*.cpp,*.h execute "normal `a"
-autocmd BufNewFile,BufRead *.c,*.h set smartindent cinwords cinwords=if,else,for,do,while,switch
-autocmd BufNewFile,BufRead *.cpp set smartindent cinwords cinwords=if,else,for,do,while,switch,class
+autocmd BufNewFile,BufRead *.c,*.h set foldmethod=syntax smartindent cinwords cinwords=if,else,for,do,while,switch
+autocmd BufNewFile,BufRead *.cpp set foldmethod=syntax smartindent cinwords cinwords=if,else,for,do,while,switch,class
+"}}}
 
-"Templates and indentation for SML files
+"{{{Templates and indentation for SML files
 autocmd BufNewFile *.sml,*.ml so /home/master/.vim/ml_template
-autocmd BufNewFile *.sml,*.ml exe "1," . 10 . "g/File Name :.*/s//File Name : " .expand("%")
-autocmd BufNewFile *.sml,*.ml exe "1," . 10 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
+autocmd BufNewFile *.sml,*.ml exe "1," . 6 . "g/File Name :.*/s//File Name : " .expand("%")
+autocmd BufNewFile *.sml,*.ml exe "1," . 6 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
 autocmd Bufwritepre,filewritepre *.sml,*.ml execute "normal ma"
-autocmd Bufwritepre,filewritepre *.sml,*.ml exe "1," . 10 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
+autocmd Bufwritepre,filewritepre *.sml,*.ml exe "1," . 6 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
 autocmd bufwritepost,filewritepost  *.sml,*.ml execute "normal `a"
 autocmd BufNewFile,BufRead *sml,*.ml set smartindent cinwords cinwords=fun,if,then,else,let,in,sig,struct,adstype,datatype,functor,structure,signature,case syntax=sml
+"}}}
 
-"Templates and indentation for Haskell files
+"{{{Templates and indentation for Haskell files
 autocmd BufNewFile *.hs so /home/master/.vim/haskell_template
-autocmd BufNewFile *.hs exe "1," . 10 . "g/File Name :.*/s//File Name : " .expand("%")
-autocmd BufNewFile *.hs exe "1," . 10 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
+autocmd BufNewFile *.hs exe "1," . 6 . "g/File Name :.*/s//File Name : " .expand("%")
+autocmd BufNewFile *.hs exe "1," . 6 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
 autocmd Bufwritepre,filewritepre *.hs execute "normal ma"
-autocmd Bufwritepre,filewritepre *.hs exe "1," . 10 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
+autocmd Bufwritepre,filewritepre *.hs exe "1," . 6 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
 autocmd bufwritepost,filewritepost  *.hs execute "normal `a"
 autocmd BufNewFile,BufRead *.hs set smartindent cinwords cinwords=fun,if,then,else,let,in,sig,struct,adstype,datatype,functor,structure,signature,case
+"}}}
 
-"Templates indentation and syntax for prolog files
+"{{{Templates indentation and syntax for prolog files
 autocmd BufNewFile *.yap so /home/master/.vim/prolog_template
 autocmd BufNewFile *.yap set smartindent syntax=prolog
-autocmd BufNewFile *.yap exe "1," . 10 . "g/File Name :.*/s//File Name : " .expand("%")
-autocmd BufNewFile *.yap exe "1," . 10 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
+autocmd BufNewFile *.yap exe "1," . 6 . "g/File Name :.*/s//File Name : " .expand("%")
+autocmd BufNewFile *.yap exe "1," . 6 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
 autocmd Bufwritepre,filewritepre *.yap execute "normal ma"
-autocmd Bufwritepre,filewritepre *.yap exe "1," . 10 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
+autocmd Bufwritepre,filewritepre *.yap exe "1," . 6 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
 autocmd bufwritepost,filewritepost *.yap execute "normal `a"
 autocmd BufNewFile,BufRead *.yap set smartindent syntax=prolog
 autocmd BufNewFile,BufRead *.yap colo slate
+"}}}
 
-
-"Templates indentation and syntax for java
+"{{{Templates indentation and syntax for java
 autocmd BufNewFile,BufRead *.java set smartindent cinwords cinwords=if,else,for,do,while,switch,class,try,finally 
 autocmd BufNewFile *.java so /home/master/.vim/java_template
 autocmd BufNewFile *.java set smartindent 
-autocmd BufNewFile *.java exe "1," . 10 . "g/File Name :.*/s//File Name : " .expand("%")
-autocmd BufNewFile *.java exe "1," . 10 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
+autocmd BufNewFile *.java exe "1," . 6 . "g/File Name :.*/s//File Name : " .expand("%")
+autocmd BufNewFile *.java exe "1," . 6 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
 autocmd Bufwritepre,filewritepre *.java execute "normal ma"
-autocmd Bufwritepre,filewritepre *.java exe "1," . 10 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
+autocmd Bufwritepre,filewritepre *.java exe "1," . 6 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
 autocmd bufwritepost,filewritepost *.java execute "normal `a"
+"}}}
 
-"Templates indentation and syntax for python
+"{{{Templates indentation and syntax for python
 autocmd BufNewFile,BufRead *.py set foldmethod=indent smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class sw=4 ts=4
 autocmd BufNewFile *.py so /home/master/.vim/python_template
 autocmd BufNewFile *.py set smartindent 
@@ -119,9 +147,23 @@ autocmd BufNewFile *.py exe "1," . 10 . "g/Creation Date :.*/s//Creation Date : 
 autocmd Bufwritepre,filewritepre *.py execute "normal ma"
 autocmd Bufwritepre,filewritepre *.py exe "1," . 10 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
 autocmd bufwritepost,filewritepost *.py execute "normal `a"
+"}}}
 
-autocmd BufNewFile,BufRead *.tex set foldmethod=marker foldmarker={{{,}}} smartindent tw=78 noet
+"{{{ Texing
+autocmd BufNewFile,BufRead *.tex set smartindent tw=78
+"}}}
+
+"{{{ Makefiles
 autocmd BufNewFile,BufRead Makefile,makefile set ts=8 sw=8 noet nosi noai
+"}}}
+
+"{{{ llama
+autocmd BufRead *.lla set syntax=llama
+"}}}
+"
+"{{{ mutt
+au BufRead /tmp/mutt-* set tw=72
+"}}}
+
+
 endif " has("autocmd")
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1

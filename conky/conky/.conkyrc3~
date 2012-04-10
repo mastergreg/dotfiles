@@ -1,0 +1,78 @@
+background yes
+font Snap.se:size=8
+xftfont Snap.se:size=8
+use_xft yes
+xftalpha 0.1
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+draw_shades yes
+draw_outline no
+draw_borders no
+draw_graph_borders no
+minimum_size 180 5
+maximum_width 180
+default_color ffffff
+default_shade_color 000000
+default_outline_color 000000
+alignment top_right
+gap_x 6
+gap_y 22
+no_buffers yes
+cpu_avg_samples 2
+override_utf8_locale no
+uppercase no # set to yes if you want all text to be in uppercase
+use_spacer false
+#045FB4
+TEXT
+${color 045FB4}
+${font LCD:style=Bold:pixelsize=15}${alignc}${time %H:%M:%S}${font Snap.se:size=8}
+
+${font Aerial:style=Bold:pixelsize=8}SYSTEM${font Snap.se:size=8} ${hr 1 }
+
+Kernel: $alignr$kernel
+Uptime: $alignr$uptime
+Processes: ${alignr}$processes ($running_processes running)
+Load: ${alignr}$loadavg
+
+Battery    ${battery_time CMB1} ${alignr}(${battery CMB1})
+${battery_bar 4 CMB1}
+CPU       ${freq_g 1}GHz ${alignr}(${cpu cpu1}%)
+CPU       ${freq_g 2}GHz ${alignr}(${cpu cpu2}%)
+${cpubar cpu1 4}
+${cpubar cpu2 4}
+${cpugraph cccccc 084B8A}
+
+RAM ${alignr}$mem / $memmax ($memperc%)
+${membar 4}
+SWAP ${alignr}$swap / $swapmax ($swapperc%)
+${swapbar 4}
+Highest CPU $alignr CPU% MEM%
+${hr 1}
+${top name 1}$alignr${top cpu 1}${top mem 1}
+${top name 2}$alignr${top cpu 2}${top mem 2}
+${top name 3}$alignr${top cpu 3}${top mem 3}
+
+Highest MEM $alignr CPU% MEM%
+${hr 1}
+${top_mem name 1}$alignr${top_mem cpu 1}${top_mem mem 1}
+${top_mem name 2}$alignr${top_mem cpu 2}${top_mem mem 2}
+${top_mem name 3}$alignr${top_mem cpu 3}${top_mem mem 3}
+
+${font Aerial:style=Bold:pixelsize=8}FILESYSTEM ${font Snap.se:size=8}${hr 1}
+
+Root: ${alignr}${fs_free /} / ${fs_size /}
+${fs_bar 4 /}
+
+Home: ${alignr}${fs_free /home} / ${fs_size /home}
+${fs_bar 4 /home}
+
+${font Aerial:style=Bold:pixelsize=8}NETWORK ${font Snap.se:size=8}${hr 1}
+
+Down ${downspeed wlan0}/s ${alignr}Up ${upspeed wlan0}/s
+${downspeedgraph wlan0 25,107 cccccc 084B8A} ${alignr}${upspeedgraph wlan0 25,107 cccccc 084B8A}
+Total ${totaldown wlan0} ${alignr}Total ${totalup wlan0}

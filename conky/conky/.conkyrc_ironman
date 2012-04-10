@@ -1,0 +1,116 @@
+######################
+# - Conky settings - #
+######################
+update_interval 1
+total_run_times 0
+net_avg_samples 1
+cpu_avg_samples 1
+
+imlib_cache_size 0
+double_buffer yes
+no_buffers yes
+
+#####################
+# - Text settings - #
+#####################
+use_xft yes
+xftfont Sony Sketch EF:size=10
+override_utf8_locale yes
+text_buffer_size 2048
+
+#############################
+# - Window specifications - #
+#############################
+own_window_class Conky
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+alignment top_left
+gap_x 80
+gap_y 20
+minimum_size 600 800
+maximum_width 600
+
+
+
+#########################
+# - Graphics settings - #
+#########################
+draw_shades yes
+
+default_color EEEEEE
+
+color0 white
+color1 0055FF
+color2 white
+
+TEXT
+#############
+# - CLOCK - #
+#############
+
+${voffset 20}${alignc 0}${font zoraclockH:size=70}${color2}${execpi 120 ~/.conkycolors/bin/conkyClock hour}${color}${font}
+${voffset -90}${alignc 20}${font zoraclockM:size=100}${color2}${execpi 60 ~/.conkycolors/bin/conkyClock minute}${color}${font}
+
+${voffset 20}${alignc}${font Sony Sketch EF:style=Bold:size=10}${color1}${time %H:%M}${color}${font}${voffset -6}
+${voffset 6}${alignc}${time %d %B %Y}
+
+${color0}${voffset 12}${font OpenLogos:size=19}u${font}${voffset -12}${color}${goto 32}Uptime: ${alignc 400}${color2}${uptime}${color}
+# |--UPDATES
+${goto 32}Updates: ${alignc 400}${font Sony Sketch EF:style=Bold:size=8}${color1}${execi 360 aptitude search "~U" | wc -l | tail}${color}${font} ${color2}Packages${color}
+# |--CPU
+${offset 1}${color0}${font Poky:size=16}P${font}${offset -19}${voffset 9}${cpubar cpu0 4,18}${color}${voffset -16}${goto 32}CPU1: ${font Sony Sketch EF:style=Bold:size=8}${color1}${cpu cpu1}%${font} ${alignc 400}${font Sony Sketch EF:style=Bold:size=8}${color1}${execi 30 sensors -f | grep 'Core 0' | cut -c14-16}°F${color}${font}  ${color2}${cpugraph cpu1 8,50 CE5C00 E07A1F}${color}
+${goto 32}CPU2: ${font Sony Sketch EF:style=Bold:size=8}${color1}${cpu cpu2}%${font} ${alignc 400}${font Sony Sketch EF:style=Bold:size=8}${color1}${execi 30 sensors -f | grep 'Core 1' | cut -c14-16}°F${color}${font}  ${color2}${cpugraph cpu2 8,50 CE5C00 E07A1F}${color}
+# |--MEM
+${color0}${font Poky:size=16}M${font}${color}${goto 32}${voffset -7}RAM: ${font Sony Sketch EF:style=Bold:size=8}${color1}$memperc%${color}${font}
+${offset 1}${voffset 2}${color0}${font Poky:size=13}E${font}${color}${goto 32}${voffset -5}Battery: ${font Sony Sketch EF:style=Bold:size=8}${color1}${battery_percent BAT0}%${color}${font} ${alignc 400}${color2}${battery_bar 8,60 BAT0}${color}
+##########
+# - HD - #
+##########
+# |--HDTEMP1
+  ${voffset 4}${color0}${font Weather:size=15}y${font}${color}${voffset -8}  /dev/sda: ${font Sony Sketch EF:style=Bold:size=8}${color1}${execi 120 hddtemp /dev/sda -n --unit=F}°F${color}${font}
+
+${execpi 30 ~/.conkycolors/bin/conkyHD3}
+
+
+
+
+###############
+# - NETWORK - #
+###############
+# |--WLAN0
+${goto 206}${font Sony Sketch EF:size=12:style=bold}Network
+${goto 210}${if_up wlan0}
+${goto 210}${voffset -13}${color0}${font VariShapes Solid:size=14}q${font}${color}${goto 235}${voffset -6}Up: ${font Sony Sketch EF:style=Bold:size=8}${color1}${upspeed wlan0}${color}${font} ${alignc 400}${color2}${upspeedgraph wlan0 8,60 CE5C00 E07A1F}${color}
+${goto 235}Total: ${color2}${totalup wlan0}${color}
+${goto 210}${voffset -2}${color0}${font VariShapes Solid:size=14}Q${font}${color}${goto 235}${voffset -6}Down: ${font Sony Sketch EF:style=Bold:size=8}${color1}${downspeed wlan0}${color}${font} ${alignc 400}${color2}${downspeedgraph wlan0 8,60 CE5C00 E07A1F}${color}
+${goto 235}Total: ${color2}${totaldown wlan0}${color}
+${goto 210}${voffset -2}${color0}${font Poky:size=14}Y${font}${color}${goto 32} ${goto 235}${voffset -2}Signal: ${font Sony Sketch EF:style=Bold:size=8}${color1}${wireless_link_qual wlan0}%${color}${font} ${alignc 400}${color2}${wireless_link_bar 8,60 wlan0}${color}
+${goto 210}${voffset 4}${color0}${font Poky:size=13}w${font}${color}${goto 235}${voffset -8}Local IP: ${alignc 400}${color2}${addr wlan0}${color}
+${goto 235}Public IP: ${alignc 400}${color2}${execi 10800 ~/.conkycolors/bin/conkyIp}${color}
+# |--ETH0
+${else}${if_up eth0}
+${voffset -13}${color0}${font VariShapes Solid:size=14}q${font}${color}${goto 32}${voffset -6}Up: ${font Sony Sketch EF:style=Bold:size=8}${color1}${upspeed eth0}${color}${font} ${alignc 400}${color2}${upspeedgraph eth0 8,60 CE5C00 E07A1F}${color}
+${goto 32}Total: ${color2}${totalup eth0}${color}
+${voffset -2}${color0}${font VariShapes Solid:size=14}Q${font}${color}${goto 32}${voffset -6}Down: ${font Sony Sketch EF:style=Bold:size=8}${color1}${downspeed eth0}${color}${font} ${alignc 400}${color2}${downspeedgraph eth0 8,60 CE5C00 E07A1F}${color}
+${goto 32}Total: ${color2}${totaldown eth0}${color}
+${voffset -2}${color0}${font Poky:size=13}w${font}${color}${goto 32}${voffset -4}Local IP: ${alignc 400}${color2}${addr eth0}${color}
+${goto 32}Public IP: ${alignc 400}${color2}${execi 10800 ~/.conkycolors/bin/conkyIp}${color}
+# |--PPP0
+${endif}${else}${if_up ppp0}
+${voffset -13}${color0}${font VariShapes Solid:size=14}q${font}${color}${goto 32}${voffset -6}Up: ${font Sony Sketch EF:style=Bold:size=8}${color1}${upspeed ppp0}${color}${font} ${alignc 400}${color2}${upspeedgraph ppp0 8,60 CE5C00 E07A1F}${color}
+${goto 32}Total: ${color2}${totalup ppp0}${color}
+${voffset -2}${color0}${font VariShapes Solid:size=14}Q${font}${color}${goto 32}${voffset -6}Down: ${font Sony Sketch EF:style=Bold:size=8}${color1}${downspeed ppp0}${color}${font} ${alignc 400}${color2}${downspeedgraph ppp0 8,60 CE5C00 E07A1F}${color}
+${goto 32}Total: ${color2}${totaldown ppp0}${color}
+${voffset -2}${color0}${font Poky:size=13}w${font}${color}${goto 32}${voffset -4}Local IP: ${alignc 400}${color2}${addr ppp0}${color}
+${endif}${else}${voffset 4}${color0}${font PizzaDude Bullets:size=12}4${font}${color}${goto 32}Network Unavailable${endif}${endif}
+# |--PROC
+${goto 210}${voffset 2}${color0}${font Poky:size=15}a${font}${color}${goto 235}${voffset -10}Processes: ${color2}${alignc 400 13}         CPU/${alignc 400}RAM${color}
+${voffset -1}${goto 42}${color2}${goto 235}${top name 1}${color}${font Sony Sketch EF:style=Bold:size=8}${color1} ${goto 334}${top cpu 1}${alignc 400 }${top mem 1}${color}${font}
+${voffset -1}${goto 42}${color2}${goto 235}${top name 2}${color}${font Sony Sketch EF:style=Bold:size=8}${color1} ${goto 334}${top cpu 2}${alignc 400 }${top mem 2}${color}${font}
+${voffset -1}${goto 42}${color2}${goto 235}${top name 3}${color}${font Sony Sketch EF:style=Bold:size=8}${color1} ${goto 334}${top cpu 3}${alignc 400 }${top mem 3}${color}${font}
+${voffset -1}${goto 42}${color2}${goto 235}${top name 4}${color}${font Sony Sketch EF:style=Bold:size=8}${color1} ${goto 334}${top cpu 4}${alignc 400 }${top mem 4}${color}${font}
+${voffset -1}${goto 42}${color2}${goto 235}${top name 5}${color}${font Sony Sketch EF:style=Bold:size=8}${color1} ${goto 334}${top cpu 5}${alignc 400 }${top mem 5}${color}${font}
+

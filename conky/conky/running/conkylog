@@ -1,0 +1,41 @@
+ckground yes
+use_xft yes
+xftalpha 1.0
+update_interval 2.0
+total_run_times 0
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+draw_shades no 
+draw_outline no
+draw_borders no
+draw_graph_borders no
+alignment top_left
+maximum_width 350
+max_port_monitor_connections 64
+max_specials 512
+max_user_text 16384
+#minimum_size 310
+gap_x 300
+gap_y 20
+net_avg_samples 2
+out_to_console no
+stippled_borders 2
+uppercase no
+use_spacer yes
+xftfont Aerial:style=Bold:pixelsize=8
+#font 6x10
+#lua_load ~/.conky/draw_bg.lua
+#lua_draw_hook_pre draw_bg
+if_up_strictness address 
+
+default_color aaaaaa
+color0  aaaaaa
+color1  0055FF 
+color2  0055FF 
+color3  00aa00
+TEXT
+ ${color1}dmesg:${color }
+${color0}${exec dmesg | tail -n20}

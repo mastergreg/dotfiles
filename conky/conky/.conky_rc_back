@@ -1,0 +1,2 @@
+
+ ${color }External IP: ${alignr}${color #55FF55}${execi   3600 wget -q -O - checkip.dyndns.org | sed -e 's/[^[:digit:]\|.]//g'}${color}

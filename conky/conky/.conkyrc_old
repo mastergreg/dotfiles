@@ -1,0 +1,48 @@
+background no
+use_xft yes 
+xftalpha 1.0
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+draw_shades no 
+draw_outline no
+draw_borders no
+draw_graph_borders no
+alignment bottom_right
+#maximum_width 310
+max_port_monitor_connections 64
+max_specials 512
+max_user_text 16384
+#minimum_size 310
+gap_x 15
+gap_y 25
+net_avg_samples 2
+out_to_console no
+stippled_borders 2
+uppercase no
+use_spacer yes
+xftfont Aerial:style=Bold:pixelsize=8
+lua_load ~/.conky/draw_bg.lua
+lua_draw_hook_pre draw_bg
+if_up_strictness address 
+
+#${color1}MPD:${if_mpd_playing}
+# ${color2}Artist: ${color }$mpd_artist $alignr${color2}Album: ${color }$mpd_album
+# ${color }$alignr$mpd_smart
+# $mpd_status ${color2}${mpd_elapsed}/${mpd_length}$alignr$color${mpd_bar 5,160} 
+# ${else}
+# ${color }MPD not running${endif}
+#mpd_host 192.168.1.15
+#mpd_port 6600 
+#
+
+color0  FFFFFF
+color1  00BBFF
+color2  00BBFF 
+color3  55FF55
+TEXT
+ ${color0}C1: ${color3}${cpu cpu1}${color0}% @${color3}${freq_g cpu1}${color0} GHz ${color0}C2: ${color3}${cpu cpu2}${color0}% @${color3}${freq_g cpu2}${color0} GHz ${color0}Mem:${color3}$mem${color0} Swap:${color3}$swap ${if_up eth0} ${color }D/U ${color1}${downspeed eth0} ${color3}${upspeed eth0} ${color1}${totaldown eth0} ${color3}${totalup eth0}${color0} Loc IP: ${color3}${addr eth0}${color0} Ext IP: ${alignr}${color3}${execi   3600 wget -q -O - checkip.dyndns.org | sed -e 's/[^[:digit:]\|.]//g'}${color0}${else}${endif} ${if_up wlan0}${color0 } ${color0}ESSID: ${color1}${wireless_essid wlan0}${color0}@${color3}${wireless_bitrate wlan0} ${color1}${wireless_link_bar 4,40 wlan0}${color } ${color }D/U ${color1}${downspeed wlan0} ${color3}${upspeed wlan0} ${color1}${totaldown wlan0} ${color3}${totalup wlan0} ${color }WiFi IP: ${color3}${addr wlan0} ${color }Ext IP: ${color3}${execi   3600 wget -q -O - checkip.dyndns.org | sed -e 's/[^[:digit:]\|.]//g'}${color0} ${else}${endif}

@@ -1,0 +1,104 @@
+background yes 
+font sans:pixelsize=8
+xftfont sans:pixelsize=8
+use_xft yes
+xftalpha 0.8
+update_interval 0.5
+total_run_times 0
+own_window yes 
+own_window_type normal
+own_window_transparent yes 
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+#minimum_size 150 525
+maximum_width 150
+default_color ffffff
+#0077ff
+default_bar_size 100 6
+default_shade_color white
+default_outline_color white
+alignment top_right
+gap_x 5 
+gap_y 10 
+no_buffers yes
+cpu_avg_samples 2
+override_utf8_locale no
+uppercase no # set to yes if you want all text to be in uppercase
+use_spacer none
+
+if_up_strictness link
+#14E6F7
+#${color 3A86AE}
+#${color 808080}
+lua_load ~/.conky/draw_bg.lua
+lua_draw_hook_pre draw_bg
+
+color5 green
+color6 yellow
+color7 orange
+color8 red
+color9 03a3ff
+
+
+TEXT
+${color red}SYSTEM ${hr 2}${color }
+KERNEL: $alignr$kernel
+UPTIME: $alignr$uptime
+APT: $alignr${exec aptitude search "~U" | wc -l} Updates Available
+
+${color red}CPU ${hr 2}${color }
+CPU 1      ${freq_g 1}GHz ${alignr}(${cpu cpu1}${color }%)
+CPU 2      ${freq_g 2}GHz ${alignr}($color${cpu cpu2}${color }%)
+
+Core 1: ${color red}${execi 8 sensors | grep Core\ 0 | cut -c13-16} ${color }${iconv_start UTF-8 ISO_8859-1}° ${iconv_stop}C  ${alignr}Core 2:${color red} ${execi 8 sensors | grep 'Core\ 1' | cut -c13-16} ${color }${iconv_start UTF-8 ISO_8859-1}° ${iconv_stop}C
+${cpugraph 25.220 000000 white}
+${color }Highest CPU $alignr CPU% MEM%${color }
+${color 03a3ff}${top name 1}$alignr${top cpu 1}  ${top mem 1}${color }
+${top name 2}$alignr${top cpu 2}  ${top mem 2}
+${top name 3}$alignr${top cpu 3}  ${top mem 3}
+${top name 4}$alignr${top cpu 4}  ${top mem 4}
+${top name 5}$alignr${top cpu 5}  ${top mem 5}
+
+${color red}MEMORY ${hr 2}$color
+RAM   $memperc %	${alignr}$mem / $memmax
+Swap   $swapperc %	${alignr}$swap / $swapmax
+$alignc${memgraph 25,150 3d3400 cdae00}
+${color }Highest MEM $alignr CPU% MEM%${color }
+${color 03a3ff}${top_mem name 1}$alignr${top_mem cpu 1}  ${top_mem mem 1}${color }
+${top_mem name 2}$alignr${top_mem cpu 2}  ${top_mem mem 2}
+${top_mem name 3}$alignr${top_mem cpu 3}  ${top_mem mem 3}
+${top_mem name 4}$alignr${top_mem cpu 4}  ${top_mem mem 4}
+${top_mem name 5}$alignr${top_mem cpu 5}  ${top_mem mem 5}
+
+${color red}DISK ${hr 2}$color
+Root:${alignr}${color red}${fs_bar 6,100 /}$color
+Home:${alignr}${color orange}${fs_bar 6,100 /home}$color
+
+Hard Drive Temp:${color red}  $hddtemp$color${iconv_start UTF-8 ISO_8859-1}° ${iconv_stop}C
+Disk I/O: ${color red} ${diskio}  
+
+${color red}NETWORK ${hr 2}${color }
+Internet Secutiry Status:$alignr${execpi 120 ~/.conky/security_status.sh}$color 
+${if_up eth0}Ethernet:
+Down ${color 1d9a00}${downspeed eth0}/s$color ${alignr}Up ${color 03a3ff}${upspeed eth0}/s$color
+${downspeedgraph eth0 25,70 000000 1d9a00} ${alignr}${upspeedgraph eth0 25,70 000000 03a3ff}
+Total:     ${color 1d9a00}${totaldown eth0}$color ${alignr}Total:     ${color 03a3ff}${totalup eth0}$color
+Ethernet IP: $alignr    ${addr eth0}
+External IP: ${alignr}   ${execi   3600 wget -q -O - checkip.dyndns.org | sed -e 's/[^[:digit:]\|.]//g'}${else}No Ethernet Connection${endif}
+${if_up wlan0}Wireless:
+Down ${color 1d9a00}${downspeed wlan0}/s$color ${alignr}Up ${color 03a3ff}${upspeed wlan0}/s$color
+$alignc${downspeedgraph wlan0 25,70 000000 1d9a00}    ${upspeedgraph wlan0 25,70 000000 03a3ff}
+Total:     ${color 1d9a00}${totaldown wlan0}$color ${alignr}Total:    ${color 03a3ff}${totalup wlan0}$color 
+WLAN IP: ${alignr}${addr wlan0}$color
+External IP: ${alignr}${execi 3600 wget -q -O - checkip.dyndns.org | sed -e 's/[^[:digit:]\|.]//g'}$color
+WLAN ESSID:  ${wireless_essid wlan0}$color ${alignr}Signal:  $color${wireless_link_qual_perc wlan0}${color } %
+${else}No Wireless Connection${endif}
+
+${color red}AUDIO ${hr 2}${color }
+Vol: ${exec ~/.conky/sound.sh} % $alignr${color green}${execbar ~/.conky/sound.sh}$color
+${if_running exaile}${color }Exaile:
+${scroll 50 5 ${exec exaile --get-title | sed -n '1p' } - ${exec exaile --get-artist | sed -n '1p' }$alignr${exec exaile --get-length | sed -n '1p' }}${else}${alignc}Exaile is not running${endif}

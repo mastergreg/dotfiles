@@ -5,4 +5,4 @@ export PAGER="less"
 export HISTSIZE=1000
 export SAVEHIST=1000
 export HISTFILE=~/.zsh_history
-
+#export VTECH_LICENSE_FILE=@scirouter.cslab.ece.ntua.gr

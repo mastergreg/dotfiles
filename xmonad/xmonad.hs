@@ -6,7 +6,7 @@
 	--
 	-- Normally, you'd only override those defaults you care about.
 	--
-import List ( isPrefixOf )
+import Data.List ( isPrefixOf )
 import XMonad
 import System.Exit
 
@@ -37,6 +37,7 @@ import XMonad.Layout.Combo
 import XMonad.Layout.ComboP
 import XMonad.Layout.Tabbed
 import XMonad.Layout.IM
+import XMonad.Layout.Fullscreen
 import XMonad.Layout.Reflect
 import XMonad.Actions.GridSelect
 import XMonad.Util.NamedScratchpad
@@ -99,7 +100,9 @@ myWorkspaces = ["1","2","3","4","5","6","7","8","9","0"]
 	-- Border colors for unfocused and focused windows, respectively.
 	--
 myNormalBorderColor  = "#222222"
-myFocusedBorderColor = "#285577"
+--myFocusedBorderColor = "#285577"
+--myFocusedBorderColor = "#00FF00"
+myFocusedBorderColor = "#3465a4"
 
 	-- Default offset of drawable screen boundaries from each physical
 	-- screen. Anything non-zero here will leave a gap of that many pixels
@@ -132,7 +135,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	--, ((modMask , xK_p     ), spawn "gmrun")
 
     --launch dmenu
-	, ((modMask , xK_p     ), spawn "dmenu_run")
+	, ((modMask , xK_p     ), spawn "gmrun")
 
 	-- close focused window 
 	, ((modMask .|. shiftMask, xK_c     ), kill)
@@ -223,12 +226,16 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	[((mod4Mask             , xK_f     ), spawn "firefox")
 	, ((mod4Mask             , xK_x     ), spawn myTerminal)
 	, ((mod4Mask             , xK_s     ), spawn "pidgin")
-	, ((mod4Mask             , xK_m     ), spawn "thunderbird")
+	, ((mod4Mask             , xK_m     ), spawn "urxvt -T mutt -e mutt")
+	, ((mod4Mask             , xK_n     ), spawn "urxvt -T canto -e canto")
 	, ((mod4Mask             , xK_F10     ), spawn "set_screen")
 	, ((mod4Mask.|. shiftMask, xK_F10     ), spawn "set_screen_off")
 	, ((mod4Mask             ,xK_guillemotleft), spawn myTerminal)
-	, ((mod4Mask             , xK_n     ), namedScratchpadAction myScratchpads "notes")
+	--, ((mod4Mask             ,xK_enter), spawn myTerminal)
+	, ((mod4Mask             , xK_b     ), namedScratchpadAction myScratchpads "notes")
+	, ((mod4Mask             , xK_v     ), namedScratchpadAction myScratchpads "files")
 	, ((0             ,xK_guillemotleft), scratchpadSpawnActionTerminal "urxvt -pe tabbed -T term")
+	--, ((0             ,xK_guillemotleft), scratchpadSpawnActionTerminal "urxvt -T term")
   , ((mod4Mask             ,xK_t), spawn "pcmanfm")
 	, ((0                    ,xK_Print), spawn  "scrot -e 'mv $f ~/Pictures/Screenshots'")
 	, ((mod4Mask             ,xK_Print), spawn  "scrot -e 'mv $f ~/Dropbox/Screenshots'")
@@ -272,9 +279,11 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 	--
 
 	-- default tiling algorithm partitions the screen into two panes
-basicLayout =  magnifiercz' 1.4 $ smartBorders  $ Tall nmaster delta ratio where
+--basicLayout =  magnifiercz' 1.2 $ smartBorders  $ Tall nmaster delta ratio where
+basicLayout =  smartBorders  $ Tall nmaster delta ratio where
+--basicLayout =  smartBorders  $ tallDwmStyle shrinkText (theme wfarrTheme) -- $ nmaster delta ratio where
 	-- The default number of windows in the master pane
-nmaster = 1
+nmaster = 2
 	-- Percent of screen to increment by when resizing panes
 delta   = 3/100
 	-- Default proportion of screen occupied by master pane
@@ -283,8 +292,8 @@ ratio   = 3/5
 
 tallLayout = named "|=" $ avoidStruts $ basicLayout
 wideLayout = named "=" $ avoidStruts $ Mirror basicLayout
-circleLayout = named "O" $ avoidStruts $ simpleCross --crossDwmStyle shrinkText (theme wfarrTheme)
-imlayout = named "|#" $ avoidStruts $ withIM (1%4) (Title "Buddy List") $  tabbed_one
+circleLayout = named "O" $ avoidStruts $ circleDwmStyle shrinkText (theme wfarrTheme)
+imlayout = named "|#" $ avoidStruts $ withIM (1%4) (Title "Buddy List") $  avoidStruts $ Mirror basicLayout
 
 tabbed_one = named "T1" $ avoidStruts $ tabbed shrinkText (theme wfarrTheme)
 tabbed_two = named "T2" $ combineTwo (TwoPane 0.03 0.5) tabbed_one tabbed_one
@@ -316,44 +325,49 @@ circ = onWorkspace "1" circleLayout
 
 myScratchpads = [
   -- run gvim, find by role, don't float
-  NS "notes" "gvim --role notes ~/notes.txt" (role =? "notes") defaultFloating
+  NS "notes" "gvim --role notes ~/notes.txt" (role =? "notes") defaultFloating,
+  -- run pcmanfm
+  NS "files" "pcmanfm --class files" (className =? "files") defaultFloating
   ] where role = stringProperty "WM_WINDOW_ROLE"
 
 
 myManageHook = manageDocks <+> myFloatHook <+> myscratchpadManageHook <+> manageHook defaultConfig
 myFloatHook = composeAll
 	[
-    --className =? "Gimp"  --> moveToGimp
-  --, className =? "Gimp"  --> unfloat
-   className =? "Icedove" --> moveToMail
-  , className =? "Thunderbird" --> moveToMail
-  , className =? "Eclipse" --> moveToProg
-  , className =? "xine" --> moveToFull
-  , className =? "mplayer" --> moveToFull
-  , className =? "mplayer" --> unfloat
-	, resource =? "pidgin" --> moveToIM
-	, resource =? "mumble" --> moveToIM
-	--, [ className =? "Skype" <&&> title ~? "Call with " -?> doSideFloat' CE ]
-  , className =? "Pidgin" --> moveToIM
-  , className =? "dia" --> moveToDia
-	, className =? "Skype" --> moveToIM
-	, title =? "irssi"  --> moveToIM
-	, title =? "PewPew"  --> doFloat
-	, resource =? "Thunderbird" --> moveToMail
-	, className =? "Chromium" --> moveToWeb
-	, className =? "Firefox" --> moveToWeb
-	, manageDocks] where
-  unfloat = ask >>= doF . W.sink
-  --moveToGimp = doF $ W.shift "9"
-  moveToMail = doF $ W.shift "8"
-  moveToWeb = doF $ W.shift "2"
-  moveToProg = doF $ W.shift "4"
-  moveToIM = doF $ W.shift "7"
-  moveToDia = doF $ W.shift "6"
-  moveToFull = doF $ W.shift "0"
+        --className =? "Gimp"  --> moveToGimp
+        --, className =? "Gimp"  --> unfloat
+        className =? "Icedove" --> moveToMail
+        , className =? "Eclipse" --> moveToProg
+        , className =? "xine" --> moveToFull
+        , className =? "mplayer" --> moveToFull
+        , className =? "mplayer" --> unfloat
+        , resource =? "pidgin" --> moveToIM
+        , resource =? "mumble" --> moveToIM
+        --, [ className =? "Skype" <&&> title ~? "Call with " -?> doSideFloat' CE ]
+        , className =? "Pidgin" --> moveToIM
+        , className =? "dia" --> moveToDia
+        , className =? "Skype" --> moveToIM
+        , title =? "irssi"  --> moveToIM
+        , title =? "PewPew"  --> doFloat
+        , resource =? "Thunderbird" --> moveToMail
+        , title =? "mutt" --> moveToMail
+        , className =? "Mail" --> moveToMail
+        , resource =? "Mail" --> moveToMail
+        , className =? "Chromium" --> moveToWeb
+        , className =? "Firefox" --> moveToWeb
+        , className =? "uzbl-tabbed" --> moveToWeb
+        , manageDocks] where
+    unfloat = ask >>= doF . W.sink
+    --moveToGimp = doF $ W.shift "9"
+    moveToMail = doF $ W.shift "8"
+    moveToWeb = doF $ W.shift "2"
+    moveToProg = doF $ W.shift "4"
+    moveToIM = doF $ W.shift "7"
+    moveToDia = doF $ W.shift "6"
+    moveToFull = doF $ W.shift "0"
 myscratchpadManageHook :: ManageHook
-myscratchpadManageHook = scratchpadManageHook (W.RationalRect 0.10 0.05 0.8 0.55)
-	-- Whether focus follows the mouse pointer.
+myscratchpadManageHook = scratchpadManageHook (W.RationalRect 0.07 0.40 0.86 0.60)
+    -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = True
 

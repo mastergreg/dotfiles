@@ -1,0 +1,50 @@
+ckground yes
+#use_xft no
+use_xft yes
+xftalpha 1.0
+update_interval 600.0
+total_run_times 0
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+draw_shades no 
+draw_outline no
+draw_borders no
+draw_graph_borders no
+alignment bottom_right
+
+gap_x 5
+gap_y 20
+net_avg_samples 2
+maximum_width 600
+out_to_console no
+stippled_borders 2
+uppercase no
+use_spacer yes
+xftfont Aerial:style=Bold:pixelsize=8
+maximum_user_text = 16384
+#font 6x10
+# ${color2}ApacheLog:
+#${color0}${exec debboxApacheLog}
+#
+
+#lua_load ~/.conky/draw_bg.lua
+#lua_draw_hook_pre draw_bg
+
+default_color aaaaaa
+
+color0  aaaaaa
+color1  0055FF 
+color2  0055FF 
+color3  00aa00
+
+TEXT
+${color1}RSS
+ ${color3}status.foss.ntua.gr
+${color0}${rss http://status.foss.ntua.gr/rss 15 item_titles 8}
+ ${color3}in.gr/greece
+${color0}${exec rssPy.py http://news.in.gr/feed/news/greece 8}
+ ${color3}newsbeast.gr/greece
+${color0}${exec rssPy.py http://www.newsbeast.gr/feeds/greece 8} 

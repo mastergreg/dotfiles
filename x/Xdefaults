@@ -1,13 +1,32 @@
-XTerm*font: -misc-fixed-medium-r-normal--13-120-75-75-c-70-iso10646-1
-XTerm*boldFont: -misc-fixed-medium-r-normal--13-120-75-75-c-70-iso10646-1
+XTerm*xft:false
+#XTerm*faceName: xft:Monospace:pixelsize=11:antialias=0:dpi=81
+XTerm*font: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso10646-1
+
 XTerm*color0:#000000
 XTerm*color1:#AA0000
 XTerm*color2:#00AA00
-XTerm*color3:#AA5500
+XTerm*color3:#AAAA00
 XTerm*color4:#0055AA
 XTerm*color5:#AA00AA
 XTerm*color6:#00AAAA
 XTerm*color7:#AAAAAA
+XTerm*color8:    #555555
+XTerm*color9:    #FF0000
+XTerm*color10:   #00FF00
+XTerm*color11:   #FFFF00
+XTerm*color12:   #0055FF
+XTerm*color13:   #FF00FF
+XTerm*color14:   #00FFFF
+XTerm*color15:   #FFFFFF
+
+!XTerm*color0:#000000
+!XTerm*color1:#AA0000
+!XTerm*color2:#00AA00
+!XTerm*color3:#AA5500
+!XTerm*color4:#0055AA
+!XTerm*color5:#AA00AA
+!XTerm*color6:#00AAAA
+!XTerm*color7:#AAAAAA
 !XTerm*color8:#000000
 !XTerm*color9:#AA0000
 !XTerm*color10:#00AA00
@@ -16,8 +35,8 @@ XTerm*color7:#AAAAAA
 !XTerm*color13:#AA00AA
 !XTerm*color14:#00AAAA
 !XTerm*color15:#AAAAAA
-
-XTerm*background: #333333
+!
+XTerm*background: #111111
 XTerm*foreground: #CCCCCC
 XTerm*bellIsUrgent: true
 XTerm*geometry: 80x35
@@ -30,14 +49,14 @@ URxvt*scrollstyle: plain
 !URxvt*urgentOnBell: true
 !URxvt*font: xft:terminus:pixelsize=11:antialias=false
 URxvt*transparent: true
-URxvt*shading:     15 
+URxvt*shading:     25
 !URxvt*tint:         #333333
 !URxvt*inheritPixmap:true
 URxvt*geometry: 80x33
 
 
 URxvt.perl-ext-common: default,matcher
-URxvt.urlLauncher: firefox-bin
+URxvt.urlLauncher: firefox
 URxvt.matcher.button: 1
 URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
 
@@ -84,8 +103,8 @@ URxvt*color15:   #FFFFFF
 
 
 
-URxvt*foreground: #DDDDDD
-URxvt*background: #000000
+URxvt*foreground: #CCCCCC
+URxvt*background: #0A0A0A
 !URxvt*color0: #101010
 !URxvt*color1: #f13a21
 !URxvt*color2: #93f91d
@@ -107,18 +126,24 @@ URxvt*background: #000000
 
 
 !}}}
-!URxvt*font: xft:Monospace:size=9:antialias=true
+!
+!URxvt*font: xft:Monospace:pixelsize=11:antialias=0:dpi=81
+!URxvt*boldFont: xft:Monospace:pixelsize=11:antialias=0:dpi=81
+
 
 !URxvt*font: 8x13
 !URxvt*boldFont: 8x13
 
-URxvt*font: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso10646-1
-URxvt*boldFont: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso10646-1
+!URxvt*font: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso10646-1
+!URxvt*boldFont: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso10646-1
 !URxvt*font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
 !URxvt*boldFont: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
 !URxvt*font: 7x13
 !URxvt*boldFont: 7x13
 !URxvt*font: -misc-fixed-medium-r-normal--13-120-75-75-c-70-iso10646-1
+!URxvt*boldFont: -misc-fixed-medium-r-normal--13-120-75-75-c-70-iso10646-1
+URxvt*font: -misc-fixed-medium-r-semicondensed--13-*-*-*-*-*-iso10646-1
+URxvt*boldFont: -misc-fixed-medium-r-semicondensed--13-*-*-*-*-*-iso10646-1
 
 
 !{{{ alsamixer scheme

@@ -24,7 +24,7 @@ DISABLE_AUTO_TITLE="true"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
@@ -32,7 +32,8 @@ DISABLE_AUTO_TITLE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git mercurial)
+libs=(completion correction functions git theme-and-appearance history)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -111,6 +112,9 @@ alias -s h=vim
 alias -s html=vim
 alias -s xml=vim
 
+alias v=vim
+alias gv=gvim
+
 #git stuff
 alias gpl='git pull'
 alias gch='git checkout'
@@ -122,9 +126,9 @@ alias gst='git status'
 #emerge eix gentoo stuff
 alias es='sudo eix-sync'
 alias ef='eix'
-alias ep='sudo emerge --quiet-build y portage'
-alias e='sudo emerge -av --quiet-build y'
-alias eu='sudo emerge -avuND --quiet-build y world'
+alias ep='sudo emerge --jobs=2 --quiet-build y portage'
+alias e='sudo emerge --jobs=2 -av --quiet-build y'
+alias eu='sudo emerge --jobs=5 --keep-going --load-average=2 --with-bdeps=y -avuND --quiet-build=y @world'
 
 function extract () {
 if [[ -f "$1" ]]; then
@@ -157,8 +161,9 @@ if [[ -f "$1" ]]; then
         *.jpeg)             gpicview     "$1" &   ;;
         *.JPG)              gpicview     "$1" &   ;;
         *.jpg)              gpicview     "$1" &   ;;
-        *.pdf)              zathura     "$1" &> /dev/null &   ;;
+        *.pdf)              epdfview     "$1" &> /dev/null &   ;;
         *.odt | *.doc)      libreoffice "$1" &> /dev/null &   ;;
+        *.avi)              mplayer     "$1"    ;;
         *)                  vim "$1"            ;;
     esac
 else
@@ -177,16 +182,13 @@ else
   echo "Error: $1 could not play file"
 fi
 }
+function calc () { awk "BEGIN{ print $* }" ;}
 
 setopt correct
 setopt hist_ignore_all_dups
 setopt nohup
 setopt NO_cdable_vars
 
-echo -en '\033[0;33m'
-figlet "Gentoo"
-echo -en '\033[0m'
-
-
+echo -e 'What is thy biding, master?'
 eval $(keychain -q --eval --agents ssh -Q ~/.ssh/id_rsa ~/.ssh/id_rsa_cloudfront ~/.ssh/id_rsa_europa ~/.ssh/id_rsa_foss ~/.ssh/id_rsa_freebsd ~/.ssh/id_rsa_git ~/.ssh/id_rsa_mac ~/.ssh/id_rsa_ps3)
 
