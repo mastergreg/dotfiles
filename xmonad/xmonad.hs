@@ -99,7 +99,7 @@ myWorkspaces = ["1","2","3","4","5","6","7","8","9","0"]
 
 	-- Border colors for unfocused and focused windows, respectively.
 	--
-myNormalBorderColor  = "#222222"
+myNormalBorderColor  = "#333333"
 --myFocusedBorderColor = "#285577"
 --myFocusedBorderColor = "#00FF00"
 myFocusedBorderColor = "#3465a4"
@@ -225,6 +225,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	--
 	[((mod4Mask             , xK_f     ), spawn "firefox")
 	, ((mod4Mask             , xK_x     ), spawn myTerminal)
+	, ((mod1Mask             , xK_Shift_L     ), spawn "switch_layout")
 	, ((mod4Mask             , xK_s     ), spawn "pidgin")
 	, ((mod4Mask             , xK_m     ), spawn "urxvt -T mutt -e mutt")
 	, ((mod4Mask             , xK_n     ), spawn "urxvt -T canto -e canto")
@@ -287,7 +288,7 @@ nmaster = 2
 	-- Percent of screen to increment by when resizing panes
 delta   = 3/100
 	-- Default proportion of screen occupied by master pane
-ratio   = 3/5
+ratio   = 1/2
 
 
 tallLayout = named "|=" $ avoidStruts $ basicLayout

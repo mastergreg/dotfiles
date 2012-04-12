@@ -2,7 +2,14 @@ PYTHON_CMD=/bin/python
 export PYTHON_CMD
 export PATH=$PATH:~/bin
 export PAGER="less"
+export EDITOR=vim
 export HISTSIZE=1000
 export SAVEHIST=1000
 export HISTFILE=~/.zsh_history
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+  exec startx
+  # Could use xinit instead of startx
+  #exec xinit -- /usr/bin/X -nolisten tcp vt7
+fi
+
 #export VTECH_LICENSE_FILE=@scirouter.cslab.ece.ntua.gr
