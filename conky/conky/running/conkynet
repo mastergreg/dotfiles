@@ -33,8 +33,8 @@ if_up_strictness address
 
 default_color aaaaaa
 color0  aaaaaa
-color1  0055FF 
-color2  0055FF 
+color1  00FF00 
+color2  00FF00 
 color3  00aa00
 TEXT
 ${color1}Ethernet:${color }

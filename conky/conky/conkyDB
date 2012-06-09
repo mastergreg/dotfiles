@@ -30,7 +30,9 @@ xftfont Aerial:style=Bold:pixelsize=8
 color0  CCCCCC
 color1  3465a4
 color2  3465a4
-color3  93d44f
+#color3  93d44f
+color3  00ff00
+
 TEXT
  ${color2}db users:
 ${color0}${exec debboxUsers}

@@ -12,4 +12,6 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   #exec xinit -- /usr/bin/X -nolisten tcp vt7
 fi
 
+export GNUPLOT_DEFAULT_GDFONT=/usr/share/fonts/dejavu/DejaVuSansMono.ttf 
+
 #export VTECH_LICENSE_FILE=@scirouter.cslab.ece.ntua.gr

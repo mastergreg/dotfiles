@@ -1,4 +1,22 @@
 :insert
+#TO BE USED WITH LATEX
+#TARGET =
+#CC = xelatex
+#CCFLAGS = -shell-escape
+#
+#all: $(TARGET).pdf
+#
+#%.pdf:	%.tex title/* files/*
+#	$(CC) $(CCFLAGS) $<
+#
+#
+#.PHONY:	clean all spell
+#clean:
+#	rm -f $(TARGET).{pdf,log,aux,pyg}
+#
+#spell:
+#	aspell -l el_gr --ignore-case=true -c $(TARGET).tex
+#TO BE USED WITH LATEX
 TARGET = 
 CC = gcc
 CCFLAGS +=
@@ -25,10 +43,12 @@ $(TARGET): $(OBJ) $(DEPENDS)
 	$(CC) $(OBJ) -o $(TARGET)
 
 %.o:	%.c
-	$(CC) $(CCFLAGS) $< -o $@
+	$(CC) -c $(CCFLAGS) $< -o $@
 
 
 .PHONY:	clean all indent
 clean:
 	rm -f $(OBJ) $(TARGET)
+indent:
+	astyle --style=linux $(CCFILES)
 .

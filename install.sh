@@ -2,49 +2,61 @@
 function bash
 {
     echo installing bashrc
-    cp bash/bashrc ~/.bashrc
+    ln -s bash/bashrc ~/.bashrc
 }
 function zsh
 {
     echo installing zshrc
-    cp zsh/zshrc ~/.zshrc
-    cp zsh/zprofile ~/.zprofile
+    ln -s zsh/zshrc ~/.zshrc
+    ln -s zsh/zprofile ~/.zprofile
 }
 function xinit
 {
     echo installing xinitrc
-    cp xinit/xinitrc ~/.xinitrc
+    ln -s xinit/xinitrc ~/.xinitrc
 }
 function conky
 {
     echo installing conky config
     mkdir -p ~/.conky
-    cp -r conky/conky/* ~/.conky
-    cp conky/.conkyrc ~/
+    ln -s -r conky/conky/* ~/.conky
+    ln -s conky/.conkyrc ~/
 
 }
 function xmonad
 {
     echo installing xmonad config
     mkdir -p ~/.xmonad
-    cp xmonad/xmonad.hs ~/.xmonad/xmonad.hs
+    ln -s xmonad/xmonad.hs ~/.xmonad/xmonad.hs
 }
 function vim
 {
     echo installing vim config
-    cp -r vim/vim ~/.vim
-    cp vim/vimrc ~/.vimrc
+    ln -s -r vim/vim ~/.vim
+    ln -s vim/vimrc ~/.vimrc
 }
 function openbox
 {
     echo installing openbox config
     mkdir -p ~/.config
-    cp -r openbox/openbox ~/.config/
+    ln -s -r openbox/openbox ~/.config/
 }
 function x
 {
     echo installing Xdefaults
-    cp x/Xdefaults ~/.Xdefaults
+    ln -s x/Xdefaults ~/.Xdefaults
 }
+function all
+{
+	bash
+	zsh
+	xinit
+	conky
+	xmonad
+	vim
+	openbox
+	x
+}
+$1
 
 

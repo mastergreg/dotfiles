@@ -1,20 +1,12 @@
 cat /proc/uptime >> .uptime
 xmodmap /home/master/.xmodmap &
-#xscreensaver -nosplash &
-#volwheel &
 tray &
-#(sleep 2 && tint2) &
 #(sleep 10 && ~/.dropbox-dist/dropboxd ) &
-wallpaper &
-#mconky &
-#parcellite &
-#(sleep 2 && urxvt )&
-#wpa_gui -t &
+#wallpaper &
+(sleep 10 && ~/mconky ) &
+( xsetroot -cursor_name left_ptr && feh --bg-center ~/Pictures/wallpapers_new/wallpaper.png)&
+export XDG_MENU_PREFIX=lxde- &
+eval "$(gpg-agent --daemon)" &
+#(sleep 2 && tint2) &
 #exec openbox
-#wmii
-#exec fluxbox 
-#exec /usr/bin/awesome
-export XDG_MENU_PREFIX=lxde-
-eval "$(gpg-agent --daemon)"
-exec dbus-launch xmonad 
-#exec awesome
+exec xmonad 

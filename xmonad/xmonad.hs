@@ -54,7 +54,7 @@ import qualified Data.Map        as M
 	-- The preferred terminal program, which is used in a binding below and by
 	-- certain contrib modules.
 	--
-myTerminal      = "xterm"
+myTerminal      = "urxvt"
 --myTerminal      = "terminator"
 	-- Width of the window border in pixels.
 	--
@@ -137,7 +137,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	--, ((modMask , xK_p     ), spawn "gmrun")
 
     --launch dmenu
-	, ((modMask , xK_p     ), spawn "gmrun")
+	, ((modMask , xK_p     ), spawn "dmenu_run")
 
 	-- close focused window 
 	, ((modMask .|. shiftMask, xK_c     ), kill)
@@ -303,14 +303,14 @@ irssiRoster = (Title "irssi")
 pidginRoster = (Title "Buddy List")
 skypeRoster = ((ClassName "Skype") `And` (Title "gregliras - Skype\8482 (Beta)"))
 tabbed_one = named "T1" $ avoidStruts $ tabbed shrinkText (theme wfarrTheme)
-tabbed_two = named "T2" $ combineTwo (TwoPane 0.03 0.5) tabbed_one tabbed_one
+tabbed_two = named "T2" $ combineTwo (TwoPane 0.03 0.5) tabbed_one Full
 grid = named "#" $ avoidStruts $ Grid
 
 myLayout =  chat $ circ $ gimp $ full $ normal where
 normal = tallLayout ||| wideLayout ||| tabbed_one ||| tabbed_two 
 chat = onWorkspace "7" imlayout 
 circ = onWorkspace "1" circleLayout
-gimp = onWorkspace "9" $ grid ||| wideLayout ||| gimplayout
+gimp = onWorkspace "9" $ wideLayout ||| gimplayout
 full = onWorkspace "0" $ noBorders $ Full
 
 
@@ -352,6 +352,7 @@ myFloatHook = composeAll
         , className =? "Mplayer" --> moveToFull
         , className =? "Mplayer" --> unfloat
         , resource =? "pidgin" --> moveToIM
+        , resource =? "ekiga" --> moveToIM
         , resource =? "mumble" --> moveToIM
         --, [ className =? "Skype" <&&> title ~? "Call with " -?> doSideFloat' CE ]
         , className =? "Pidgin" --> moveToIM
@@ -376,7 +377,7 @@ myFloatHook = composeAll
     moveToDia = doF $ W.shift "6"
     moveToFull = doF $ W.shift "0"
 myscratchpadManageHook :: ManageHook
-myscratchpadManageHook = scratchpadManageHook (W.RationalRect 0.10 0.30 0.80 0.40)
+myscratchpadManageHook = scratchpadManageHook (W.RationalRect 0.10 0.30 0.80 0.30)
     -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = True
