@@ -5,11 +5,11 @@ XTerm*xft:false
 !XTerm*font: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
 !XTerm*boldFont: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
 
-!*font: -misc-fixed-medium-r-semicondensed--12-*-*-*-*-*-iso10646-1
-!*boldFont: -misc-fixed-medium-r-semicondensed--12-*-*-*-*-*-iso10646-1
+*font: -misc-fixed-medium-r-semicondensed--12-*-*-*-*-*-iso10646-1
+*boldFont: -misc-fixed-medium-r-semicondensed--12-*-*-*-*-*-iso10646-1
 
-*font: -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1
-*boldFont: -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1
+!*font: -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1
+!*boldFont: -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1
 
 
 XTerm*boldMode: false

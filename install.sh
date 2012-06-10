@@ -46,6 +46,11 @@ function x
     echo installing Xdefaults
     ln -s `pwd`/x/Xdefaults ~/.Xdefaults
 }
+function gdb
+{
+    echo installing gdb config
+    ln -s `pwd`/gdb/gdbinit ~/.gdbinit
+}
 function all
 {
 	bash
@@ -54,6 +59,7 @@ function all
 	conky
 	xmonad
 	vim
+	gdb
 	openbox
 	x
 }
