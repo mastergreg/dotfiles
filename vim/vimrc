@@ -58,6 +58,7 @@ set scrolloff=10
 set sidescrolloff=10
 set shortmess=aOstT
 set backup
+set nohidden
 set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
 set cmdheight=1         " command line height

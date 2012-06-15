@@ -31,8 +31,8 @@ xftfont Aerial:style=Bold:pixelsize=8
 #lua_draw_hook_pre draw_bg
 if_up_strictness address 
 
-default_color aaaaaa
-color0  aaaaaa
+default_color DDDDDD
+color0  DDDDDD
 color1  00FF00 
 color2  00FF00 
 color3  00aa00

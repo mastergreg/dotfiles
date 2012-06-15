@@ -18,8 +18,7 @@ function xinit
 function conky
 {
     echo installing conky config
-    mkdir -p ~/.conky
-    ln -s `pwd`/conky/conky/* ~/.conky
+    ln -s `pwd`/conky/conky ~/.conky
     ln -s `pwd`/conky/.conkyrc ~/
 
 }

@@ -221,5 +221,5 @@ function any() {
 welcome
 export GNUPLOT_DEFAULT_GDFONT=/usr/share/fonts/dejavu/DejaVuSansMono.ttf 
 export I_HATE_GAME_HINTS=1
-eval $(keychain -q --eval --agents ssh -Q ~/.ssh/id_rsa ~/.ssh/id_rsa_cloudfront ~/.ssh/id_rsa_foss ~/.ssh/id_rsa_freebsd ~/.ssh/id_rsa_git ~/.ssh/id_rsa_mac ~/.ssh/id_rsa_ps3)
+eval $(keychain -q --eval --agents ssh -Q ~/.ssh/id_rsa  ~/.ssh/id_rsa_foss  ~/.ssh/id_rsa_git )
 
