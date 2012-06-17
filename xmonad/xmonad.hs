@@ -510,7 +510,7 @@ myxmobarPP = xmobarPP{
 
 main = do 
   --xmproc <- spawnPipe "xmobar";
-  xmproc <- spawnPipe "killall python2.7; dzen_python"
+  xmproc <- spawnPipe "killall python3; dzen_python"
   xmonad $ withUrgencyHook  NoUrgencyHook defaults {
       --logHook   = dynamicLogWithPP $ myxmobarPP {
       logHook   = dynamicLogWithPP $ pythonDzenPP {

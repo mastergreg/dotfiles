@@ -1,19 +1,26 @@
-XTerm*xft:false
-!XTerm*faceName: xft:Monospace:pixelsize=11:antialias=0:dpi=81
-!XTerm*font: -misc-fixed-medium-r-normal--10-120-75-75-c-70-iso10646-1
-!XTerm*boldFont: -misc-fixed-medium-r-normal--10-120-75-75-c-70-iso10646-1
-!XTerm*font: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
-!XTerm*boldFont: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
+!*font: -misc-fixed-medium-r-semicondensed--12-*-*-*-*-*-iso10646-1
+!*boldFont: -misc-fixed-medium-r-semicondensed--12-*-*-*-*-*-iso10646-1
 
-*font: -misc-fixed-medium-r-semicondensed--12-*-*-*-*-*-iso10646-1
-*boldFont: -misc-fixed-medium-r-semicondensed--12-*-*-*-*-*-iso10646-1
+*font: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
+*boldFont: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
 
 !*font: -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1
 !*boldFont: -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1
 
+!{{{ XTerm settings
 
+XTerm*xft:false
 XTerm*boldMode: false
 
+XTerm*background: #000000
+XTerm*foreground: #CCCCCC
+XTerm*bellIsUrgent: true
+XTerm*geometry: 80x35
+
+XTerm*termName: xterm-256color
+!}}}
+
+!{{{ Xterm Colors
 XTerm*color0:#000000
 XTerm*color1:#AA0000
 XTerm*color2:#00AA00
@@ -30,43 +37,18 @@ XTerm*color12:   #0055FF
 XTerm*color13:   #FF00FF
 XTerm*color14:   #00FFFF
 XTerm*color15:   #FFFFFF
+!}}}
 
-!XTerm*color0:#000000
-!XTerm*color1:#AA0000
-!XTerm*color2:#00AA00
-!XTerm*color3:#AA5500
-!XTerm*color4:#0055AA
-!XTerm*color5:#AA00AA
-!XTerm*color6:#00AAAA
-!XTerm*color7:#AAAAAA
-!XTerm*color8:#000000
-!XTerm*color9:#AA0000
-!XTerm*color10:#00AA00
-!XTerm*color11:#AA5500
-!XTerm*color12:#0055AA
-!XTerm*color13:#AA00AA
-!XTerm*color14:#00AAAA
-!XTerm*color15:#AAAAAA
-!
-XTerm*background: #000000
-XTerm*foreground: #CCCCCC
-XTerm*bellIsUrgent: true
-XTerm*geometry: 80x35
-
-!URxvt*background: #0F0F0F
-!URxvt*foreground: #F0F0F0
-XTerm*termName: xterm-256color
+!{{{ urxvt settings
 URxvt*termName: rxvt
 URxvt*scrollBar:         false
 URxvt*scrollstyle: plain
 URxvt*urgentOnBell: true
-!URxvt*font: xft:terminus:pixelsize=11:antialias=false
 URxvt*transparent: false
 
 URxvt*shading:     50
 !URxvt*tint:         #000000
 !URxvt*tint:         #333333
-!URxvt*inheritPixmap:true
 URxvt*geometry: 80x33
 
 
@@ -74,6 +56,7 @@ URxvt.perl-ext-common: default,matcher
 URxvt.urlLauncher: firefox
 URxvt.matcher.button: 1
 URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
+!}}}
 
 !{{{ URxvt Colors
 
@@ -143,24 +126,6 @@ URxvt*background: #000000
 
 !}}}
 
-!URxvt*font: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
-!URxvt*boldFont: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
-
-!URxvt*font: -misc-fixed-medium-r-semicondensed--13-*-*-*-*-*-iso10646-1
-!URxvt*boldFont: -misc-fixed-medium-r-semicondensed--13-*-*-*-*-*-iso10646-1
-
-
-!URxvt*font: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso10646-1
-!URxvt*boldFont: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso10646-1
-!URxvt*font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
-!URxvt*boldFont: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
-!URxvt*font: -misc-fixed-medium-r-normal--13-120-75-75-c-70-iso10646-1
-!URxvt*boldFont: -misc-fixed-medium-r-normal--13-120-75-75-c-70-iso10646-1
-!URxvt*font: -misc-fixed-medium-r-semicondensed--13-*-*-*-*-*-iso10646-1
-!URxvt*boldFont: -misc-fixed-medium-r-semicondensed--13-*-*-*-*-*-iso10646-1
-!URxvt*font: -misc-fixed-medium-r-semicondensed--12-*-100-100-c-60-iso8859-1
-!URxvt*boldFont: -misc-fixed-medium-r-semicondensed--12-*-100-100-c-60-iso8859-1
-
 !{{{ alsamixer scheme
 alsamixer*color1:   #ff2759
 alsamixer*color9:   #ff2759
@@ -181,7 +146,7 @@ xpdf*antialias:      yes
 xpdf*enableFreetype: yes
 !}}}
 
-!xcalc-----------------------------------------------------------------------
+!{{{xcalc-----------------------------------------------------------------------
 
 xcalc*geometry:                        200x275
 xcalc.ti.bevel.background:             #111111
@@ -227,3 +192,4 @@ xcalc.ti.button38.background: #555595
 xcalc.ti.button39.background: #555595
 XCalc*Cursor:                 hand2
 XCalc*ShapeStyle:             rectangle
+!}}}

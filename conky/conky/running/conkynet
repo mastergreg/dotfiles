@@ -35,7 +35,7 @@ default_color DDDDDD
 color0  DDDDDD
 color1  00FF00 
 color2  00FF00 
-color3  00aa00
+color3  FFAA00
 TEXT
 ${color1}Ethernet:${color }
 ${if_up eth0}

@@ -151,7 +151,7 @@ autocmd bufwritepost,filewritepost *.java execute "normal `a"
 "}}}
 
 "{{{Templates indentation and syntax for python
-autocmd BufNewFile,BufRead *.py set foldmethod=indent smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class sw=4 ts=4
+autocmd BufNewFile,BufRead *.py set foldmethod=indent smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class sw=4 ts=4 expandtab
 autocmd BufNewFile *.py so /home/master/.vim/python_template
 autocmd BufNewFile *.py set smartindent 
 autocmd BufNewFile *.py exe "1," . 10 . "g/File Name :.*/s//File Name : " .expand("%")

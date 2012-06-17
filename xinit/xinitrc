@@ -3,7 +3,7 @@ xmodmap /home/master/.xmodmap &
 tray &
 #(sleep 10 && ~/.dropbox-dist/dropboxd ) &
 #wallpaper &
-(sleep 10 && ~/mconky ) &
+(sleep 10 && mconky ) &
 ( xsetroot -cursor_name left_ptr && feh --bg-center ~/Pictures/wallpapers_new/wallpaper.png)&
 export XDG_MENU_PREFIX=lxde- &
 eval "$(gpg-agent --daemon)" &
