@@ -54,7 +54,7 @@ import qualified Data.Map        as M
 	-- The preferred terminal program, which is used in a binding below and by
 	-- certain contrib modules.
 	--
-myTerminal      = "urxvt"
+myTerminal      = "urxvtc"
 --myTerminal      = "terminator"
 	-- Width of the window border in pixels.
 	--
@@ -294,9 +294,8 @@ ratio   = 3/5
 
 tallLayout = named "|=" $ avoidStruts $ basicLayout
 wideLayout = named "=" $ avoidStruts $ Mirror basicLayout
-middlechat = Mirror $ withIM (1%2) irssiRoster $ Mirror tabbed_one
 circleLayout = named "O" $ avoidStruts $ circleDwmStyle shrinkText (theme wfarrTheme)
-imlayout = named "|#" $ avoidStruts $ withIM (1%4) pidginRoster $ reflectHoriz $ withIM (1%3) skypeRoster $  avoidStruts $ middlechat
+imlayout = named "|#" $ avoidStruts $ withIM (1%4) pidginRoster $ reflectHoriz $ withIM (1%3) skypeRoster $  avoidStruts $ tabbed_one
 gimplayout = named "G" $ avoidStruts $  reflectHoriz $ withIM (1%8) (Title "Toolbox") $  avoidStruts $ tabbed_one
 
 irssiRoster = (Title "irssi")
