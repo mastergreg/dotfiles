@@ -11,7 +11,8 @@ set nocp
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set noexpandtab 
+set expandtab 
+set diffopt+=iwhite
 "
 set complete=.,w,b,u,t,i,d
 "set foldmethod=syntax
