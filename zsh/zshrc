@@ -6,7 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="master"
-ZSH_THEME="master"
+ZSH_THEME="cypher"
 #ZSH_THEME="clean-master"
 #ZSH_THEME="juanghurtado"
 
