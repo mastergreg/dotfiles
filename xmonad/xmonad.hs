@@ -295,7 +295,7 @@ ratio   = 3/5
 tallLayout = named "|=" $ avoidStruts $ basicLayout
 wideLayout = named "=" $ avoidStruts $ Mirror basicLayout
 circleLayout = named "O" $ avoidStruts $ circleDwmStyle shrinkText (theme wfarrTheme)
-imlayout = named "|#" $ avoidStruts $ withIM (1%4) pidginRoster $ reflectHoriz $ withIM (1%3) skypeRoster $  avoidStruts $ tabbed_one
+imlayout = named "|#" $ avoidStruts $ withIM (1%4) pidginRoster $ reflectHoriz $ withIM (1%3) skypeRoster $  avoidStruts $ grid
 gimplayout = named "G" $ avoidStruts $  reflectHoriz $ withIM (1%8) (Title "Toolbox") $  avoidStruts $ tabbed_one
 
 irssiRoster = (Title "irssi")
