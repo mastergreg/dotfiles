@@ -50,6 +50,11 @@ function gdb
     echo installing gdb config
     ln -s `pwd`/gdb/gdbinit ~/.gdbinit
 }
+function mc
+{
+    echo installing midnight commander config
+    ln -s `pwd`/mc ~/.mc
+}
 function all
 {
 	bash
@@ -61,6 +66,7 @@ function all
 	gdb
 	openbox
 	x
+    mc
 }
 $1
 

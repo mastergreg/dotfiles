@@ -1,0 +1,100 @@
+
+[user-fmt-input]
+0=half type name | size | perm
+
+[mini-input]
+0=half type name | size | perm
+
+[:select_cmd: Select ]
+0=*
+
+[inp:fishlink_cmd: Shell link to machine ]
+0=ububox
+
+[input-def]
+0=*
+
+[input2]
+0=/home/master/Downloads/
+1=/home/master/SHARE/Home_share/BigStorageArea/Series/
+2=/home/master/SHARE/Torrent_share/71-Into.The.Fire.2010.DVDRip.XviD.AC3-ViSiON/
+3=/home/master/SHARE/Torrent_share/71-Into.The.Fire.2010.DVDRip.XviD.AC3-ViSiON/71-Into.The.Fire.2010.DVDRip.XviD.AC3-ViSiON.srt
+4=/home/master/SHARE/Home_share/BigStorageArea/Movies/Lucky.Luke.2009.DVDRip.XviD.AC3-ViSiON(www.USABIT.com)/Lucky.Luke.2009.DVDRip.XviD.AC3-ViSiON.srt
+5=/home/master/SHARE/BigStorageArea/Master_Recordings
+6=/home/master/SHARE/BigStorageArea/Master_Recordings/
+7=/#sh:ububox/home/ioanna/BigStorageArea/Movies/
+
+[cmdline]
+0=r
+1=ls
+2=[C
+3=
+
+[Dir Hist New Left Panel]
+0=/home/master/bin
+1=/home/master/.bluej
+2=/home/master/SHARE/Torrent_share/The Vampire Diaries season 2
+3=/home/master/SHARE/Torrent_share
+4=/home/master/Downloads
+5=/home/master/SHARE/Home_share/Torrents
+6=/home
+7=/home/master/SHARE
+8=/home/master/SHARE/Home_share
+9=/home/master/SHARE/Home_share/BigStorageArea
+10=/home/master/SHARE/Home_share/BigStorageArea/Movies
+11=/home/master/SHARE/Home_share/BigStorageArea/Movies/Lucky.Luke.2009.DVDRip.XviD.AC3-ViSiON(www.USABIT.com)
+12=/home/master/Music
+13=/home/master/.mc
+14=/home/master
+
+[Dir Hist New Right Panel]
+0=/home/master/bin
+1=/home/master/SHARE/Torrent_share/The Vampire Diaries season 2
+2=/home/master/SHARE/Torrent_share/Pioneer.One.S01E03.720p.x264-VODO
+3=/home/master/Dropbox/cathicaki
+4=/home/master/Documents/Repos/digilab
+5=/home/master/Documents/Repos/digilab/askhseis
+6=/home/master/Documents/Repos/digilab/askhseis/ask3
+7=/home
+8=/home/master/SHARE/Home_share/BigStorageArea/Series/Arrested Development
+9=/home/master/Dropbox/sxolh/Ροή Λ
+10=/home/master/Dropbox/sxolh/Ροή Υ/digilab/ask3
+11=/home/master/SHARE/Home_share/BigStorageArea/Movies/Knight and Day (2010) R5 XviD-MAXSPEED
+12=/home/master/SHARE/Home_share/BigStorageArea/Movies/Battle Los Angeles 2011 R5 XViD - IMAGiNE
+13=/home/master/SHARE/Torrent_share/Priest 2011 Cam x264 Feel-Free
+14=/home/master/SHARE/Torrent_share/Chatroom.2010.R5.XviD-LAP
+15=/home/master/SHARE/Torrent_share/We Are The Night [Wir Sind Die Nacht].2010.BRRip.XviD-VLiS
+16=/home/master/SHARE/Torrent_share/Pirates of the Caribbean On Stranger Tides TS XViD - IMAGiNE
+17=/home/master/Dropbox/Pixelpipe
+18=/home/master/SHARE/Torrent_share/City Under Siege 2010 dvd=-sailo1
+19=/home/master/Documents
+20=/home/master/Documents/Repos
+21=/home/master/Documents/Repos/pewpew
+22=/home/master/Documents/Repos/pewpew/pewpew/test
+23=/home/master/Documents/Repos/pewpew/pewpew
+24=/home/master/SHARE/Home_share/BigStorageArea/Series
+25=/home/master/SHARE/Home_share/BigStorageArea/Movies/Lucky.Luke.2009.DVDRip.XviD.AC3-ViSiON(www.USABIT.com)/Subs
+26=/home/master/SHARE/Home_share/BigStorageArea/Movies/Lucky.Luke.2009.DVDRip.XviD.AC3-ViSiON(www.USABIT.com)
+27=/home/master/SHARE/Home_share
+28=/home/master/SHARE/Home_share/BigStorageArea
+29=/home/master/SHARE/Home_share/BigStorageArea/Movies/Postal 2
+30=/home/master/SHARE/Home_share/BigStorageArea/Movies
+31=/home/master/SHARE/Home_share/BigStorageArea/Movies/The Next Three Days (2010) DVDRip XviD-MAXSPEED
+32=/home/master/Dropbox
+33=/home/master/Dropbox/sxolh
+34=/home/master/Dropbox/sxolh/Ροή Υ
+35=/home/master/Dropbox/sxolh/Ροή Υ/digilab
+36=/home/master/Dropbox/sxolh/Ροή Υ/digilab/ask4
+37=/home/master/SHARE/Torrent_share/rrh
+38=/home/master/SHARE/Torrent_share/Kung.Fu.Panda.2.2011.TS.AC3.XViD-EP1C
+39=/home/master/SHARE/Torrent_share
+40=/home/master/SHARE/Torrent_share/The Adjustment Bureau 2011 PPVRIP IFLIX www.IWANNADOWNLOAD.com
+41=/home/master/SHARE
+42=/home/master/SHARE/BigStorageArea
+43=/home/master/SHARE/BigStorageArea/Master_Recordings
+44=/home/master/.mc
+45=/home/master/Downloads/Torrents
+46=/home/master/Downloads
+47=/home/master
+48=/home/master/Repos/edaproject/demos/demo_mul_64/parallel
+49=/home/master/Repos/edaproject/demos/demo_mul_64/parallel/timelogs
