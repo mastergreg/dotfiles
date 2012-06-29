@@ -134,10 +134,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 --	, ((modMask,               xK_p     ), spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
 
 	-- launch gmrun
-	--, ((modMask , xK_p     ), spawn "gmrun")
+	, ((modMask , xK_p     ), spawn "gmrun")
 
     --launch dmenu
-	, ((modMask , xK_p     ), spawn "dmenu_run")
+	--, ((modMask , xK_p     ), spawn "dmenu_run")
 
 	-- close focused window 
 	, ((modMask .|. shiftMask, xK_c     ), kill)
