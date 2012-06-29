@@ -1,4 +1,5 @@
-ckground yes
+#vim: filetype=conkyrc
+background yes
 use_xft yes
 xftalpha 1.0
 update_interval 1.0
@@ -66,3 +67,39 @@ ${color1}Top Processes:
 ${color1}File systems: 
  ${color1}/          ${color0}${alignr}${fs_used /}/${fs_size /}   ${color }${fs_bar 5,120 /}
  ${color1}/home      ${color0}${alignr}${fs_used /home}/${fs_size /home}   ${color }${fs_bar 5,120 /home}
+${color1}Networking:
+${color1}Ethernet:${color }
+${if_up eth0}
+ Down ${color1}${downspeed eth0}/s ${alignr}${color0}Up ${color2}${upspeed eth0}/s
+ ${downspeedgraph eth0 25,100 000000 55FF55} ${alignr}${upspeedgraph eth0 25,100 000000 0077FF}
+ ${color0}Total:  ${color1}${totaldown eth0}${color0} ${alignr}Total:  ${color2}${totalup eth0}${color0}
+ Ethernet IP: $alignr ${color1}${addr eth0}${color0}
+ External IP: ${alignr}${color1}${execi   3600 wget -q -O - checkip.dyndns.org | sed -e 's/[^[:digit:]\|.]//g'}${color0}
+ ${else} No Ethernet Connection${endif}
+${color1}WiFi:${color }${if_up wlan0}${color }${color }                 ${alignr}Rate: ${color1}${wireless_bitrate wlan0}${color }
+ Link quality: ${color1}${wireless_link_qual_perc wlan0}${color }% ${alignr}${wireless_link_bar 4,120 wlan0}
+ ${color }Down ${color }${color1}${downspeed wlan0}/s ${alignc}${color0}ESSID: ${color1}${wireless_essid wlan0}${color } $alignr${color }Up ${color2}${upspeed wlan0}/s
+ ${color }${downspeedgraph wlan0 25,100 000000 55FF55} ${alignr}${color }${upspeedgraph wlan0 25,100 000000 0077FF}
+ ${color }Total: ${color1}${totaldown wlan0}  ${alignr}${color }Total:i ${color1}${totalup wlan0}
+ ${color }WiFi IP: ${alignr}${color1}${addr wlan0}
+ ${color }External IP: ${alignr}${color1}${execi   3600 wget -q -O - checkip.dyndns.org | sed -e 's/[^[:digit:]\|.]//g'}${color0}
+ ${color }AP Mode: ${wireless_mode wlan0} ${alignr}AP MAC: ${color1}${wireless_ap wlan0}
+${else}
+ No Wireless Connection${endif}
+${color1}3G:${color }
+${if_up ppp0}
+ Down ${color1}${downspeed ppp0}/s ${alignr}${color0}Up ${color2}${upspeed ppp0}/s
+ ${downspeedgraph ppp0 25,100 000000 55FF55} ${alignr}${upspeedgraph ppp0 25,100 000000 0077FF}
+ ${color0}Total:  ${color1}${totaldown ppp0}${color0} ${alignr}Total:  ${color2}${totalup ppp0}${color0}
+ 3G IP: $alignr ${color1}${addr ppp0}${color0}
+ ${else} No 3G Connection${endif}
+
+${color1}Connections: ${alignr}${color0}ALL: ${color3}${tcp_portmon 1 65535 count}
+ ${color0}Inbound: ${color1}${tcp_portmon 1 32767 count} ${alignr} ${color0}Local Service/Port${color0}
+ ${color0} ${tcp_portmon 1 32767 rhost 0} ${alignr}${color1} ${tcp_portmon 1 32767 lservice 0}
+ ${color0} ${tcp_portmon 1 32767 rhost 1} ${alignr}${color1} ${tcp_portmon 1 32767 lservice 1}
+ ${color0} ${tcp_portmon 1 32767 rhost 2} ${alignr}${color1} ${tcp_portmon 1 32767 lservice 2}
+ ${color0}Outbound: ${color2}${tcp_portmon 32768 61000 count}${alignr} ${color0}Remote Service/Port${color0}
+ ${color0} ${tcp_portmon 32768 61000 rhost 0} ${alignr}${color2} ${tcp_portmon 32768 61000 rservice 0}
+ ${color0} ${tcp_portmon 32768 61000 rhost 1} ${alignr}${color2} ${tcp_portmon 32768 61000 rservice 1}
+ ${color0} ${tcp_portmon 32768 61000 rhost 2} ${alignr}${color2} ${tcp_portmon 32768 61000 rservice 2}
