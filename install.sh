@@ -40,6 +40,12 @@ function openbox
     mkdir -p ~/.config
     ln -s `pwd`/openbox/openbox ~/.config/
 }
+function tint2
+{
+    echo installing tint2 config
+    mkdir -p ~/.config
+    ln -s `pwd`/tint2 ~/.config/
+}
 function x
 {
     echo installing Xdefaults
@@ -65,6 +71,7 @@ function all
 	vim
 	gdb
 	openbox
+    tint2
 	x
     mc
 }

@@ -1,0 +1,113 @@
+#---------------------------------------------
+# TINT2 CONFIG FILE
+#---------------------------------------------
+
+#---------------------------------------------
+# BACKGROUND AND BORDER
+#---------------------------------------------
+rounded = 0
+border_width = 1
+background_color = #1A1A1A 60
+border_color = #DDDDDD 70
+
+rounded = 3
+border_width = 0
+background_color = #DDDDDD 20
+border_color = #DDDDDD 20
+
+rounded = 0
+border_width = 0
+background_color = #DDDDDD 0
+border_color = #DDDDDD 0
+
+#---------------------------------------------
+# PANEL
+#---------------------------------------------
+panel_monitor = all
+panel_position = bottom center
+panel_size = 98% 18
+panel_margin = 0 0
+panel_padding = 4 0
+font_shadow = 0
+panel_background_id = 0
+
+#---------------------------------------------
+# TASKBAR
+#---------------------------------------------
+taskbar_mode = multi_desktop
+taskbar_padding = 1 0 1
+taskbar_background_id = 1
+
+#---------------------------------------------
+# TASKS
+#---------------------------------------------
+task_icon = 1
+task_text = 0
+task_width = 18
+task_centered = 1
+task_padding = 1 1
+task_font = sans 7
+task_font_color = #DDDDDD 80
+task_active_font_color = #DDDDDD 85
+task_background_id = 3
+task_active_background_id = 2
+urgent_nb_of_blink = 8
+
+#---------------------------------------------
+# SYSTRAYBAR
+#---------------------------------------------
+systray = 1
+systray_padding = 4 2 3
+systray_background_id = 1
+systray_sort = left2right
+systray_icon_size = 0
+systray_icon_asb = 100 0 0
+
+#---------------------------------------------
+# CLOCK
+#---------------------------------------------
+time1_format = %a %d / %m %H:%M
+time1_font = sans 8
+time2_format = 
+time2_font = sans 8
+clock_background_id = 1
+clock_font_color = #DDDDDD 100
+clock_padding = 4 4
+
+
+#---------------------------------------------
+# BATTERY
+#---------------------------------------------
+battery = 0 
+battery_hide = 100
+battery_low_status = 10
+battery_low_cmd = notify-send "battery low"
+bat1_font = sans 8
+bat2_font = sans 6
+battery_font_color = #DDDDDD 76
+battery_padding = 1 0
+battery_background_id = 0
+
+
+#---------------------------------------------
+# MOUSE ACTION ON TASK
+#---------------------------------------------
+mouse_middle = close
+mouse_right = menu
+mouse_scroll_up = toggle
+mouse_scroll_down = iconify
+
+
+wm_menu implication
+wm_menu = 1
+
+
+#---------------------------------------------
+# AUTOHIDE OPTIONS
+#---------------------------------------------
+autohide = 0
+autohide_show_timeout = 0.3
+autohide_hide_timeout = 2
+autohide_height = 4
+strut_policy = minimum
+

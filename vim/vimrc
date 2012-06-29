@@ -164,6 +164,9 @@ autocmd bufwritepost,filewritepost *.py execute "normal `a"
 
 "{{{ Texing
 autocmd BufNewFile,BufRead *.tex set smartindent tw=78
+autocmd BufNewFile,BufRead *.tex setlocal spell! spelllang=el,en<CR>
+autocmd BufNewFile,BufRead *.tex set spellsuggest=best,3
+
 "}}}
 
 "{{{ Makefiles
