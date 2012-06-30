@@ -105,6 +105,6 @@ ${color1}Networking:
 ${color1}MPD:${if_mpd_playing}
  ${color3}Artist: ${alignr}${color }$mpd_artist
  ${color3}Album: ${alignr}${color }$mpd_album
- ${color }$alignr$mpd_smart
+ ${color3}Track: ${alignr}${color }$mpd_smart
  $mpd_status ${color2}${mpd_elapsed}/${mpd_length}${alignr}${color3}${mpd_bar 5,160} 
  ${else} ${color2 }MPD not running${endif}
