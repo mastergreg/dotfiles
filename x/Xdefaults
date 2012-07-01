@@ -32,7 +32,7 @@ XTerm*color7:#AAAAAA
 XTerm*color8:    #555555
 XTerm*color9:    #FF0000
 XTerm*color10:   #00FF00
-XTerm*color11:   #FFFF00
+XTerm*color11:   #FFD000
 XTerm*color12:   #0055FF
 XTerm*color13:   #FF00FF
 XTerm*color14:   #00FFFF
@@ -44,10 +44,10 @@ URxvt*termName: rxvt
 URxvt*scrollBar:         false
 URxvt*scrollstyle: plain
 URxvt*urgentOnBell: true
-URxvt*transparent: false
+URxvt*transparent: true
 
 URxvt*shading:     50
-!URxvt*tint:         #000000
+URxvt*tint:         #000000
 !URxvt*tint:         #333333
 URxvt*geometry: 80x33
 

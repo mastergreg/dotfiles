@@ -122,7 +122,13 @@ cow_images=(apt dragon-and-cow koala snowman beavis.zen duck kosh sodomized-shee
 
 
 cow_random=RANDOM%46
-PS1='\[\e[0;31m\]\u\[\e[m\] \[\e[0;32m\]\w\[\e[m\] \[\e[0;31m\]\$ \[\e[m\]\[\e[0;37m\]'
+function cut_pwd {
+        newPWD="${PWD/#$HOME/~}"
+        echo $newPWD | awk 'BEGIN{FS="/"}{if (NF<3) 
+                                print $0;
+                                else print $(NF-2) "/" $(NF-1) "/" $NF;}'
+    }
+PS1='\[\e[1;37m\]\h\[\e[m\] \[\e[1;32m\]`cut_pwd`\[\e[m\] \[\e[0;37m\]\$ \[\e[m\]'
 
 #PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
 

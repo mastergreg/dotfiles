@@ -54,7 +54,7 @@ import qualified Data.Map        as M
 	-- The preferred terminal program, which is used in a binding below and by
 	-- certain contrib modules.
 	--
-myTerminal      = "urxvtc"
+myTerminal      = "urxvt"
 --myTerminal      = "terminator"
 	-- Width of the window border in pixels.
 	--
@@ -307,7 +307,7 @@ tabbed_two = named "T2" $ combineTwo (TwoPane 0.03 0.5) tabbed_one Full
 grid = named "#" $ avoidStruts $ Grid
 
 myLayout =  chat $ circ $ gimp $ full $ normal where
-normal = tallLayout ||| wideLayout ||| tabbed_one ||| tabbed_two 
+normal = tallLayout ||| wideLayout ||| tabbed_one ||| tabbed_two
 chat = onWorkspace "7" imlayout 
 circ = onWorkspace "1" circleLayout
 gimp = onWorkspace "9" $ wideLayout ||| gimplayout
