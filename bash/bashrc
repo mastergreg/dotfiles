@@ -121,6 +121,40 @@ cow_images=(apt dragon-and-cow koala snowman beavis.zen duck kosh sodomized-shee
 
 
 
+
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias ls='ls --color=auto'
+alias l='ls --color=auto'
+alias la='ls -A'
+alias ll='ls -alFh'
+alias rl='rlwrap -Acr'
+alias files="ls -R | grep ':$' | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/' "
+[[ -x =time ]] && alias time='command time'
+alias ping='ping -c 4'
+alias grep='grep --color=auto'
+alias x='exit'
+alias c='clear'
+alias s='source ~/.bashrc'
+alias svim="sudo vim"
+alias v='vim -p'
+alias gv=g'vim -p'
+alias gpl='git pull'
+alias gco='git checkout'
+alias gp='git push'
+alias gm='git merge'
+alias gf='git fetch'
+alias gst='git status'
+alias gtr='git tree'
+alias es='sudo eix-sync'
+alias ef='eix'
+alias ep='sudo emerge --jobs=2 --quiet-build y portage'
+alias e='sudo emerge --jobs=2 -av --quiet-build y'
+alias eu='sudo emerge --jobs=5 --keep-going --load-average=2 --with-bdeps=y -avuND --quiet-build=y @world'
+
+
+
 cow_random=RANDOM%46
 function cut_pwd {
         newPWD="${PWD/#$HOME/~}"
