@@ -174,6 +174,39 @@ BRANCH=$(git branch 2> /dev/null |  sed -e '/^[^*]/d' -e 's/\* //')
     fi
 }
 
+function extract () {
+if [[ -f "$1" ]]; then
+    case "$1" in
+        *.tbz2 | *.tar.bz2) tar -xvjf  "$1"     ;;
+        *.txz | *.tar.xz)   tar -xvJf  "$1"     ;;
+        *.tgz | *.tar.gz)   tar -xvzf  "$1"     ;;
+        *.tar | *.cbt)      tar -xvf   "$1"     ;;
+        *.zip | *.cbz)      unzip      "$1"     ;;
+        *.rar | *.cbr)      unrar x    "$1"     ;;
+        *.arj)              unarj x    "$1"     ;;
+        *.ace)              unace x    "$1"     ;;
+        *.bz2)              bunzip2    "$1"     ;;
+        *.xz)               unxz       "$1"     ;;
+        *.gz)               gunzip     "$1"     ;;
+        *.7z)               7z x       "$1"     ;;
+        *.Z)                uncompress "$1"     ;;
+        *.gpg)       gpg2 -d "$1" | tar -xvzf - ;;
+        *) echo "Error: failed to extract $1" ;;
+    esac
+else
+  echo "Error: $1 is not a valid file for extraction"
+fi
+}
+
+function calc () { awk "BEGIN{ print $* }" ;}
+
+function welcome() {
+    #echo -en '\e[1;31m'
+    #figlet $(hostname)
+    #echo -en '\e[0m'
+	echo -e 'What is thy bidding, '$(whoami)'?'
+}
+welcome
 PS1='\[\e[1;37m\]\h\[\e[m\] \[\e[1;32m\]`cut_pwd`\[\e[m\] `git_branch`\[\e[0;37m\]\$\[\e[m\] '
 
 #PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
