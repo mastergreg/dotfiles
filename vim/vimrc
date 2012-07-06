@@ -33,6 +33,7 @@ set mouse=a
 set encoding=utf8
 set splitbelow
 
+let mapleader=","
 inoremap <leader>l <C-^>
 
 noremap ; :
