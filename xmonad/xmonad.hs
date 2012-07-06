@@ -360,6 +360,7 @@ myFloatHook = composeAll
         , className =? "Skype" --> moveToIM
         , title =? "irssi"  --> moveToIM
         , title =? "PewPew"  --> doFloat
+        , title =? "pinentry"  --> doFloat
         , resource =? "Thunderbird" --> moveToMail
         , title =? "mutt" --> moveToMail
         , className =? "Mail" --> moveToMail

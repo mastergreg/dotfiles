@@ -32,6 +32,9 @@ set autoindent
 set mouse=a
 set encoding=utf8
 set splitbelow
+
+inoremap <leader>l <C-^>
+
 noremap ; :
 noremap : ;
 noremap <space> za
@@ -71,6 +74,7 @@ set showcmd             " show partial commands in status line
 " shows: filename, position, eof, syntax, encoding, format 
 set statusline=%-3.3n\ %f\ %r%#Error#%m%#Statusline#\ (%l/%L,\ %c)\ %P%=%h%w\ %y\ [%1.20n]:[%{&encoding}:%{&fileformat}]\ 
 set cursorline
+
 
 if &term=~"linux"
     colo default

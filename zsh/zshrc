@@ -165,6 +165,8 @@ if [[ -f "$1" ]]; then
         *.JPG)              gpicview     "$1" &   ;;
         *.jpg)              gpicview     "$1" &   ;;
         *.pdf)              zathura     "$1" &> /dev/null &   ;;
+        *.eps)              zathura     "$1" &> /dev/null &   ;;
+        *.ps)              zathura     "$1" &> /dev/null &   ;;
         *.odt | *.doc)      libreoffice "$1" &> /dev/null &   ;;
         *.avi)              mplayer     "$1"    ;;
         *)                  vim "$1"            ;;
