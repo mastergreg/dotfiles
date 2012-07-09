@@ -61,6 +61,11 @@ function mc
     echo installing midnight commander config
     ln -f -s `pwd`/mc ~/.mc
 }
+function screen
+{
+    echo installing GNU screen config
+    ln -f -s `pwd`/screen/screenrc ~/.screenrc
+}
 function all
 {
 	bash
@@ -74,6 +79,7 @@ function all
     tint2
 	x
     mc
+    screen
 }
 $1
 

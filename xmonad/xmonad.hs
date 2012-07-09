@@ -19,6 +19,7 @@ import System.Environment
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
+import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.FadeInactive as FI
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
@@ -48,9 +49,12 @@ import XMonad.Hooks.SetWMName
 	--import XMonad.Layout.Reflect
 	--import XMonad.Layout.LayoutHints
 
+
+
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
+slice from to xs = take (to - from + 1) (drop from xs)
 	-- The preferred terminal program, which is used in a binding below and by
 	-- certain contrib modules.
 	--
@@ -349,12 +353,18 @@ myFloatHook = composeAll
         , className =? "Icedove" --> moveToMail
         , className =? "Eclipse" --> moveToProg
         , className =? "xine" --> moveToFull
-        , className =? "Mplayer" --> moveToFull
-        , className =? "Mplayer" --> unfloat
+        , resource =? "mplayer" --> moveToFull
+        , resource =? "mplayer" --> unfloat
+        , resource =? "mplayer2" --> moveToFull
+        , resource =? "mplayer2" --> unfloat
+        , resource =? "smplayer2" --> moveToFull
+        , resource =? "smplayer2" --> unfloat
+        , resource =? "vlc" --> moveToFull
+        , resource =? "vlc" --> unfloat
         , resource =? "pidgin" --> moveToIM
         , resource =? "ekiga" --> moveToIM
         , resource =? "mumble" --> moveToIM
-        --, [ className =? "Skype" <&&> title ~? "Call with " -?> doSideFloat' CE ]
+        -- , className =? "Skype" <&&> slice 0 9 title =? "Call with " --> doSideFloat' CE
         , className =? "Pidgin" --> moveToIM
         , className =? "dia" --> moveToDia
         , className =? "Skype" --> moveToIM
