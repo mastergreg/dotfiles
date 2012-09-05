@@ -207,7 +207,7 @@ function welcome() {
 	echo -e 'What is thy bidding, '$(whoami)'?'
 }
 welcome
-PS1='\[\e[1;37m\]\h\[\e[m\] \[\e[1;32m\]`cut_pwd`\[\e[m\] `git_branch`\[\e[0;37m\]\$\[\e[m\] '
+PS1='\[\e[1;37m\]\h\[\e[m\] \[\e[1;34m\]`cut_pwd`\[\e[m\] `git_branch`\[\e[0;37m\]\$\[\e[m\] '
 
 #PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
 
