@@ -104,11 +104,15 @@ myWorkspaces = ["1","2","3","4","5","6","7","8","9","0"]
 	-- Border colors for unfocused and focused windows, respectively.
 	--
 --myNormalBorderColor  = "#333333"
-myNormalBorderColor = "#3465a4"
+--myNormalBorderColor = "#3465a4"
+myNormalBorderColor = "#616161"
 --myFocusedBorderColor = "#285577"
 --myFocusedBorderColor = "#00FF00"
 --myFocusedBorderColor = "#3465a4"
-myFocusedBorderColor = "#FCA91A"
+--myFocusedBorderColor = "#FCA91A"
+
+
+myFocusedBorderColor = "#3465a4"
 
 	-- Default offset of drawable screen boundaries from each physical
 	-- screen. Anything non-zero here will leave a gap of that many pixels
@@ -229,12 +233,13 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	--
 	-- my Additional Keybindings
 	--
-	[((mod4Mask             , xK_f     ), spawn "firefox")
+	[((mod4Mask             , xK_f     ), spawn "firefox-bin > /dev/null")
 	, ((mod4Mask             , xK_x     ), spawn myTerminal)
 	, ((mod1Mask             , xK_Shift_L     ), spawn "switch_layout")
-	, ((mod4Mask             , xK_s     ), spawn ("pidgin"))
-	, ((mod4Mask.|. shiftMask, xK_s     ), spawn ("urxvt -T irssi"))
-	, ((mod4Mask             , xK_m     ), spawn (myTerminal ++ " -T mutt -e mutt"))
+	--, ((mod4Mask             , xK_s     ), spawn ("pidgin"))
+	, ((mod4Mask             , xK_s     ), spawn ("skype"))
+	, ((mod4Mask.|. shiftMask, xK_s     ), spawn (myTerminal ++ " -T irssi -e 'irssi'"))
+	, ((mod4Mask             , xK_m     ), spawn (myTerminal ++ " -T mutt -e 'mutt'"))
 	, ((mod4Mask             , xK_F10     ), spawn "set_screen")
 	, ((mod4Mask.|. shiftMask, xK_F10     ), spawn "set_screen_off")
 	, ((mod4Mask             ,xK_guillemotleft), spawn myTerminal)
@@ -249,7 +254,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	, ((0                    ,0x1008ff11),spawn "volbar -d 1")
 	, ((0                    ,0x1008ff13),spawn "volbar -i 1")
 	, ((0                    ,0x1008ff12),spawn "volbar -t")
-	, ((mod4Mask            ,xK_a),spawn (myTerminal++" -e ncmpcpp"))
+	, ((mod4Mask            ,xK_a),spawn (myTerminal++" -e tmisc"))
   , ((0                    ,0x1008ff14),spawn "mpc toggle")
   , ((0                    ,0x1008ff16),spawn "mpc prev")
   , ((0                    ,0x1008ff17),spawn "mpc next")
@@ -299,13 +304,14 @@ ratio   = 3/5
 
 tallLayout = named "|=" $ avoidStruts $ basicLayout
 wideLayout = named "=" $ avoidStruts $ Mirror basicLayout
-circleLayout = named "O" $ avoidStruts $ circleDwmStyle shrinkText (theme wfarrTheme)
-imlayout = named "|#" $ avoidStruts $ withIM (1%4) pidginRoster $ reflectHoriz $ withIM (1%3) skypeRoster $  avoidStruts $ grid
+circleLayout = named "O" $ avoidStruts $ magnifiercz' 1.2 $ circleDwmStyle shrinkText (theme wfarrTheme)
+--imlayout = named "|#" $ avoidStruts $ withIM (1%4) pidginRoster $ reflectHoriz $ withIM (1%3) skypeRoster $  avoidStruts $ grid
+imlayout = named "|#" $ avoidStruts $ withIM (1%4) skypeRoster $ avoidStruts $ tabbed_one
 gimplayout = named "G" $ avoidStruts $  reflectHoriz $ withIM (1%8) (Title "Toolbox") $  avoidStruts $ tabbed_one
 
 irssiRoster = (Title "irssi")
 pidginRoster = (Title "Buddy List")
-skypeRoster = ((ClassName "Skype") `And` (Title "gregliras - Skype\8482 (Beta)"))
+skypeRoster = ((ClassName "Skype") `And` (Title "gregliras - Skype\8482"))
 tabbed_one = named "T1" $ avoidStruts $ tabbed shrinkText (theme wfarrTheme)
 tabbed_two = named "T2" $ combineTwo (TwoPane 0.03 0.5) tabbed_one Full
 grid = named "#" $ avoidStruts $ Grid
@@ -353,10 +359,11 @@ myFloatHook = composeAll
         , className =? "Icedove" --> moveToMail
         , className =? "Eclipse" --> moveToProg
         , className =? "xine" --> moveToFull
+        , resource =? "transmission-remote-gtk" --> moveToCirc
         , resource =? "mplayer" --> moveToFull
         , resource =? "mplayer" --> unfloat
-        , resource =? "mplayer2" --> moveToFull
-        , resource =? "mplayer2" --> unfloat
+        , className =? "mplayer2" --> moveToFull
+        , className =? "mplayer2" --> unfloat
         , resource =? "smplayer2" --> moveToFull
         , resource =? "smplayer2" --> unfloat
         , resource =? "vlc" --> moveToFull
@@ -370,9 +377,16 @@ myFloatHook = composeAll
         , className =? "Skype" --> moveToIM
         , title =? "irssi"  --> moveToIM
         , title =? "PewPew"  --> doFloat
+        , className =? "Mirage" --> doFloat
+        , resource =? "Mirage" --> doFloat
+        , className =? "mirage" --> doFloat
+        , resource =? "mirage" --> doFloat
+        , stringProperty "WM_WINDOW_ROLE" =? "CallWindow" --> doFloat
+        , stringProperty "_NET_WM_WINDOW_TYPE(ATOM)" =? "_NET_WM_WINDOW_TYPE_DIALOG" --> doFloat
         , title =? "pinentry"  --> doFloat
         , resource =? "Thunderbird" --> moveToMail
         , title =? "mutt" --> moveToMail
+        , title =? "mail 0" --> moveToMail
         , className =? "Mail" --> moveToMail
         , resource =? "Mail" --> moveToMail
         , className =? "Chromium" --> moveToWeb
@@ -380,6 +394,7 @@ myFloatHook = composeAll
         , className =? "uzbl-tabbed" --> moveToWeb
         , manageDocks] where
     unfloat = ask >>= doF . W.sink
+    moveToCirc = doF $ W.shift "1"
     moveToGimp = doF $ W.shift "9"
     moveToMail = doF $ W.shift "8"
     moveToWeb = doF $ W.shift "2"
@@ -388,7 +403,7 @@ myFloatHook = composeAll
     moveToDia = doF $ W.shift "6"
     moveToFull = doF $ W.shift "0"
 myscratchpadManageHook :: ManageHook
-myscratchpadManageHook = scratchpadManageHook (W.RationalRect 0.10 0.30 0.80 0.30)
+myscratchpadManageHook = scratchpadManageHook (W.RationalRect 0.10 0.02 0.80 0.40)
     -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = True
