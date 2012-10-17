@@ -25,10 +25,10 @@ OPT = 2
 DEBUG = "y"
 
 ifeq ($(DEBUG),"y")
-	CCFLAGS += -D$(TARGET)_DEBUG=1
+	CCFLAGS += -D$(TARGET)_DEBUG=1 -D$(TARGET)
 	CCFLAGS += -g -O0 -Werror -Wall -Wextra -Wuninitialized
 else
-	CCFLAGS += -D$(TARGET)_DEBUG=0
+	CCFLAGS += -D$(TARGET)_DEBUG=0 -D$(TARGET)
 	CCFLAGS += -O$(OPT) -Werror -Wall
 endif
 

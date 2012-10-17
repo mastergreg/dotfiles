@@ -23,7 +23,6 @@ set complete=.,w,b,u,t,i,d
 set foldmethod=marker
 set foldmarker={{{,}}}
 set nowrap
-filetype plugin indent on
 set backspace=2
 set showmatch
 set ttyfast
@@ -88,6 +87,7 @@ else
     "colo ir_black
     "colo leo
     colo vimbrant
+    "colo molokai 
     "colo dante
     "colo zenburn 
 endif
@@ -98,6 +98,17 @@ let Tlist_Use_Right_Window=1
 
 call pathogen#infect()
 
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+   " let Vundle manage Vundle
+   "  " required! 
+Bundle 'gmarik/vundle'
+Bundle 'Lokaltog/vim-powerline'
+
+filetype plugin indent on     " required!
 
 
 if has("autocmd")
@@ -124,6 +135,7 @@ autocmd BufNewFile,BufRead *sml set smartindent cinwords cinwords=fun,if,then,el
 "}}}
 
 "{{{Templates and indentation for Haskell files
+autocmd BufNewFile *.hs set foldmethod=indent smartindent sw=4 ts=4 expandtab
 autocmd BufNewFile *.hs so /home/master/.vim/haskell_template
 autocmd BufNewFile *.hs exe "1," . 6 . "g/File Name :.*/s//File Name : " .expand("%")
 autocmd BufNewFile *.hs exe "1," . 6 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
@@ -142,7 +154,7 @@ autocmd Bufwritepre,filewritepre *.yap execute "normal ma"
 autocmd Bufwritepre,filewritepre *.yap exe "1," . 6 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
 autocmd bufwritepost,filewritepost *.yap execute "normal `a"
 autocmd BufNewFile,BufRead *.yap set smartindent syntax=prolog
-autocmd BufNewFile,BufRead *.yap colo slate
+"autocmd BufNewFile,BufRead *.yap colo slate
 "}}}
 
 "{{{Templates indentation and syntax for java
@@ -166,10 +178,22 @@ autocmd Bufwritepre,filewritepre *.py execute "normal ma"
 autocmd Bufwritepre,filewritepre *.py exe "1," . 10 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
 autocmd bufwritepost,filewritepost *.py execute "normal `a"
 "}}}
+"
+"{{{Templates for pazcal
+autocmd BufNewFile *.pzc,*pzh so /home/master/.vim/pazcal_template
+autocmd BufNewFile *.pzc,*pzh  exe "1, 6  g/File Name :.*/s//File Name : " .expand("%")
+autocmd BufNewFile *.pzc,*pzh  exe "1, 6  g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
+autocmd BufNewFile *.pzc,*pzh  exe "9, 11 g/pazcalprog/s/pazcalprog/" . expand("%:r") . "/"
+autocmd BufNewFile *.pzc,*pzh  exe "9, 11 g/PROGRAM/s/PROGRAM [0-9-_]*/PROGRAM /"
+autocmd Bufwritepre,filewritepre *.pzc,*pzh  execute "normal ma"
+autocmd Bufwritepre,filewritepre *.pzc,*pzh  exe "1," . 6 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
+autocmd bufwritepost,filewritepost *.pzc,*pzh  execute "normal `a"
+"}}}
 
 "{{{ Texing
+"autocmd BufNewFile,BufRead *.tex set keymap=greek
 autocmd BufNewFile,BufRead *.tex set smartindent tw=78
-autocmd BufNewFile,BufRead *.tex setlocal spell! spelllang=el,en<CR>
+"autocmd BufNewFile,BufRead *.tex setlocal spell! spelllang=el,en<CR>
 autocmd BufNewFile,BufRead *.tex set spellsuggest=best,3
 
 "}}}

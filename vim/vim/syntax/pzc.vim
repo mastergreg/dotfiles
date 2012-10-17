@@ -1,0 +1,1 @@
+/home/master/Repos/pzc-vim/syntax/pzc.vim

@@ -1,11 +1,13 @@
 cat /proc/uptime >> .uptime
 xmodmap /home/master/.xmodmap &
 tray &
+parcellite &
 (sleep 10 && ~/.dropbox-dist/dropboxd ) &
 #wallpaper &
-(sleep 10 && mconky ) &
+#(sleep 10 && mconky ) &
 #urxvtd -q -o -f &
-( xsetroot -cursor_name left_ptr && feh --bg-center ~/Pictures/wallpapers_new/wallpaper.png)&
+#( xsetroot -cursor_name left_ptr && feh --bg-center ~/Pictures/wallpapers_new/wallpaper.png)&
+wallpaper
 export XDG_MENU_PREFIX=lxde- &
 #eval '$(gpg-agent --daemon)'
 #(sleep 2 && tint2) &

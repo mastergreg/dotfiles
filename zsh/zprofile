@@ -7,6 +7,7 @@ source ~/.pithos/pithos
 export HISTSIZE=1000
 export SAVEHIST=1000
 export HISTFILE=~/.zsh_history
+export MOZ_DISABLE_PANGO=1
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   exec startx
   # Could use xinit instead of startx

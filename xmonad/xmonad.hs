@@ -299,7 +299,7 @@ nmaster = 1
 	-- Percent of screen to increment by when resizing panes
 delta   = 3/100
 	-- Default proportion of screen occupied by master pane
-ratio   = 3/5
+ratio   = 1/2
 
 
 tallLayout = named "|=" $ avoidStruts $ basicLayout

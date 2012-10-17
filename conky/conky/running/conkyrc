@@ -1,8 +1,10 @@
 #vim: filetype=conkyrc
 background yes
 use_xft no
-xftalpha 1.0
-update_interval 1.0
+xftfont Bitstream Vera Sans Mono:size=8
+xftalpha 0.8
+#font -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1
+update_interval 2.0
 total_run_times 0
 own_window yes
 own_window_type override
@@ -26,10 +28,8 @@ out_to_console no
 stippled_borders 2
 uppercase no
 use_spacer yes
-xftfont Aerial:style=Bold:pixelsize=9
-font -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1
-#lua_load ~/.conky/draw_bg.lua
-#lua_draw_hook_pre draw_bg
+lua_load ~/.conky/draw_bg.lua
+lua_draw_hook_pre draw_bg
 mpd_host localhost
 mpd_port 6600 
 if_up_strictness address 
@@ -38,8 +38,8 @@ if_up_strictness address
 #color1  00BBFF
 #color2  00BBFF 
 #color3  55FF55
-default_color DDDDDD
-color0  DDDDDD
+default_color AAAAAA
+color0  AAAAAA
 color1  00FF00 
 color2  0071FF
 color3  FFD000

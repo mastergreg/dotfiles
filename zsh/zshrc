@@ -106,6 +106,8 @@ alias c='clear'
 alias s='source ~/.zshrc'
 
 
+alias bb=goodbye
+
 alias svim="sudo vim"
 
 alias -s c=vim
@@ -164,9 +166,9 @@ if [[ -f "$1" ]]; then
         *.jpeg)             gpicview     "$1" &   ;;
         *.JPG)              gpicview     "$1" &   ;;
         *.jpg)              gpicview     "$1" &   ;;
-        *.pdf)              zathura     "$1" &> /dev/null &   ;;
-        *.eps)              zathura     "$1" &> /dev/null &   ;;
-        *.ps)              zathura     "$1" &> /dev/null &   ;;
+        *.pdf)              evince     "$1" &> /dev/null &   ;;
+        *.eps)              evince     "$1" &> /dev/null &   ;;
+        *.ps)               evince     "$1" &> /dev/null &   ;;
         *.odt | *.doc)      libreoffice "$1" &> /dev/null &   ;;
         *.avi)              mplayer     "$1"    ;;
         *)                  vim "$1"            ;;
@@ -195,9 +197,9 @@ setopt nohup
 setopt NO_cdable_vars
 
 function welcome() {
-    #echo -en '\e[1;31m'
-    #figlet $(hostname)
-    #echo -en '\e[0m'
+    echo -en '\e[1;31m'
+    figlet $(hostname)
+    echo -en '\e[0m'
 	echo -e 'What is thy bidding, '$(whoami)'?'
 }
 
@@ -217,6 +219,10 @@ function any() {
     echo $x
     #echo $files
     
+}
+function goodbye() {
+    echo 'Goodnight master, powering off'
+    sudo halt
 }
 
 welcome
