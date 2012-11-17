@@ -1,0 +1,55 @@
+#vim: filetype=conkyrc
+background yes
+use_xft no
+xftfont Monospace:size=10
+xftalpha 0.8
+font -misc-fixed-medium-r-*--12-*-*-*-*-*-iso10646-1
+update_interval 2.0
+total_run_times 0
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+draw_shades no 
+draw_outline no
+draw_borders no
+draw_graph_borders no
+alignment top_left
+maximum_width 500
+minimum_size 500 0
+max_port_monitor_connections 64
+max_specials 512
+max_user_text 16384
+#minimum_size 310
+gap_x 55
+gap_y 600
+net_avg_samples 2
+out_to_console no
+stippled_borders 2
+uppercase no
+use_spacer right
+lua_load ~/.conky/draw_bg.lua
+lua_draw_hook_pre draw_bg
+mpd_host localhost
+mpd_port 6600 
+if_up_strictness address 
+
+#color0  FFFFFF
+#color1  00BBFF
+#color2  00BBFF 
+#color3  55FF55
+default_color DDDDDD
+color0  DDDDDD
+color1  00FF00 
+color2  0071FF
+color3  FFD000
+TEXT
+${color1}File systems: ${color3}${alignr} I/O: ${color2}${diskio} ${diskiograph 20,120 000000 00FF00}
+ ${color3}Read: ${color2}${diskio_read} ${color3}${alignr}Write: ${color2}${diskio_write} 
+ ${color3}/          ${color0}${alignr}${fs_used /}/${fs_size /}   ${color }${fs_bar 5,120 /}
+ ${color3}/home      ${color0}${alignr}${fs_used /home}/${fs_size /home}   ${color }${fs_bar 5,120 /home}${if_existing /home/master/SHARE/Home_share/.conkycheck}
+ ${color3}~/SHARE/BigStorageArea  ${color0}${alignr}${fs_used /home/master/SHARE/BigStorageArea}/${fs_size /home/master/SHARE/BigStorageArea}   ${color }${fs_bar 5,120 /home/master/SHARE/BigStorageArea}${endif}${if_existing /home/master/SHARE/BigStorageArea/.conkycheck}
+ ${color3}~/SHARE/Home_share  ${color0}${alignr}${fs_used /home/master/SHARE/Home_share}/${fs_size /home/master/SHARE/Home_share}   ${color }${fs_bar 5,120 /home/master/SHARE/Home_share}${endif}${if_existing /home/master/SHARE/Music_share/.conkycheck}
+ ${color3}~/SHARE/Music_share  ${color0}${alignr}${fs_used /home/master/SHARE/Music_share}/${fs_size /home/master/SHARE/Music_share}   ${color }${fs_bar 5,120 /home/master/SHARE/Music_share}${endif}${if_existing /home/master/SHARE/Torrent_share/.conkycheck}
+ ${color3}~/SHARE/Torrent_share  ${color0}${alignr}${fs_used /home/master/SHARE/Torrent_share}/${fs_size /home/master/SHARE/Torrent_share}   ${color }${fs_bar 5,120 /home/master/SHARE/Torrent_share}${endif}
