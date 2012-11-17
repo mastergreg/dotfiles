@@ -126,14 +126,17 @@ alias gp='git push'
 alias gm='git merge'
 alias gf='git fetch'
 alias gst='git status'
+alias gmt='git commit'
 alias gtr='git tree'
+alias ga='git add'
 
 #emerge eix gentoo stuff
 alias es='sudo eix-sync'
 alias ef='eix'
 alias ep='sudo emerge --jobs=2 --quiet-build y portage'
 alias e='sudo emerge --jobs=2 -av --quiet-build y'
-alias eu='sudo emerge --jobs=5 --keep-going --load-average=2 --with-bdeps=y -avuND --quiet-build=y @world'
+alias eu='sudo emerge --jobs=5 --keep-going --load-average=2 --with-bdeps=y -avuND --quiet-build=y @system && \
+            sudo emerge --jobs=5 --keep-going --load-average=2 --with-bdeps=y -avuND --quiet-build=y @world'
 
 function extract () {
 if [[ -f "$1" ]]; then
@@ -159,6 +162,14 @@ else
 fi
 }
 
+
+function venv () {
+    if [[ "x$1" == "x" ]]; then
+            echo "Usage: venv <virtualenv folder>"
+        else
+            source "$1/bin/activate"
+    fi
+}
 function open () {
 if [[ -f "$1" ]]; then
     case "$1" in
@@ -166,9 +177,9 @@ if [[ -f "$1" ]]; then
         *.jpeg)             gpicview     "$1" &   ;;
         *.JPG)              gpicview     "$1" &   ;;
         *.jpg)              gpicview     "$1" &   ;;
-        *.pdf)              evince     "$1" &> /dev/null &   ;;
-        *.eps)              evince     "$1" &> /dev/null &   ;;
-        *.ps)               evince     "$1" &> /dev/null &   ;;
+        *.pdf)              zathura     "$1" &> /dev/null &   ;;
+        *.eps)              zathura     "$1" &> /dev/null &   ;;
+        *.ps)               zathura     "$1" &> /dev/null &   ;;
         *.odt | *.doc)      libreoffice "$1" &> /dev/null &   ;;
         *.avi)              mplayer     "$1"    ;;
         *)                  vim "$1"            ;;

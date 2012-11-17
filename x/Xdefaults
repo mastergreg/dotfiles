@@ -3,14 +3,22 @@
 !*font: -misc-fixed-medium-r-semicondensed--12-*-*-*-*-*-iso10646-1
 !*boldFont: -misc-fixed-medium-r-semicondensed--12-*-*-*-*-*-iso10646-1
 
-*font: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
-*boldFont: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
+!*font: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
+!*boldFont: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
 
 
+!*font: xft:Inconsolata:size=10
+!*font: xft:Monospace:size=10
+!*font: xft:Monospace:size=10
+!*boldFont: -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1
 !*font: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso10646-1
 !*boldFont: -misc-fixed-medium-r-normal-10-*-*-*-*-*-iso10646-1
 !*font: -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1
 !*boldFont: -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1
+*font: -misc-fixed-medium-r-*--12-*-*-*-*-*-iso10646-1
+*boldFont: -misc-fixed-medium-r-*--12-*-*-*-*-*-iso10646-1
+!*font: -*-*-*-*-*-*-*-*-*-*-*-*-iso8859-7
+!*boldFont: -*-*-*-*-*-*-*-*-*-*-*-*-iso8859-7
 !*font: -misc-fixed-medium-r-*--13-*-*-*-*-*-iso8859-7
 !*boldFont: -misc-fixed-medium-r-*--13-*-*-*-*-*-iso8859-7
 
@@ -30,6 +38,9 @@ XTerm*bellIsUrgent: true
 XTerm*geometry: 80x35
 
 XTerm*termName: xterm-256color
+
+XTerm*eightBitInput:   false
+XTerm*metaSendsEscape: true
 
 !}}}
 

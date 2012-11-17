@@ -8,11 +8,11 @@ export HISTSIZE=1000
 export SAVEHIST=1000
 export HISTFILE=~/.zsh_history
 export MOZ_DISABLE_PANGO=1
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-  exec startx
-  # Could use xinit instead of startx
-  #exec xinit -- /usr/bin/X -nolisten tcp vt7
-fi
+#if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+#  exec startx
+#  # Could use xinit instead of startx
+#  #exec xinit -- /usr/bin/X -nolisten tcp vt7
+#fi
 
 export GNUPLOT_DEFAULT_GDFONT=/usr/share/fonts/dejavu/DejaVuSansMono.ttf 
 

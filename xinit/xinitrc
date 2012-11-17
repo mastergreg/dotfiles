@@ -1,15 +1,19 @@
 cat /proc/uptime >> .uptime
 xmodmap /home/master/.xmodmap &
 tray &
-parcellite &
-(sleep 10 && ~/.dropbox-dist/dropboxd ) &
-#wallpaper &
-#(sleep 10 && mconky ) &
+wallpaper &
+eval '$(gpg-agent --daemon)'
+(sleep 5 && parcellite) &
+(sleep 5 && ~/.dropbox-dist/dropboxd ) &
+(sleep 5 && mconky ) &
+(sleep 5 && firefox ) &
+(sleep 5 && urxvt -T 'mutt' -e ssh dio) &
+(sleep 5 && urxvt -T 'music') &
 #urxvtd -q -o -f &
-#( xsetroot -cursor_name left_ptr && feh --bg-center ~/Pictures/wallpapers_new/wallpaper.png)&
-wallpaper
-export XDG_MENU_PREFIX=lxde- &
-#eval '$(gpg-agent --daemon)'
+#(sleep 4 && wallpaper) &
 #(sleep 2 && tint2) &
 #exec openbox
+
+urxvt &
+export XDG_MENU_PREFIX=lxde- &
 exec xmonad 
