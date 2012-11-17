@@ -46,9 +46,11 @@ $(TARGET): $(OBJ) $(DEPENDS)
 	$(CC) -c $(CCFLAGS) $< -o $@
 
 
-.PHONY:	clean all indent
+.PHONY:	clean all indent tags
 clean:
 	rm -f $(OBJ) $(TARGET)
 indent:
 	astyle --style=linux $(CCFILES)
+tags:
+	ctags -R *
 .

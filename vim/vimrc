@@ -13,6 +13,11 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab 
 set diffopt+=iwhite
+set smarttab                    "Indent instead of tab at start of line
+set shiftround                  "Round spaces to nearest shiftwidth multiple
+set nojoinspaces                "Don't convert spaces to tabs
+
+
 "
 set complete=.,w,b,u,t,i,d
 "set foldmethod=syntax
@@ -44,6 +49,7 @@ let NERDTreeIgnore=['.*\.o$']
 let NERDTreeIgnore+=['.*\~$']
 let NERDTreeIgnore+=['.*\.out$']
 let NERDTreeIgnore+=['.*\.so$', '.*\.a$']
+
 
 noremap <F11> :TlistToggle<CR>
 
@@ -85,8 +91,8 @@ else
     "colo delek
     "colo slate
     "colo ir_black
-    "colo leo
     colo vimbrant
+    "colo ir_black
     "colo molokai 
     "colo dante
     "colo zenburn 
@@ -107,6 +113,8 @@ call vundle#rc()
    "  " required! 
 Bundle 'gmarik/vundle'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'AutoComplPop'
+Bundle 'rosenfeld/conque-term'
 
 filetype plugin indent on     " required!
 
@@ -135,7 +143,7 @@ autocmd BufNewFile,BufRead *sml set smartindent cinwords cinwords=fun,if,then,el
 "}}}
 
 "{{{Templates and indentation for Haskell files
-autocmd BufNewFile *.hs set foldmethod=indent smartindent sw=4 ts=4 expandtab
+autocmd BufRead *.hs set foldmethod=indent smartindent sw=2 ts=2 sts=2 expandtab
 autocmd BufNewFile *.hs so /home/master/.vim/haskell_template
 autocmd BufNewFile *.hs exe "1," . 6 . "g/File Name :.*/s//File Name : " .expand("%")
 autocmd BufNewFile *.hs exe "1," . 6 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
@@ -214,6 +222,5 @@ autocmd BufRead *.bob set syntax=c
 "{{{ mutt
 au BufRead /tmp/mutt-* set tw=72
 "}}}
-
 
 endif " has("autocmd")
