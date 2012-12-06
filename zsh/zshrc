@@ -45,6 +45,7 @@ case "${TERM}" in
     dump)
         PROMPT='%n@%m:%~%% '
         ;;
+
     linux)
         ;;
 esac
@@ -60,7 +61,7 @@ export LESS_TERMCAP_so=$'\E[1;33;40m' # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\E[0m'       # end underline
 export LESS_TERMCAP_us=$'\E[1;32m'    # begin underline
 # }}}
-                                                                                                                                                                                                           
+
 
 bindkey -v
 # /etc/inputrc initialization file for readline
@@ -109,6 +110,7 @@ alias s='source ~/.zshrc'
 alias bb=goodbye
 
 alias svim="sudo vim"
+alias vime="vim -u ~/.vimencrypt -x"
 
 alias -s c=vim
 alias -s cpp=vim
@@ -136,56 +138,56 @@ alias ef='eix'
 alias ep='sudo emerge --jobs=2 --quiet-build y portage'
 alias e='sudo emerge --jobs=2 -av --quiet-build y'
 alias eu='sudo emerge --jobs=5 --keep-going --load-average=2 --with-bdeps=y -avuND --quiet-build=y @system && \
-            sudo emerge --jobs=5 --keep-going --load-average=2 --with-bdeps=y -avuND --quiet-build=y @world'
+    sudo emerge --jobs=5 --keep-going --load-average=2 --with-bdeps=y -avuND --quiet-build=y @world'
 
 function extract () {
 if [[ -f "$1" ]]; then
     case "$1" in
         *.tbz2 | *.tar.bz2) tar -xvjf  "$1"     ;;
-        *.txz | *.tar.xz)   tar -xvJf  "$1"     ;;
-        *.tgz | *.tar.gz)   tar -xvzf  "$1"     ;;
+    *.txz | *.tar.xz)   tar -xvJf  "$1"     ;;
+*.tgz | *.tar.gz)   tar -xvzf  "$1"     ;;
         *.tar | *.cbt)      tar -xvf   "$1"     ;;
-        *.zip | *.cbz)      unzip      "$1"     ;;
-        *.rar | *.cbr)      unrar x    "$1"     ;;
+    *.zip | *.cbz)      unzip      "$1"     ;;
+*.rar | *.cbr)      unrar x    "$1"     ;;
         *.arj)              unarj x    "$1"     ;;
-        *.ace)              unace x    "$1"     ;;
-        *.bz2)              bunzip2    "$1"     ;;
+    *.ace)              unace x    "$1"     ;;
+*.bz2)              bunzip2    "$1"     ;;
         *.xz)               unxz       "$1"     ;;
-        *.gz)               gunzip     "$1"     ;;
-        *.7z)               7z x       "$1"     ;;
+    *.gz)               gunzip     "$1"     ;;
+*.7z)               7z x       "$1"     ;;
         *.Z)                uncompress "$1"     ;;
-        *.gpg)       gpg2 -d "$1" | tar -xvzf - ;;
-        *) echo "Error: failed to extract $1" ;;
+    *.gpg)       gpg2 -d "$1" | tar -xvzf - ;;
+*) echo "Error: failed to extract $1" ;;
     esac
 else
-  echo "Error: $1 is not a valid file for extraction"
+    echo "Error: $1 is not a valid file for extraction"
 fi
 }
 
 
 function venv () {
-    if [[ "x$1" == "x" ]]; then
-            echo "Usage: venv <virtualenv folder>"
-        else
-            source "$1/bin/activate"
-    fi
+if [[ "x$1" == "x" ]]; then
+    echo "Usage: venv <virtualenv folder>"
+else
+    source "$1/bin/activate"
+fi
 }
 function open () {
 if [[ -f "$1" ]]; then
     case "$1" in
         *.png)              gpicview     "$1" &   ;;
-        *.jpeg)             gpicview     "$1" &   ;;
-        *.JPG)              gpicview     "$1" &   ;;
+    *.jpeg)             gpicview     "$1" &   ;;
+*.JPG)              gpicview     "$1" &   ;;
         *.jpg)              gpicview     "$1" &   ;;
-        *.pdf)              zathura     "$1" &> /dev/null &   ;;
-        *.eps)              zathura     "$1" &> /dev/null &   ;;
+    *.pdf)              zathura     "$1" &> /dev/null &   ;;
+*.eps)              zathura     "$1" &> /dev/null &   ;;
         *.ps)               zathura     "$1" &> /dev/null &   ;;
-        *.odt | *.doc)      libreoffice "$1" &> /dev/null &   ;;
-        *.avi)              mplayer     "$1"    ;;
+    *.odt | *.doc)      libreoffice "$1" &> /dev/null &   ;;
+*.avi)              mplayer     "$1"    ;;
         *)                  vim "$1"            ;;
     esac
 else
-  echo "Error: $1 is not a valid file to open"
+    echo "Error: $1 is not a valid file to open"
 fi
 }
 
@@ -193,11 +195,11 @@ function play () {
 if [[ -f "$1" ]]; then
     case "$1" in
         *.mp3 | *.ogg)          mplayer "$1"   ;;
-        *.pls | *.m3u)          mplayer -playlist "$1"   ;;
-        *) echo "Error: failed to open $1" ;;
+    *.pls | *.m3u)          mplayer -playlist "$1"   ;;
+*) echo "Error: failed to open $1" ;;
     esac
 else
-  echo "Error: $1 could not play file"
+    echo "Error: $1 could not play file"
 fi
 }
 function calc () { awk "BEGIN{ print $* }" ;}
@@ -208,32 +210,32 @@ setopt nohup
 setopt NO_cdable_vars
 
 function welcome() {
-    echo -en '\e[1;31m'
-    figlet $(hostname)
-    echo -en '\e[0m'
-	echo -e 'What is thy bidding, '$(whoami)'?'
+echo -en '\e[1;31m'
+figlet $(hostname)
+echo -en '\e[0m'
+echo -e 'What is thy bidding, '$(whoami)'?'
 }
 
 function loop() {
-    while true;
-    do
-        $*
-    done
+while true;
+do
+    $*
+done
 }
 function any() {
-    #set -a files
-    files=($*)
-    echo ${files[#]}
-    #for f in $files
-    #    echo $f
-    let x=${files[RANDOM]}
-    echo $x
-    #echo $files
-    
+#set -a files
+files=($*)
+echo ${files[#]}
+#for f in $files
+#    echo $f
+let x=${files[RANDOM]}
+echo $x
+#echo $files
+
 }
 function goodbye() {
-    echo 'Goodnight master, powering off'
-    sudo halt
+echo 'Goodnight master, powering off'
+sudo halt
 }
 
 welcome
