@@ -32,6 +32,7 @@ function vim
 {
     echo installing vim config
     ln -f -s `pwd`/vim/vim ~/.vim
+    ln -f -s `pwd`/vim/vimencrypte ~/.vimencrypt
     ln -f -s `pwd`/vim/vimrc ~/.vimrc
 }
 function openbox

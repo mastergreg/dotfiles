@@ -1,5 +1,5 @@
 syn on
-set number
+set relativenumber
 set nocp
 "
 "set expandtab
@@ -34,6 +34,7 @@ set ttyfast
 set autowrite
 set autoindent
 set mouse=a
+set mousehide
 set encoding=utf8
 set splitbelow
 
@@ -53,9 +54,9 @@ let NERDTreeIgnore+=['.*\.so$', '.*\.a$']
 
 noremap <F11> :TlistToggle<CR>
 
-noremap <F10> :set pastetoggle<CR>
-
 noremap <F5> :make<CR>
+
+nnoremap Y y$
 
 
 " statusline -----------------------------------------------------------
@@ -80,6 +81,11 @@ set showcmd             " show partial commands in status line
 " shows: filename, position, eof, syntax, encoding, format 
 set statusline=%-3.3n\ %f\ %r%#Error#%m%#Statusline#\ (%l/%L,\ %c)\ %P%=%h%w\ %y\ [%1.20n]:[%{&encoding}:%{&fileformat}]\ 
 set cursorline
+
+set colorcolumn=80
+
+set listchars=tab:,.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
+set pastetoggle=<F12>
 
 
 if &term=~"linux"
