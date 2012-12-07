@@ -113,6 +113,7 @@ alias svim="sudo vim"
 alias vime="vim -u ~/.vimencrypt -x"
 
 alias scr="screen -RDS"
+alias sls="screen -ls"
 
 alias -s c=vim
 alias -s cpp=vim
