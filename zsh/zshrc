@@ -112,6 +112,8 @@ alias bb=goodbye
 alias svim="sudo vim"
 alias vime="vim -u ~/.vimencrypt -x"
 
+alias scr="screen -RDS"
+
 alias -s c=vim
 alias -s cpp=vim
 alias -s h=vim
