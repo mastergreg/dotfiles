@@ -6,10 +6,10 @@ defscrollback 1000
 # Automatically detach on hangup.
 autodetach on
 # start with visual bell as default
-vbell on
-vbell_msg "bell on %t (%n)"
+vbell off
+vbell_msg "^GBell on %t (%n)"
 
-terminfo rxvt-unicode 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+#terminfo rxvt-unicode 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 hardstatus off
 #hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W} %c %{g}]'
 
@@ -21,10 +21,10 @@ activity "Activity in %t(%n)"
 shelltitle "sh"
 startup_message off
 #termcapinfo xterm* ti@:te@
-terminfo rxvt-unicode 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
-termcapinfo xterm|xterms|xs|rxvt ti@:te@
-# Enable 256 color term
-term xterm-256color
+#terminfo rxvt-unicode 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+#termcapinfo xterm|xterms|xs|rxvt ti@:te@
+## Enable 256 color term
+#term xterm-256color
 
 
 
