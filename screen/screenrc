@@ -18,7 +18,7 @@ hardstatus alwayslastline
 hardstatus string '%{= wkw}%{gk}[ %{B}%H%{g} ][%{= kw}%?%-Lw%?%{r}(%{W}%n %f%t%?(%u)%?%{r})%{W}%?%+Lw%?%?%=%{g}][%{w}%l%{g}][%{B} %d/%m %{W}%c %{g}]' 
 
 activity "Activity in %t(%n)"
-shelltitle "sh"
+shelltitle " sh"
 startup_message off
 #termcapinfo xterm* ti@:te@
 #terminfo rxvt-unicode 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
