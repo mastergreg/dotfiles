@@ -213,3 +213,4 @@ PS1='\[\e[1;37m\]\h\[\e[m\] \[\e[1;34m\]`cut_pwd`\[\e[m\] `git_branch`\[\e[0;37m
 
 #PS1='\e[0;37m\[\e[1;31m\]\u \[\e[1;34m\]\w\e[0;37m\e[0;37m :\[\e[1;32m\]->\[\e[m\] '
 #PS1='\e[1;34m\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[0;31m\]\$ \[\e[m\]' 
+export PROMPT_COMMAND='echo -ne "\033k\033\0134\033k${HOSTNAME}[`basename ${PWD}`]\033\0134"'
