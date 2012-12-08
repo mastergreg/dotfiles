@@ -48,6 +48,11 @@ case "${TERM}" in
 
     linux)
         ;;
+    screen*)
+        function precmd() {
+            /bin/echo -ne "\033k\033\0134\033k`hostname`[`basename ${PWD}`]\033\0134"
+        }
+        ;;
 esac
 
 
