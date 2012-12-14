@@ -29,7 +29,7 @@ uppercase no
 use_spacer left
 xftfont Monospace:size=10
 #font 6x10
-font -misc-fixed-medium-r-*--12-*-*-*-*-*-iso10646-1
+font -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1
 lua_load ~/.conky/draw_bg.lua
 lua_draw_hook_pre draw_bg
 if_up_strictness address 

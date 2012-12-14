@@ -42,4 +42,4 @@ color2  0071FF
 color3  FFD000
 TEXT
 ${alignr}${color1}notes:
-${execi 300 cat ~/notes.txt}
+${color2}${execi 300 cat ~/notes.txt}

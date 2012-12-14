@@ -3,11 +3,11 @@ xmodmap /home/master/.xmodmap &
 tray &
 wallpaper &
 eval '$(gpg-agent --daemon)'
-(sleep 5 && parcellite) &
+#(sleep 5 && parcellite) &
 (sleep 5 && ~/.dropbox-dist/dropboxd ) &
 (sleep 5 && mconky ) &
-(sleep 5 && firefox ) &
-(sleep 5 && urxvt -T 'mutt' -e ssh dio) &
+#(sleep 5 && firefox ) &
+(sleep 5 && urxvt -T 'mutt') &
 (sleep 5 && urxvt -T 'music') &
 #urxvtd -q -o -f &
 #(sleep 4 && wallpaper) &

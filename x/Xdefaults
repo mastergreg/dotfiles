@@ -1,5 +1,9 @@
+!*font: -misc-fixed-bold-r-normal--15-120-100-100-c-90-iso8859-1
+!*boldFont: -misc-fixed-bold-r-normal--15-120-100-100-c-90-iso8859-1
 !*font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
 !*boldFont: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
+!*font: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso10646-1
+!*boldFont: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso10646-1
 !*font: -misc-fixed-medium-r-semicondensed--12-*-*-*-*-*-iso10646-1
 !*boldFont: -misc-fixed-medium-r-semicondensed--12-*-*-*-*-*-iso10646-1
 
@@ -8,15 +12,19 @@
 
 
 !*font: xft:Inconsolata:size=10
+!*font: xft:Terminus:antialias=false
+*font: xft:Envy Code R:style=Regular:size=9
 !*font: xft:Monospace:size=10
-!*font: xft:Monospace:size=10
+!*font: xft:DejaVu Sans Mono:size=9
+!*boldFont: xft:DejaVu Sans Mono:size=10
+!*font: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso10646-1
 !*boldFont: -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1
 !*font: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso10646-1
 !*boldFont: -misc-fixed-medium-r-normal-10-*-*-*-*-*-iso10646-1
 !*font: -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1
 !*boldFont: -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1
-*font: -misc-fixed-medium-r-*--12-*-*-*-*-*-iso10646-1
-*boldFont: -misc-fixed-medium-r-*--12-*-*-*-*-*-iso10646-1
+!*font: -misc-fixed-medium-r-*--12-*-*-*-*-*-iso10646-1
+!*boldFont: -misc-fixed-medium-r-*--12-*-*-*-*-*-iso10646-1
 !*font: -*-*-*-*-*-*-*-*-*-*-*-*-iso8859-7
 !*boldFont: -*-*-*-*-*-*-*-*-*-*-*-*-iso8859-7
 !*font: -misc-fixed-medium-r-*--13-*-*-*-*-*-iso8859-7
@@ -31,7 +39,7 @@
 XTerm*xft:false
 XTerm*boldMode: false
 
-XTerm*background: #000000
+XTerm*background: #222222
 #XTerm*foreground: #FFFFFF
 XTerm*foreground: #EEEEEE
 XTerm*bellIsUrgent: true
@@ -47,7 +55,7 @@ XTerm*metaSendsEscape: true
 !!{{{ Xterm Colors
 XTerm*color0:#000000
 XTerm*color1:#AA0000
-XTerm*color2:#005500
+XTerm*color2:#00AA00
 XTerm*color3:#AAAA00
 XTerm*color4:#0055AA
 XTerm*color5:#AA00AA
@@ -55,8 +63,7 @@ XTerm*color6:#00AAAA
 XTerm*color7:#AAAAAA
 XTerm*color8:    #555555
 XTerm*color9:    #FF0000
-!XTerm*color10:   #00FF00
-XTerm*color10:   #00AA00
+XTerm*color10:   #00FF00
 XTerm*color11:   #FFFF00
 XTerm*color12:   #0055FF
 XTerm*color13:   #FF00FF
@@ -82,8 +89,8 @@ URxvt*urgentOnBell: true
 URxvt*transparent: true
 !URxvt*transparent: false
 
-URxvt*shading:     30
-URxvt*tint:         #000000
+URxvt*shading:     20
+URxvt*tint:         #0A0A0A
 !URxvt*tint:         #333333
 URxvt*geometry: 80x33
 
@@ -139,7 +146,7 @@ URxvt*color15:   #FFFFFF
 
 URxvt*foreground: #DDDDDD
 !URxvt*foreground: #00AA00
-URxvt*background: #0F0F0F
+URxvt*background: #1F1F1F
 !URxvt*color0: #101010
 !URxvt*color1: #f13a21
 !URxvt*color2: #93f91d
