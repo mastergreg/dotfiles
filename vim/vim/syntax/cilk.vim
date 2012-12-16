@@ -9,8 +9,8 @@ if exists("b:current_syntax")
 endif
 
 " Cilk keywords
-syn keyword	cilkKeyword	cilk
-syn keyword	cilkStatement	spawn sync
+syn keyword	cilkKeyword	cilk inlet 
+syn keyword	cilkStatement	spawn sync abort
 syn keyword	cilkFunction	Cilk_init Cilk_terminate Cilk_alloca Cilk_lock_init Cilk_lock Cilk_unlock Cilk_get_wall_time Cilk_wall_time_to_sec Cilk_time_to_sec
 syn keyword	cilkType	CilkContext Cilk_lockvar Cilk_assert Cilk_time
 syn keyword	cilkVariable	Cilk_active_size Self Cilk_user_critical_path Cilk_user_work
