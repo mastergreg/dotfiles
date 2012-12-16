@@ -40,6 +40,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=/home/master/bin:/usr/local/bin:/usr/bin:/bin:/opt/bin:/usr/games/bin:/usr/games
+function precmd() {
+    /bin/echo -ne "\a"
+}
 
 case "${TERM}" in
     dump)
