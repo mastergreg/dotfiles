@@ -14,6 +14,7 @@
 !*font: xft:Inconsolata:size=10
 !*font: xft:Terminus:antialias=false
 *font: xft:Envy Code R:style=Regular:size=9
+!!*faceName: xft:Envy Code R:style=Regular:size=9
 !*font: xft:Monospace:size=10
 !*font: xft:DejaVu Sans Mono:size=9
 !*boldFont: xft:DejaVu Sans Mono:size=10
@@ -34,12 +35,21 @@
 !*font: -misc-fixed-medium-r-normal--15-*-75-75-c-90-iso10646-1
 !*boldFont: -misc-fixed-medium-r-normal--15-*-75-75-c-90-iso10646-1
 
+!{{{ Xft settings
+Xft.dpi:    96
+Xft.antialias:        true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+!}}}
+
+
 !{{{ XTerm settings
 
-XTerm*xft:false
+!XTerm*xft:false
 XTerm*boldMode: false
 
-XTerm*background: #222222
+XTerm*background: #0A0A0A
 #XTerm*foreground: #FFFFFF
 XTerm*foreground: #EEEEEE
 XTerm*bellIsUrgent: true
@@ -52,7 +62,7 @@ XTerm*metaSendsEscape: true
 
 !}}}
 
-!!{{{ Xterm Colors
+!{{{ Xterm Colors
 XTerm*color0:#000000
 XTerm*color1:#AA0000
 XTerm*color2:#00AA00
@@ -86,7 +96,7 @@ URxvt*termName: rxvt-256color
 URxvt*scrollBar:         false
 URxvt*scrollstyle: plain
 URxvt*urgentOnBell: true
-URxvt*transparent: true
+URxvt*transparent: false
 !URxvt*transparent: false
 
 URxvt*shading:     20
@@ -141,12 +151,12 @@ URxvt*color15:   #FFFFFF
 !URxvt*color14:    #34E2E2
 !URxvt*color15:    #FFFFFF
 !URxvt*colorBD:    #FFFFFF
-
-
-
+!
+!
+!
 URxvt*foreground: #DDDDDD
 !URxvt*foreground: #00AA00
-URxvt*background: #1F1F1F
+URxvt*background: #0A0A0A
 !URxvt*color0: #101010
 !URxvt*color1: #f13a21
 !URxvt*color2: #93f91d
