@@ -1,6 +1,5 @@
 #vim: set filetype=conkyrc
 background yes
-use_xft no
 xftalpha 1.0
 update_interval 5.0
 total_run_times 0
@@ -21,15 +20,14 @@ max_specials 512
 max_user_text 16384
 #minimum_size 310
 gap_x 600
-gap_y 200
+gap_y 150
 net_avg_samples 2
 out_to_console no
 stippled_borders 2
 uppercase no
 use_spacer left
-xftfont Monospace:size=10
-#font 6x10
-font -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1
+use_xft yes
+xftfont Envy Code R:style=Regular:size=9
 lua_load ~/.conky/draw_bg.lua
 lua_draw_hook_pre draw_bg
 if_up_strictness address 
