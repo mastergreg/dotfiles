@@ -53,9 +53,9 @@ case "${TERM}" in
         ;;
     screen*)
         function preexec() {
-            /bin/echo -ne "\033k\033\0134\033k ${1%% *}\033\0134"
-        }
-        ;;
+        /bin/echo -ne "\033k\033\0134\033k ${1%% *}\033\0134"
+    }
+    ;;
 esac
 
 
@@ -114,8 +114,9 @@ alias x='exit'
 alias c='clear'
 alias s='source ~/.zshrc'
 
+#parallel tar gzip compression
+alias ptar='tar -I pigz'
 
-alias bb=goodbye
 
 alias svim="sudo vim"
 alias vime="vim -u ~/.vimencrypt -x"
@@ -244,10 +245,6 @@ echo $x
 #echo $files
 
 }
-function goodbye() {
-echo 'Goodnight master, powering off'
-sudo halt
-}
 
 welcome
 export GNUPLOT_DEFAULT_GDFONT=/usr/share/fonts/dejavu/DejaVuSansMono.ttf 
@@ -258,4 +255,3 @@ if [ $? -eq 0 ];
 then
     eval $(keychain -q --eval --agents ssh -Q ~/.ssh/id_rsa  ~/.ssh/id_rsa_foss  ~/.ssh/id_rsa_git )
 fi
-
