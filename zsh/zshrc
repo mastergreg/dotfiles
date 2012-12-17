@@ -11,9 +11,6 @@ ZSH_THEME="master-clean"
 
 
 DISABLE_AUTO_TITLE="true" 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -40,21 +37,10 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=/home/master/bin:/usr/local/bin:/usr/bin:/bin:/opt/bin:/usr/games/bin:/usr/games
-function precmd() {
-    /bin/echo -ne "\a"
-}
 
 case "${TERM}" in
     dump)
         PROMPT='%n@%m:%~%% '
-        ;;
-
-    linux)
-        ;;
-    screen*)
-        function preexec() {
-        /bin/echo -ne "\033k\033\0134\033k ${1%% *}\033\0134"
-    }
     ;;
 esac
 
@@ -101,157 +87,17 @@ bindkey "\e[8~" end-of-line
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
 
-alias ls='ls --color=auto'
-alias l='ls --color=auto'
-alias la='ls -A'
-alias ll='ls -alFh'
-alias rl='rlwrap -Acr'
-alias files="ls -R | grep ':$' | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/' "
-[[ -x =time ]] && alias time='command time'
-alias ping='ping -c 4'
-alias grep='grep --color=auto'
-alias x='exit'
-alias c='clear'
-alias s='source ~/.zshrc'
-
-#parallel tar gzip compression
-alias ptar='tar -I pigz'
-
-
-alias svim="sudo vim"
-alias vime="vim -u ~/.vimencrypt -x"
-
-alias scr="screen -RDS"
-alias sls="screen -ls"
-
-alias -s c=vim
-alias -s cpp=vim
-alias -s h=vim
-alias -s html=vim
-alias -s xml=vim
-
-alias v=vim -p
-alias gv=gvim -p
-
-#git stuff
-alias gpl='git pull'
-alias gch='git checkout'
-alias gp='git push'
-alias gm='git merge'
-alias gf='git fetch'
-alias gst='git status'
-alias gmt='git commit'
-alias gtr='git tree'
-alias ga='git add'
-
-#emerge eix gentoo stuff
-alias es='sudo eix-sync'
-alias ef='eix'
-alias ep='sudo emerge --jobs=2 --quiet-build y portage'
-alias e='sudo emerge --jobs=2 -av --quiet-build y'
-alias eu='sudo emerge --jobs=5 --keep-going --load-average=2 --with-bdeps=y -avuND --quiet-build=y @system && \
-    sudo emerge --jobs=5 --keep-going --load-average=2 --with-bdeps=y -avuND --quiet-build=y @world'
-
-function extract () {
-if [[ -f "$1" ]]; then
-    case "$1" in
-        *.tbz2 | *.tar.bz2) tar -xvjf  "$1"     ;;
-    *.txz | *.tar.xz)   tar -xvJf  "$1"     ;;
-*.tgz | *.tar.gz)   tar -xvzf  "$1"     ;;
-        *.tar | *.cbt)      tar -xvf   "$1"     ;;
-    *.zip | *.cbz)      unzip      "$1"     ;;
-*.rar | *.cbr)      unrar x    "$1"     ;;
-        *.arj)              unarj x    "$1"     ;;
-    *.ace)              unace x    "$1"     ;;
-*.bz2)              bunzip2    "$1"     ;;
-        *.xz)               unxz       "$1"     ;;
-    *.gz)               gunzip     "$1"     ;;
-*.7z)               7z x       "$1"     ;;
-        *.Z)                uncompress "$1"     ;;
-    *.gpg)       gpg2 -d "$1" | tar -xvzf - ;;
-*) echo "Error: failed to extract $1" ;;
-    esac
-else
-    echo "Error: $1 is not a valid file for extraction"
-fi
-}
-
-
-function venv () {
-if [[ "x$1" == "x" ]]; then
-    echo "Usage: venv <virtualenv folder>"
-else
-    source "$1/bin/activate"
-fi
-}
-function open () {
-if [[ -f "$1" ]]; then
-    case "$1" in
-        *.png)              gpicview     "$1" &   ;;
-    *.jpeg)             gpicview     "$1" &   ;;
-*.JPG)              gpicview     "$1" &   ;;
-        *.jpg)              gpicview     "$1" &   ;;
-    *.pdf)              zathura     "$1" &> /dev/null &   ;;
-*.eps)              zathura     "$1" &> /dev/null &   ;;
-        *.ps)               zathura     "$1" &> /dev/null &   ;;
-    *.odt | *.doc)      libreoffice "$1" &> /dev/null &   ;;
-*.avi)              mplayer     "$1"    ;;
-        *)                  vim "$1"            ;;
-    esac
-else
-    echo "Error: $1 is not a valid file to open"
-fi
-}
-
-function play () {
-if [[ -f "$1" ]]; then
-    case "$1" in
-        *.mp3 | *.ogg)          mplayer "$1"   ;;
-    *.pls | *.m3u)          mplayer -playlist "$1"   ;;
-*) echo "Error: failed to open $1" ;;
-    esac
-else
-    echo "Error: $1 could not play file"
-fi
-}
-function calc () { awk "BEGIN{ print $* }" ;}
+source ~/.zsh_functions
+source ~/.zsh_alias
 
 setopt correct
 setopt hist_ignore_all_dups
 setopt nohup
 setopt NO_cdable_vars
 
-function welcome() {
-echo -en '\e[1;31m'
-figlet $(hostname)
-echo -en '\e[0m'
-echo -e 'What is thy bidding, '$(whoami)'?'
-}
-
-function loop() {
-while true;
-do
-    $*
-done
-}
-function any() {
-#set -a files
-files=($*)
-echo ${files[#]}
-#for f in $files
-#    echo $f
-let x=${files[RANDOM]}
-echo $x
-#echo $files
-
-}
 
 welcome
+keys
 export GNUPLOT_DEFAULT_GDFONT=/usr/share/fonts/dejavu/DejaVuSansMono.ttf 
 export I_HATE_GAME_HINTS=1
 
-which keychain > /dev/null
-if [ $? -eq 0 ];
-then
-    eval $(keychain -q --eval --agents ssh -Q ~/.ssh/id_rsa  ~/.ssh/id_rsa_foss  ~/.ssh/id_rsa_git )
-fi

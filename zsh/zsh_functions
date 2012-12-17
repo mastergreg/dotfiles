@@ -1,0 +1,96 @@
+# Bell on new line
+function precmd() {
+    /bin/echo -ne "\a"
+}
+case "${TERM}" in
+    screen*)
+            function preexec() {
+                        /bin/echo -ne "\033k\033\0134\033k ${1%% *}\033\0134"
+            }
+        ;;
+esac
+
+#extract some archives :)
+function extract () {
+if [[ -f "$1" ]]; then
+    case "$1" in
+        *.tbz2 | *.tar.bz2) tar -xvjf  "$1"     ;;
+        *.txz | *.tar.xz)   tar -xvJf  "$1"     ;;
+        *.tgz | *.tar.gz)   tar -xvzf  "$1"     ;;
+        *.tar | *.cbt)      tar -xvf   "$1"     ;;
+        *.zip | *.cbz)      unzip      "$1"     ;;
+        *.rar | *.cbr)      unrar x    "$1"     ;;
+        *.arj)              unarj x    "$1"     ;;
+        *.ace)              unace x    "$1"     ;;
+        *.bz2)              bunzip2    "$1"     ;;
+        *.xz)               unxz       "$1"     ;;
+        *.gz)               gunzip     "$1"     ;;
+        *.7z)               7z x       "$1"     ;;
+        *.Z)                uncompress "$1"     ;;
+        *.gpg)       gpg2 -d "$1" | tar -xvzf - ;;
+        *) echo "Error: failed to extract $1" ;;
+    esac
+else
+    echo "Error: $1 is not a valid file for extraction"
+fi
+}
+
+
+# Sometimes you dont want to type everything
+function venv () {
+    if [[ "x$1" == "x" ]]; then
+        echo "Usage: venv <virtualenv folder>"
+    else
+        source "$1/bin/activate"
+    fi
+}
+
+# Open based on extension
+function open () {
+if [[ -f "$1" ]]; then
+    case "$1" in
+        *.JPG | *.jpeg | *jpg | *.png)      gpicview     "$1" &   ;;
+        *.pdf | *.eps | *.ps)               zathura     "$1" &> /dev/null &   ;;
+        *.odt | *.doc)                      libreoffice "$1" &> /dev/null &   ;;
+        *.avi)                              mplayer     "$1"    ;;
+        *)                                  vim "$1"            ;;
+    esac
+else
+    echo "Error: $1 is not a valid file to open"
+fi
+}
+
+# Play some music
+function play () {
+if [[ -f "$1" ]]; then
+    case "$1" in
+        *.mp3 | *.ogg)          mplayer "$1"   ;;
+        *.pls | *.m3u)          mplayer -playlist "$1"   ;;
+        *) echo "Error: failed to open $1" ;;
+    esac
+else
+    echo "Error: $1 could not play file"
+fi
+}
+
+# Quick and dirty calculations
+function calc () { awk "BEGIN{ print $* }" ;}
+
+# Welcome function, need we say more?
+function welcome() {
+    if [[ -z $SCRATCH ]]; then
+        echo -en '\e[1;31m'
+        figlet $(hostname)
+        echo -en '\e[0m'
+    fi
+    echo -e 'What is thy bidding, '$(whoami)'?'
+}
+
+# Setup my keys
+function keys() {
+    which keychain > /dev/null
+    if [ $? -eq 0 ];
+    then
+        eval $(keychain -q --eval --agents ssh -Q ~/.ssh/id_rsa  ~/.ssh/id_rsa_foss  ~/.ssh/id_rsa_git )
+    fi
+}

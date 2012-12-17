@@ -1,0 +1,50 @@
+alias ls='ls --color=auto'
+alias l='ls --color=auto'
+alias la='ls -A'
+alias ll='ls -alFh'
+alias rl='rlwrap -Acr'
+alias files="ls -R | grep ':$' | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/' "
+[[ -x =time ]] && alias time='command time'
+alias ping='ping -c 4'
+alias grep='grep --color=auto'
+alias x='exit'
+alias c='clear'
+alias s='source ~/.zshrc'
+
+#parallel tar gzip compression
+alias ptar='tar -I pigz'
+
+
+alias svim="sudo vim"
+alias vime="vim -u ~/.vimencrypt -x"
+
+alias scr="screen -RDS"
+alias sls="screen -ls"
+
+alias -s c=vim
+alias -s cpp=vim
+alias -s h=vim
+alias -s html=vim
+alias -s xml=vim
+
+alias v=vim -p
+alias gv=gvim -p
+
+#git stuff
+alias gpl='git pull'
+alias gch='git checkout'
+alias gp='git push'
+alias gm='git merge'
+alias gf='git fetch'
+alias gst='git status'
+alias gmt='git commit'
+alias gtr='git tree'
+alias ga='git add'
+
+#emerge eix gentoo stuff
+alias es='sudo eix-sync'
+alias ef='eix'
+alias ep='sudo emerge --jobs=2 --quiet-build y portage'
+alias e='sudo emerge --jobs=2 -av --quiet-build y'
+alias eu='sudo emerge --jobs=5 --keep-going --load-average=2 --with-bdeps=y -avuND --quiet-build=y @system && \
+    sudo emerge --jobs=5 --keep-going --load-average=2 --with-bdeps=y -avuND --quiet-build=y @world'
