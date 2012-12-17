@@ -185,7 +185,7 @@ autocmd bufwritepost,filewritepost *.java execute "normal `a"
 
 "{{{Templates indentation and syntax for cilk
 autocmd BufNewFile *.cilk, so /home/master/.vim/c_template
-autocmd BufRead *.cilk set syntax=cilk
+autocmd BufRead,BufNewFile *.cilk set syntax=cilk
 autocmd BufNewFile *.cilk, exe "1," . 6 . "g/File Name :.*/s//File Name : " .expand("%")
 autocmd BufNewFile *.cilk, exe "1," . 6 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
 autocmd Bufwritepre,filewritepre *.cilk, execute "normal ma"
