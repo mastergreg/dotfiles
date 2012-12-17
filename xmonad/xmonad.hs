@@ -251,9 +251,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	, ((mod4Mask             ,xK_Return), spawn myTerminal)
 	, ((mod4Mask             , xK_b     ), namedScratchpadAction myScratchpads "notes")
 	, ((mod4Mask             , xK_v     ), namedScratchpadAction myScratchpads "files")
-	, ((mod4Mask             ,xK_grave), scratchpadSpawnActionTerminal "urxvt -pe tabbed -T term")
+	, ((mod4Mask             ,xK_grave), scratchpadSpawnActionTerminal "SCRATCH=1 urxvt -pe tabbed -T term")
 	--, ((0             ,xK_guillemotleft), scratchpadSpawnActionTerminal "xterm -T term")
-  , ((mod4Mask             ,xK_t), spawn "pcmanfm")
+  , ((mod4Mask             ,xK_t), spawn "spacefm")
 	, ((0                    ,xK_Print), spawn  "scrot -e 'mv $f ~/Pictures/Screenshots'")
 	, ((mod4Mask             ,xK_Print), spawn  "scrot -e 'mv $f ~/Dropbox/Screenshots'")
 	, ((0                    ,0x1008ff11),spawn "volbar -d 1")
@@ -353,8 +353,8 @@ full = onWorkspace "0" $ noBorders Full
 myScratchpads = [
   -- run gvim, find by role, don't float
   NS "notes" "gvim --role notes ~/notes.txt" (role =? "notes") defaultFloating,
-  -- run pcmanfm
-  NS "files" "pcmanfm --class files" (className =? "files") defaultFloating
+  -- run spacefm
+  NS "files" "spacefm --class files" (className =? "files") defaultFloating
   ] where role = stringProperty "WM_WINDOW_ROLE"
 
 
