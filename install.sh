@@ -6,9 +6,11 @@ function bash
 }
 function zsh
 {
-    echo installing zshrc
+    echo installing zsh configs
     ln -f -s `pwd`/zsh/zshrc ~/.zshrc
     ln -f -s `pwd`/zsh/zprofile ~/.zprofile
+    ln -f -s `pwd`/zsh/zsh_functions ~/.zsh_functions
+    ln -f -s `pwd`/zsh/zsh_alias ~/.zsh_alias
 }
 function xinit
 {
