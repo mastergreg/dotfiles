@@ -39,7 +39,7 @@ libs=(completion correction functions git theme-and-appearance history)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/home/master/bin:/usr/local/bin:/usr/bin:/bin:/opt/bin:/usr/games/bin
+export PATH=/home/master/bin:/usr/local/bin:/usr/bin:/bin:/opt/bin:/usr/games/bin:/usr/games
 
 case "${TERM}" in
     dump)
