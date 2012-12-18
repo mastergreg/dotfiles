@@ -94,8 +94,17 @@ function welcome() {
 # Setup my keys
 function keys() {
     which keychain > /dev/null
-    if [ $? -eq 0 ];
-    then
+    if [ $? -eq 0 ]; then
         eval $(keychain -q --eval --agents ssh -Q ~/.ssh/id_rsa  ~/.ssh/id_rsa_foss  ~/.ssh/id_rsa_git )
     fi
 }
+
+function mkpost() {
+    if [[ -f "$1" ]]; then
+        vim "$1"
+    else
+        vim `date +"%Y-%m-%d-%H-%M_"`"$1"
+    fi
+
+}
+

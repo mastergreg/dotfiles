@@ -119,6 +119,7 @@ call vundle#rc()
    " let Vundle manage Vundle
    "  " required! 
 Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-markdown'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'AutoComplPop'
 Bundle 'rosenfeld/conque-term'
@@ -230,7 +231,7 @@ autocmd Bufwritepre,filewritepre *.md  execute "normal ma"
 autocmd BufNewFile,Bufwritepre,filewritepre  *.md  exe "1, 3  g/Date:.*/s//Date: " .strftime("%Y-%m-%d %H:%M")
 autocmd bufwritepost,filewritepost *.md  execute "normal `a"
 autocmd BufNewFile,BufRead *.md setlocal smartindent tw=78
-autocmd BufNewFile,BufRead *.md setlocal spell! spelllang=en<CR>
+autocmd BufNewFile,BufRead *.md setlocal spell! spelllang=en_us
 autocmd BufNewFile,BufRead *.md setlocal spellsuggest=best,3
 "}}}
 "
