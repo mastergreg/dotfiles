@@ -41,7 +41,12 @@ function venv () {
     if [[ "x$1" == "x" ]]; then
         echo "Usage: venv <virtualenv folder>"
     else
-        source "$1/bin/activate"
+        if [[ -f  "$1/bin/activate" ]]; then
+            source "$1/bin/activate"
+        else
+            virtualenv "$1"
+            source "$1/bin/activate"
+        fi
     fi
 }
 
