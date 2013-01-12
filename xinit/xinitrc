@@ -1,14 +1,22 @@
+xset -b
 cat /proc/uptime >> .uptime
-xmodmap /home/master/.xmodmap &
+#xmodmap /home/master/.xmodmap &
+set_greek
+
 tray &
 wallpaper &
 eval '$(gpg-agent --daemon)'
-#(sleep 5 && parcellite) &
+#(sleep 5 && xscreensaver -nosplash ) &
+(sleep 5 && parcellite) &
+(sleep 5 redshift -l 37:23) &
+(sleep 5 && gxneur) &
+(sleep 5 && blueman-applet) &
 (sleep 5 && ~/.dropbox-dist/dropboxd ) &
-(sleep 5 && mconky ) &
+(sleep 5 && volumeicon ) &
+#(sleep 5 && mconky ) &
 #(sleep 5 && firefox ) &
 (sleep 5 && urxvt -T 'mutt') &
-(sleep 5 && urxvt -T 'music') &
+#(sleep 5 && urxvt -T 'music') &
 #urxvtd -q -o -f &
 #(sleep 4 && wallpaper) &
 #(sleep 2 && tint2) &

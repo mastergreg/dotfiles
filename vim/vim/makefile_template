@@ -2,11 +2,12 @@
 #TO BE USED WITH LATEX
 #TARGET =
 #CC = xelatex
-#CCFLAGS = -shell-escape -synctex=1
+#CCFLAGS = -shell-escape -synctex=1 --interaction=nonstopmode
+#TEXFILES = $(wildcard *.tex)
 #
 #all: $(TARGET).pdf
 #
-#%.pdf:	%.tex title/* files/*
+#%.pdf:	$(TEXFILES) title/* files/*
 #	$(CC) $(CCFLAGS) $<
 #
 #

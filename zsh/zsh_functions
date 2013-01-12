@@ -41,11 +41,11 @@ function venv () {
     if [[ "x$1" == "x" ]]; then
         echo "Usage: venv <virtualenv folder>"
     else
-        if [[ -f  "$1/bin/activate" ]]; then
-            source "$1/bin/activate"
+        if [[ -f  "${HOME}/Venvs/$1/bin/activate" ]]; then
+            source "${HOME}/Venvs/$1/bin/activate"
         else
-            virtualenv "$1"
-            source "$1/bin/activate"
+            virtualenv "${HOME}/Venvs/$1"
+            source "${HOME}/Venvs/$1/bin/activate"
         fi
     fi
 }
@@ -95,7 +95,7 @@ function welcome() {
 function keys() {
     which keychain > /dev/null
     if [ $? -eq 0 ]; then
-        eval $(keychain -q --eval --agents ssh -Q ~/.ssh/id_rsa  ~/.ssh/id_rsa_foss  ~/.ssh/id_rsa_git )
+        eval $(keychain -q --eval --agents ssh -Q ~/.ssh/id_rsa)
     fi
 }
 
@@ -105,6 +105,5 @@ function mkpost() {
     else
         vim `date +"%Y-%m-%d-%H-%M_"`"$1"
     fi
-
 }
 
