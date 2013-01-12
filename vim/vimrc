@@ -93,6 +93,7 @@ set listchars=tab:,.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
 set pastetoggle=<F12>
 
 
+set tags=./tags;$HOME
 if &term=~"linux"
     colo default
 else
