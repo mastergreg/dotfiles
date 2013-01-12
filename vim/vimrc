@@ -151,7 +151,7 @@ autocmd BufNewFile,BufRead *sml setlocal smartindent cinwords cinwords=fun,if,th
 "}}}
 
 "{{{Templates and indentation for Erlang files
-autocmd BufRead *.erl setlocal foldmethod=indent smartindent sw=2 ts=2 sts=2 expandtab
+autocmd BufRead *.erl setlocal foldmethod=indent smartindent sw=4 ts=4 sts=4 expandtab
 autocmd BufNewFile *.erl so /home/master/.vim/erlang_template
 autocmd BufNewFile *.erl exe "1," . 6 . "g/File Name :.*/s//File Name : " .expand("%")
 autocmd BufNewFile *.erl exe "1," . 6 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
