@@ -104,17 +104,17 @@ myWorkspaces = ["1","2","3","4","5","6","7","8","9","0"]
 	-- Border colors for unfocused and focused windows, respectively.
 	--
 --myNormalBorderColor  = "#333333"
---myNormalBorderColor = "#3465a4"
+myNormalBorderColor = "#3465a4"
 --myNormalBorderColor = "#616161"
-myNormalBorderColor = "#444444"
+--myNormalBorderColor = "#444444"
 --myFocusedBorderColor = "#285577"
 --myFocusedBorderColor = "#00FF00"
 --myFocusedBorderColor = "#3465a4"
 --myFocusedBorderColor = "#FCA91A"
 
 
-myFocusedBorderColor = "#3465a4"
---myFocusedBorderColor = "#ff950e"
+--myFocusedBorderColor = "#3465a4"
+myFocusedBorderColor = "#ff950e"
 
 	-- Default offset of drawable screen boundaries from each physical
 	-- screen. Anything non-zero here will leave a gap of that many pixels
@@ -237,7 +237,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	--
 	[((mod4Mask             , xK_f     ), spawn "firefox > /dev/null")
 	, ((mod4Mask             , xK_x     ), spawn myTerminal)
-	, ((mod1Mask             , xK_Shift_L     ), spawn "switch_layout")
+	--, ((mod1Mask             , xK_Shift_L     ), spawn "switch_layout")
 	--, ((mod4Mask             , xK_s     ), spawn ("pidgin"))
 	, ((mod4Mask             , xK_s     ), spawn "skype")
 	, ((mod4Mask.|. shiftMask, xK_s     ), spawn (myTerminal ++ " -T irssi -e 'irssi.sh'"))
@@ -253,7 +253,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	, ((mod4Mask             , xK_v     ), namedScratchpadAction myScratchpads "files")
 	, ((mod4Mask             ,xK_grave), scratchpadSpawnActionTerminal "SCRATCH=1 urxvt -pe tabbed -T term")
 	--, ((0             ,xK_guillemotleft), scratchpadSpawnActionTerminal "xterm -T term")
-  , ((mod4Mask             ,xK_t), spawn "spacefm")
+  , ((mod4Mask             ,xK_t), spawn "pcmanfm")
 	, ((0                    ,xK_Print), spawn  "scrot -e 'mv $f ~/Pictures/Screenshots'")
 	, ((mod4Mask             ,xK_Print), spawn  "scrot -e 'mv $f ~/Dropbox/Screenshots'")
 	, ((0                    ,0x1008ff11),spawn "volbar -d 1")
@@ -314,7 +314,7 @@ wideLayout = named "=" $ avoidStruts $ Mirror basicLayout
 circleLayout = named "O" $ avoidStruts $ magnifiercz' 1.2 $ circleDwmStyle shrinkText (theme wfarrTheme)
 imlayout = named "|#" $ avoidStruts $ withIM (1%4) pidginRoster $ reflectHoriz $ withIM (1%3) skypeRoster $ avoidStruts tabbedOne
 --imlayout = named "|#" $ avoidStruts $ withIM (1%4) skypeRoster $ avoidStruts $ tabbedOne
-gimplayout = named "G" $ avoidStruts $  reflectHoriz $ withIM (1%8) (Title "Toolbox") $  avoidStruts tabbedOne
+gimplayout = named "G" $ avoidStruts basicLayout
 
 irssiRoster = Title "irssi"
 pidginRoster = Title "Buddy List"
@@ -353,8 +353,8 @@ full = onWorkspace "0" $ noBorders Full
 myScratchpads = [
   -- run gvim, find by role, don't float
   NS "notes" "gvim --role notes ~/notes.txt" (role =? "notes") defaultFloating,
-  -- run spacefm
-  NS "files" "spacefm --class files" (className =? "files") defaultFloating
+  -- run pcmanfm 
+  NS "files" "pcmanfm --class files" (className =? "files") defaultFloating
   ] where role = stringProperty "WM_WINDOW_ROLE"
 
 
@@ -400,6 +400,7 @@ myFloatHook = composeAll
         , resource =? "Mail" --> moveToMail
         , className =? "Chromium" --> moveToWeb
         , className =? "Firefox" --> moveToWeb
+        , className =? "Iceweasel" --> moveToWeb
         , className =? "google-chrome" --> moveToWeb
         , className =? "uzbl-tabbed" --> moveToWeb
         , manageDocks] where
@@ -540,17 +541,19 @@ mydzenPP = defaultPP { ppCurrent  = dzenColor "green" "" . pad
                      , ppSort = fmap (.scratchpadFilterOutWorkspace) $ ppSort defaultPP
                      }
 
-myxmobarPP = xmobarPP{ 
-                        ppUrgent   = xmobarColor "red" ""
-                      , ppSort = fmap (.scratchpadFilterOutWorkspace) $ ppSort xmobarPP
+myxmobarPP = xmobarPP{ ppCurrent  = xmobarColor "yellow" ""
+                     , ppUrgent   = xmobarColor "red" ""
+                     , ppWsSep    = " "
+                     , ppSep      = " "
+                     , ppSort = fmap (.scratchpadFilterOutWorkspace) $ ppSort xmobarPP
                      }
 
 main = do 
-  --xmproc <- spawnPipe "xmobar";
-  xmproc <- spawnPipe "killall python3; dzen_python"
+  xmproc <- spawnPipe "xmobar";
+  --xmproc <- spawnPipe "killall python3; dzen_python"
   xmonad $ withUrgencyHook  NoUrgencyHook defaults {
-      --logHook   = dynamicLogWithPP $ myxmobarPP {
-      logHook   = dynamicLogWithPP $ pythonDzenPP {
+      logHook   = dynamicLogWithPP $ myxmobarPP {
+      --logHook   = dynamicLogWithPP $ pythonDzenPP {
 					ppOutput = hPutStrLn xmproc 
 				}	
 }

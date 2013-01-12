@@ -28,8 +28,8 @@ alias -s h=vim
 alias -s html=vim
 alias -s xml=vim
 
-alias v=vim -p
-alias gv=gvim -p
+alias v="vim -p"
+alias gv="gvim -p"
 
 #git stuff
 alias gpl='git pull'

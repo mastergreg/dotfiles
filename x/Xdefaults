@@ -2,8 +2,8 @@
 !*boldFont: -misc-fixed-bold-r-normal--15-120-100-100-c-90-iso8859-1
 !*font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
 !*boldFont: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
-!*font: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso10646-1
-!*boldFont: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso10646-1
+*font: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso10646-1
+*boldFont: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso10646-1
 !*font: -misc-fixed-medium-r-semicondensed--12-*-*-*-*-*-iso10646-1
 !*boldFont: -misc-fixed-medium-r-semicondensed--12-*-*-*-*-*-iso10646-1
 
@@ -12,9 +12,9 @@
 
 
 !*font: xft:Inconsolata:size=10
-!*font: xft:Terminus:antialias=false
-*font: xft:Envy Code R:style=Regular:size=9
-!!*faceName: xft:Envy Code R:style=Regular:size=9
+!*font: xft:Terminus:antialias=false:size=9
+!*font: xft:Envy Code R:style=Regular:size=9
+!*faceName: xft:Envy Code R:style=Regular:size=9
 !*font: xft:Monospace:size=10
 !*font: xft:DejaVu Sans Mono:size=9
 !*boldFont: xft:DejaVu Sans Mono:size=10
@@ -99,8 +99,8 @@ URxvt*urgentOnBell: true
 URxvt*transparent: false
 !URxvt*transparent: false
 
-URxvt*shading:     20
-URxvt*tint:         #0A0A0A
+URxvt*shading:     50
+URxvt*tint:         #000000
 !URxvt*tint:         #333333
 URxvt*geometry: 80x33
 
@@ -156,7 +156,7 @@ URxvt*color15:   #FFFFFF
 !
 URxvt*foreground: #DDDDDD
 !URxvt*foreground: #00AA00
-URxvt*background: #0A0A0A
+URxvt*background: #000000
 !URxvt*color0: #101010
 !URxvt*color1: #f13a21
 !URxvt*color2: #93f91d

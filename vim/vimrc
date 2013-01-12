@@ -1,5 +1,6 @@
 syn on
-set relativenumber
+"set relativenumber
+set number 
 set nocp
 "
 "set expandtab
@@ -58,6 +59,10 @@ noremap <F5> :make<CR>
 
 nnoremap Y y$
 
+nnoremap <buffer> <leader>e :call EvinceNearestLabel()<CR>
+nnoremap <buffer> <LocalLeader>e :call EvinceNearestLabel()<CR>
+
+
 
 " statusline -----------------------------------------------------------
 
@@ -109,6 +114,9 @@ endif
 let Tlist_Use_Right_Window=1
 
 
+
+
+
 call pathogen#infect()
 
 filetype off                   " required!
@@ -123,6 +131,9 @@ Bundle 'tpope/vim-markdown'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'AutoComplPop'
 Bundle 'rosenfeld/conque-term'
+Bundle 'scrooloose/nerdtree'
+Bundle 'LaTeX-Box-Team/LaTeX-Box'
+"Bundle 'jcf/vim-latex'
 
 filetype plugin indent on     " required!
 
@@ -232,7 +243,6 @@ autocmd bufwritepost,filewritepost *.pzc,*pzh  execute "normal `a"
 autocmd BufNewFile,BufRead *.tex setlocal smartindent tw=78
 "autocmd BufNewFile,BufRead *.tex setlocal spell! spelllang=el,en<CR>
 autocmd BufNewFile,BufRead *.tex setlocal spellsuggest=best,3
-
 "}}}
 
 "{{{ Blogging

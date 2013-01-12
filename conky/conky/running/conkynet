@@ -35,8 +35,8 @@ if_up_strictness address
 default_color DDDDDD
 color0  DDDDDD
 color1  00FF00 
-color2  0071FF
-color3  FFD000
+color2  FF0000
+color3  0022FF
 TEXT
 ${color1}Networking:
  ${color3}Ethernet:${color } ${if_up eth0}
