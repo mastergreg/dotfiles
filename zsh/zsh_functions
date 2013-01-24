@@ -40,6 +40,8 @@ fi
 function venv () {
     if [[ "x$1" == "x" ]]; then
         echo "Usage: venv <virtualenv folder>"
+        echo "Possible venvs:"
+        ls ~/Venvs/
     else
         if [[ -f  "${HOME}/Venvs/$1/bin/activate" ]]; then
             source "${HOME}/Venvs/$1/bin/activate"

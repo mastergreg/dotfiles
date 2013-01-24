@@ -62,7 +62,7 @@ myTerminal      = "urxvt"
 --myTerminal      = "terminator"
 	-- Width of the window border in pixels.
 	--
-myBorderWidth   = 1
+myBorderWidth   = 2
 
 	-- modMask lets you specify which modkey you want to use. The default
 	-- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -415,7 +415,7 @@ myFloatHook = composeAll
     moveToDia = doF $ W.shift "6"
     moveToFull = doF $ W.shift "0"
 myscratchpadManageHook :: ManageHook
-myscratchpadManageHook = scratchpadManageHook (W.RationalRect 0.00 0.02 1.00 0.30)
+myscratchpadManageHook = scratchpadManageHook (W.RationalRect 0.00 0.023 1.00 0.30)
     -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = True

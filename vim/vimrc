@@ -134,6 +134,7 @@ Bundle 'AutoComplPop'
 Bundle 'rosenfeld/conque-term'
 Bundle 'scrooloose/nerdtree'
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
+Bundle 'jimenezrick/vimerl'
 "Bundle 'jcf/vim-latex'
 
 filetype plugin indent on     " required!

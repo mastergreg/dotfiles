@@ -3,25 +3,51 @@ cat /proc/uptime >> .uptime
 #xmodmap /home/master/.xmodmap &
 set_greek
 
-tray &
+#  tray &
 wallpaper &
 eval '$(gpg-agent --daemon)'
-#(sleep 5 && xscreensaver -nosplash ) &
-(sleep 5 && parcellite) &
-(sleep 5 redshift -l 37:23) &
-(sleep 5 && gxneur) &
-(sleep 5 && blueman-applet) &
-(sleep 5 && ~/.dropbox-dist/dropboxd ) &
-(sleep 5 && volumeicon ) &
+#(s leep 5 && xscreensaver -nosplash ) &
+#(sleep 10 && parcellite) &
+(sleep 10 && redshift -l 37:23) &
+#(sleep 10 && gxneur) &
+#(sleep 10 && blueman-applet) &
+#(sleep 10 && ~/.dropbox-dist/dropboxd ) &
+#(sleep 10 && volumeicon ) &
 #(sleep 5 && mconky ) &
 #(sleep 5 && firefox ) &
 (sleep 5 && urxvt -T 'mutt') &
+(sleep 5 && dwmstatus) &
 #(sleep 5 && urxvt -T 'music') &
 #urxvtd -q -o -f &
 #(sleep 4 && wallpaper) &
 #(sleep 2 && tint2) &
 #exec openbox
 
+
+
 urxvt &
 export XDG_MENU_PREFIX=lxde- &
-exec xmonad 
+#exec xmonad 
+
+
+while true; do
+# # Log stderror to a file 
+# #     #     dwm 2> ~/.dwm.log
+# #         #         # No error logging
+    killall redshift >/dev/null 2>&1
+    killall parcellite >/dev/null 2>&1
+    killall gxneur >/dev/null 2>&1
+    killall blueman-applet >/dev/null 2>&1
+    killall volumeicon >/dev/null 2>&1
+    killall wicd-client >/dev/null 2>&1
+    killall dropboxd >/dev/null 2>&1
+    (sleep 2 && parcellite) &
+    #(sleep 2 && gxneur) &
+    (sleep 2 && blueman-applet) &
+    (sleep 2 && ~/.dropbox-dist/dropboxd ) &
+    (sleep 2 && volumeicon ) &
+    (sleep 2 && wicd-client -t ) &
+    dwm >/dev/null 2>&1
+    #killall redshift >/dev/null 2>&1
+    sleep 1;
+done

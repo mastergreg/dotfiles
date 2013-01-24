@@ -10,6 +10,7 @@ alias grep='grep --color=auto'
 alias x='exit'
 alias c='clear'
 alias s='source ~/.zshrc'
+alias ncmpc='ncmpc -c -m'
 alias \#='cowsay '
 
 #parallel tar gzip compression

@@ -2,9 +2,10 @@
 !*boldFont: -misc-fixed-bold-r-normal--15-120-100-100-c-90-iso8859-1
 !*font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
 !*boldFont: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
-*font: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso10646-1
-*boldFont: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso10646-1
-!*font: -misc-fixed-medium-r-semicondensed--12-*-*-*-*-*-iso10646-1
+
+!*font: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso10646-1
+!*boldFont: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso10646-1
+*font: -xos4-*-medium-*-normal-*-12-*-*-*-*-60-iso10646-1
 !*boldFont: -misc-fixed-medium-r-semicondensed--12-*-*-*-*-*-iso10646-1
 
 !*font: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
@@ -15,9 +16,9 @@
 !*font: xft:Terminus:antialias=false:size=9
 !*font: xft:Envy Code R:style=Regular:size=9
 !*faceName: xft:Envy Code R:style=Regular:size=9
-!*font: xft:Monospace:size=10
-!*font: xft:DejaVu Sans Mono:size=9
-!*boldFont: xft:DejaVu Sans Mono:size=10
+!*font: xft:Monospace:size=10:antialias=false
+!URxvt*font: xft:DejaVu Sans Mono:size=10
+!URxvt*boldFont: xft:DejaVu Sans Mono:size=10
 !*font: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso10646-1
 !*boldFont: -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1
 !*font: -misc-fixed-medium-r-normal--10-*-*-*-*-*-iso10646-1
@@ -96,10 +97,10 @@ URxvt*termName: rxvt-256color
 URxvt*scrollBar:         false
 URxvt*scrollstyle: plain
 URxvt*urgentOnBell: true
-URxvt*transparent: false
+URxvt*transparent: true
 !URxvt*transparent: false
 
-URxvt*shading:     50
+URxvt*shading:     100
 URxvt*tint:         #000000
 !URxvt*tint:         #333333
 URxvt*geometry: 80x33
@@ -154,7 +155,7 @@ URxvt*color15:   #FFFFFF
 !
 !
 !
-URxvt*foreground: #DDDDDD
+URxvt*foreground: #AAAAAA
 !URxvt*foreground: #00AA00
 URxvt*background: #000000
 !URxvt*color0: #101010
