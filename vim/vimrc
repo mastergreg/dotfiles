@@ -248,13 +248,13 @@ autocmd BufNewFile,BufRead *.tex setlocal spellsuggest=best,3
 "}}}
 
 "{{{ Blogging
-autocmd BufNewFile *.markdown so /home/master/.vim/md_template
-autocmd Bufwritepre,filewritepre *.markdown  execute "normal ma"
-autocmd BufNewFile,Bufwritepre,filewritepre  *.markdown  exe "1, 3  g/Date:.*/s//Date: " .strftime("%Y-%m-%d %H:%M")
-autocmd bufwritepost,filewritepost *.markdown  execute "normal `a"
-autocmd BufNewFile,BufRead *.markdown setlocal smartindent tw=78
-autocmd BufNewFile,BufRead *.markdown setlocal spell! spelllang=en_us
-autocmd BufNewFile,BufRead *.markdown setlocal spellsuggest=best,3
+autocmd BufNewFile *.markdown,*.md so /home/master/.vim/md_template
+autocmd Bufwritepre,filewritepre *.markdown,*.md  execute "normal ma"
+autocmd BufNewFile,Bufwritepre,filewritepre  *.markdown,*.md  exe "1, 3  g/Date:.*/s//Date: " .strftime("%Y-%m-%d %H:%M")
+autocmd bufwritepost,filewritepost *.markdown,*.md  execute "normal `a"
+autocmd BufNewFile,BufRead *.markdown,*.md setlocal smartindent tw=78
+autocmd BufNewFile,BufRead *.markdown,*.md setlocal spell! spelllang=en_us
+autocmd BufNewFile,BufRead *.markdown,*.md setlocal spellsuggest=best,3
 "}}}
 "
 "{{{ Makefiles
