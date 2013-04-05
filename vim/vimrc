@@ -1,6 +1,7 @@
 syn on
 "set relativenumber
-set number 
+set rnu
+"set number 
 set nocp
 "
 "set expandtab
@@ -48,6 +49,7 @@ noremap <space> za
 
 noremap <F12> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['.*\.o$']
+let NERDTreeIgnore=['.*\.pyc$']
 let NERDTreeIgnore+=['.*\~$']
 let NERDTreeIgnore+=['.*\.out$']
 let NERDTreeIgnore+=['.*\.so$', '.*\.a$']
@@ -70,7 +72,7 @@ set wildmenu
 set incsearch
 set ignorecase
 set smartcase
-set scrolloff=10
+set scrolloff=5
 set sidescrolloff=10
 set shortmess=aOstT
 set backup
@@ -98,12 +100,12 @@ if &term=~"linux"
     colo default
 else
     set t_Co=256
-    "colo wombat256mod
+    colo wombat256mod
 	"colo lucius
     "colo delek
     "colo slate
     "colo ir_black
-    colo vimbrant
+    "colo vimbrant
     "colo hybrid
     "colo ir_black
     "colo molokai 
@@ -128,6 +130,7 @@ call vundle#rc()
    " let Vundle manage Vundle
    "  " required! 
 Bundle 'gmarik/vundle'
+Bundle 'airblade/vim-gitgutter'
 Bundle 'tpope/vim-markdown'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'AutoComplPop'
