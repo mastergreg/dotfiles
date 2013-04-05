@@ -140,6 +140,8 @@ Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'jimenezrick/vimerl'
 "Bundle 'jcf/vim-latex'
 
+hi SignColumn ctermbg=none
+
 filetype plugin indent on     " required!
 
 
