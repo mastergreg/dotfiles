@@ -51,8 +51,8 @@ function tint2
 }
 function x
 {
-    echo installing Xdefaults
-    ln -f -s `pwd`/x/Xdefaults ~/.Xdefaults
+    echo installing Xresources
+    ln -f -s `pwd`/x/Xresources ~/.Xresources
 }
 function gdb
 {
