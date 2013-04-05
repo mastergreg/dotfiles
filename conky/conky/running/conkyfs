@@ -40,14 +40,12 @@ if_up_strictness address
 default_color DDDDDD
 color0  DDDDDD
 color1  00FF00 
-color2  FF0000
-color3  0022FF
+color2  ee4444
+color3  4169E1
 TEXT
 ${color1}File systems: ${color3}${alignr} I/O: ${color2}${diskio} ${diskiograph 20,120 000000 00FF00}
  ${color3}Read: ${color2}${diskio_read} ${color3}${alignr}Write: ${color2}${diskio_write} 
  ${color3}/          ${color0}${alignr}${fs_used /}/${fs_size /}   ${color }${fs_bar 5,120 /}
- ${color3}/home      ${color0}${alignr}${fs_used /home}/${fs_size /home}   ${color }${fs_bar 5,120 /home}${if_existing /home/master/SHARE/Home_share/.conkycheck}
- ${color3}~/SHARE/BigStorageArea  ${color0}${alignr}${fs_used /home/master/SHARE/BigStorageArea}/${fs_size /home/master/SHARE/BigStorageArea}   ${color }${fs_bar 5,120 /home/master/SHARE/BigStorageArea}${endif}${if_existing /home/master/SHARE/BigStorageArea/.conkycheck}
- ${color3}~/SHARE/Home_share  ${color0}${alignr}${fs_used /home/master/SHARE/Home_share}/${fs_size /home/master/SHARE/Home_share}   ${color }${fs_bar 5,120 /home/master/SHARE/Home_share}${endif}${if_existing /home/master/SHARE/Music_share/.conkycheck}
- ${color3}~/SHARE/Music_share  ${color0}${alignr}${fs_used /home/master/SHARE/Music_share}/${fs_size /home/master/SHARE/Music_share}   ${color }${fs_bar 5,120 /home/master/SHARE/Music_share}${endif}${if_existing /home/master/SHARE/Torrent_share/.conkycheck}
- ${color3}~/SHARE/Torrent_share  ${color0}${alignr}${fs_used /home/master/SHARE/Torrent_share}/${fs_size /home/master/SHARE/Torrent_share}   ${color }${fs_bar 5,120 /home/master/SHARE/Torrent_share}${endif}
+ ${color3}/home      ${color0}${alignr}${fs_used /home}/${fs_size /home}   ${color }${fs_bar 5,120 /home}
+ ${color3}~/SHARE/BigStorageArea  ${color0}${alignr}${fs_used /home/master/BigStorageArea}/${fs_size /home/master/BigStorageArea}   ${color }${fs_bar 5,120 /home/master/BigStorageArea}
+ ${color3}~/SHARE/Music_share  ${color0}${alignr}${fs_used /home/master/Music}/${fs_size /home/master/SHARE/Music_share}   ${color }${fs_bar 5,120 /home/master/Music}
