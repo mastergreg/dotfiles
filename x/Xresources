@@ -33,6 +33,7 @@ Xft.hintstyle:  hintslight
 *background: #1c1c1c
 *foreground: #dddddd
 
+URxvt.letterSpace: -2
 
 *color4: RoyalBlue
 *color12: RoyalBlue
