@@ -1,7 +1,7 @@
 #vim: set filetype=conkyrc
 background yes
 xftalpha 1.0
-update_interval 5.0
+update_interval 1.0
 total_run_times 0
 own_window yes
 own_window_type override
@@ -12,14 +12,14 @@ draw_shades no
 draw_outline no
 draw_borders no
 draw_graph_borders no
-alignment top_left
+alignment top_right
 maximum_width 400
 minimum_size 400 0
 max_port_monitor_connections 64
 max_specials 512
 max_user_text 16384
 #minimum_size 310
-gap_x 600
+gap_x 100
 gap_y 150
 net_avg_samples 2
 out_to_console no
@@ -35,8 +35,8 @@ if_up_strictness address
 default_color DDDDDD
 color0  DDDDDD
 color1  00FF00 
-color2  FF0000
-color3  0022FF
+color2  ee4444
+color3  4169E1
 TEXT
 ${color1}Networking:
  ${color3}Ethernet:${color } ${if_up eth0}

@@ -138,7 +138,13 @@ Bundle 'rosenfeld/conque-term'
 Bundle 'scrooloose/nerdtree'
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'jimenezrick/vimerl'
+Bundle 'pyflakes.vim'
+Bundle 'pylint.vim'
 "Bundle 'jcf/vim-latex'
+
+hi SignColumn ctermbg=none
+hi SpellBad cterm=underline ctermbg=none ctermfg=10
+
 
 filetype plugin indent on     " required!
 

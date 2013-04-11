@@ -88,8 +88,9 @@ bindkey "\e[8~" end-of-line
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
 
-source ~/.zsh_functions
-source ~/.zsh_alias
+[ -f ~/.zsh_functions ] && source ~/.zsh_functions
+[ -f ~/.zsh_alias ] && source ~/.zsh_alias
+[ -f ~/.zsh_local ] && source ~/.zsh_local
 
 setopt correct
 setopt hist_ignore_all_dups
