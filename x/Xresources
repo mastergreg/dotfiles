@@ -6,8 +6,9 @@
 !*boldFont: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
 
 !*font: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso10646-1
-*font: -xos4-*-bold-*-normal-*-12-*-*-*-*-*-*-*
-*faceName: xft:Monospace:size=9
+!*font: -xos4-*-bold-*-normal-*-12-*-*-*-*-*-*-*
+*faceName: xft:Monospace:size=8
+*font: xft:Monospace:size=8
 !*font: -xos4-*-bold-*-normal-*-12-*-*-*-*-*-*-*
 !*font: -misc-fixed-medium-r-normal--12-*-*-*-*-*-iso10646-1
 !*boldFont: -misc-fixed-medium-r-normal--12-*-*-*-*-*-iso10646-1
@@ -22,13 +23,14 @@
 !{{{ Xft settings
 Xft.dpi:    96
 Xft.antialias:        true
-Xft.rgba:       rgb
-Xft.hinting:    true
+Xft.hinting:    hint
 Xft.hintstyle:  hintslight
 !}}}
 
 !URxvt*font: xft:Monospace:size=9
 !*background: #242424
+
+!URxvt.letterSpace: -1
 *background: #1c1c1c
 *foreground: #dddddd
 
