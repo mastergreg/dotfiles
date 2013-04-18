@@ -49,7 +49,9 @@ noremap <space> za
 
 noremap <F12> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['.*\.o$']
-let NERDTreeIgnore=['.*\.pyc$']
+let NERDTreeIgnore+=['.*\.pyc$']
+let NERDTreeIgnore+=['.*\.aux$']
+let NERDTreeIgnore+=['.*\.pyg$']
 let NERDTreeIgnore+=['.*\~$']
 let NERDTreeIgnore+=['.*\.out$']
 let NERDTreeIgnore+=['.*\.so$', '.*\.a$']
@@ -100,7 +102,7 @@ if &term=~"linux"
     colo default
 else
     set t_Co=256
-    colo wombat256mod
+    "colo wombat256mod
 	"colo lucius
     "colo delek
     "colo slate
@@ -108,7 +110,7 @@ else
     "colo vimbrant
     "colo hybrid
     "colo ir_black
-    "colo molokai 
+    colo molokai 
     "colo dante
     "colo zenburn 
 endif
