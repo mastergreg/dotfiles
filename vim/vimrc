@@ -107,7 +107,7 @@ else
     "colo delek
     "colo slate
     "colo ir_black
-    "colo vimbrant
+    colo vimbrant
     "colo hybrid
     "colo ir_black
     colo molokai 
