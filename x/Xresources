@@ -7,8 +7,8 @@
 
 !*font: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso10646-1
 !*font: -xos4-*-bold-*-normal-*-12-*-*-*-*-*-*-*
-*faceName: xft:Monospace:size=8
-*font: xft:Monospace:size=8
+*faceName: xft:Monospace:size=9
+*font: xft:Monospace:size=9
 !*font: -xos4-*-bold-*-normal-*-12-*-*-*-*-*-*-*
 !*font: -misc-fixed-medium-r-normal--12-*-*-*-*-*-iso10646-1
 !*boldFont: -misc-fixed-medium-r-normal--12-*-*-*-*-*-iso10646-1
@@ -30,11 +30,11 @@ Xft.hintstyle:  hintslight
 !URxvt*font: xft:Monospace:size=9
 !*background: #242424
 
-!URxvt.letterSpace: -1
+URxvt.letterSpace: -1
 *background: #1c1c1c
 *foreground: #dddddd
 
-URxvt.letterSpace: -2
+!URxvt.letterSpace: -2
 
 *color4: RoyalBlue
 *color12: RoyalBlue
@@ -107,9 +107,9 @@ URxvt.termName: rxvt-256color
 URxvt.scrollBar:         false
 URxvt.scrollstyle: plain
 URxvt.urgentOnBell: true
-URxvt.transparent: false
+URxvt.transparent: true
 
-URxvt.shading:     100
+URxvt.shading:     20
 URxvt.tint:         #131313
 !URxvt*tint:         #333333
 URxvt.geometry: 80x33

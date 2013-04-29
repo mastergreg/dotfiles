@@ -113,7 +113,7 @@ else
     "colo vimbrant
     "colo hybrid
     "colo ir_black
-    "colo molokai 
+    colo molokai 
     "colo dante
     "colo zenburn 
 endif
