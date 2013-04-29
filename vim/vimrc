@@ -47,6 +47,9 @@ noremap ; :
 noremap : ;
 noremap <space> za
 
+noremap <F6> :cn<CR>
+noremap <F7> :cp<CR>
+
 noremap <F12> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['.*\.o$']
 let NERDTreeIgnore+=['.*\.pyc$']
@@ -102,12 +105,12 @@ if &term=~"linux"
     colo default
 else
     set t_Co=256
-    "colo wombat256mod
+    colo wombat256mod
 	"colo lucius
     "colo delek
     "colo slate
     "colo ir_black
-    colo vimbrant
+    "colo vimbrant
     "colo hybrid
     "colo ir_black
     "colo molokai 
@@ -146,6 +149,7 @@ Bundle 'pylint.vim'
 
 hi SignColumn ctermbg=none
 hi SpellBad cterm=underline ctermbg=none ctermfg=10
+
 
 
 filetype plugin indent on     " required!

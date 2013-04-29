@@ -1,7 +1,7 @@
 #vim: filetype=conkyrc
 background yes
 use_xft yes
-xftfont Envy Code R:style=Regular:size=9
+xftfont Monospace:style=Regular:size=11
 xftalpha 0.8
 #font -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1
 #font -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1

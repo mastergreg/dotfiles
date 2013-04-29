@@ -43,6 +43,10 @@ alias gmt='git commit'
 alias gtr='git tree'
 alias ga='git add'
 
+
+#resume by default
+alias wget='wget -c'
+
 #emerge eix gentoo stuff
 alias es='sudo eix-sync'
 alias ef='eix'
