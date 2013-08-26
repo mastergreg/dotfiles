@@ -27,7 +27,7 @@ stippled_borders 2
 uppercase no
 use_spacer left
 use_xft yes
-xftfont Monospace:style=Regular:size=11
+xftfont Monospace:style=Regular:size=9
 lua_load ~/.conky/draw_bg.lua
 lua_draw_hook_pre draw_bg
 if_up_strictness address 

@@ -23,6 +23,11 @@ alias vime="vim -u ~/.vimencrypt -x"
 alias scr="screen -RDS"
 alias sls="screen -ls"
 
+alias scp="noglob command scp"
+alias rsync='noglob command rsync'
+alias ftp='noglob command ftp'
+alias sftp='noglob command sftp'
+
 alias -s c=vim
 alias -s cpp=vim
 alias -s h=vim
@@ -46,6 +51,9 @@ alias ga='git add'
 
 #resume by default
 alias wget='wget -c'
+
+#VI ftw
+alias info='info --vi-keys'
 
 #emerge eix gentoo stuff
 alias es='sudo eix-sync'

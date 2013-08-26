@@ -1,7 +1,7 @@
 #vim: filetype=conkyrc
 background yes
 use_xft yes
-xftfont Monospace:style=Regular:size=11
+xftfont Monospace:style=Regular:size=9
 xftalpha 0.8
 #font -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1
 #font -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1
