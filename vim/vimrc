@@ -153,7 +153,7 @@ if &term=~"linux"
     colo default
 else
     set t_Co=256
-    "colo wombat256mod
+    colo wombat256mod
 	"colo lucius
     "colo delek
     "colo slate
@@ -164,7 +164,7 @@ else
     "colo molokai 
     "colo dante
     "colo zenburn 
-    colo lucius
+    "colo lucius
     let g:lucius_style='light'
 endif
 
