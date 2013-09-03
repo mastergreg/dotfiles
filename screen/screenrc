@@ -19,7 +19,7 @@ hardstatus off
 #hardstatus string '%{= wkw}%{gk}[ %{B}%H%{g} ][%= %{= kw}%?%-Lw%?%{r}(%{W}%n-%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{w}%l%{g}][%{B} %d/%m %{W}%c %{g}]' 
 #hardstatus string '%{= wkw}%{gk}[ %{B}%H%{g} ][%{= kw}%?%-Lw%?%{r}(%{W}%n %f%t%?(%u)%?%{r})%{W}%?%+Lw%?%?%=%{g}][%{w}%l%{g}][%{B} %d/%m %{W}%c %{g}]' 
 #caption always '%{= dg} %H %{G}| %{B}%l %{G}|%=%?%{d}%-w%?%{r}(%{d}%n %t%? {%u} %?%{r})%{d}%?%+w%?%=%{G}| %{B}%M %d %c:%s '
-caption always '%{wkw}%{gw}| %{B}%H%{gw} | %{kw}%?%-Lw%?%{r}(%{W}%{kw}%n %f%t%?(%u)%?%{r})%{W}%{kw}%+Lw%=%{g} | %{k}%l%{g} | %{B} %d/%m %{W}%{k}%c %{g}|' 
+caption always '%{kwk}%{gk}| %{B}%H%{gk} | %{wk}%?%-Lw%?%{r}(%{W}%{wk}%n %f%t%?(%u)%?%{r})%{W}%{wk}%+Lw%=%{g} | %{w}%l%{g} | %{B} %d/%m %{W}%{w}%c %{g}|' 
 
 shelltitle " sh"
 startup_message off
