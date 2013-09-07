@@ -7,16 +7,21 @@
 
 !*font: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso10646-1
 !*font: -xos4-*-bold-*-normal-*-12-*-*-*-*-*-*-*
-*faceName: xft:Monospace:size=9
-*font: xft:Monospace:size=9
+!*faceName: xft:Monospace:size=11
+!*font: xft:Monospace:size=11
+!*faceName: xft:DejaVu Sans Mono:size=11
+!*font: xft:DejaVu Sans Mono:size=11
 !*font: -xos4-*-bold-*-normal-*-12-*-*-*-*-*-*-*
-!*font: -misc-fixed-medium-r-normal--12-*-*-*-*-*-iso10646-1
+!*font: -misc-fixed-medium-r-normal-*-15-*-100-100-c-90-iso8859-1
 !*boldFont: -misc-fixed-medium-r-normal--12-*-*-*-*-*-iso10646-1
 !*font: -xos4-*-medium-*-normal-*-12-*-*-*-*-60-iso10646-1
 !*boldFont: -misc-fixed-medium-r-semicondensed--12-*-*-*-*-*-iso10646-1
 
 !*font: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
 !*boldFont: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
+!*font: -misc-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
+!*boldFont: -misc-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
+
 
 
 
@@ -27,17 +32,62 @@ Xft.hinting:    hint
 Xft.hintstyle:  hintslight
 !}}}
 
-!URxvt*font: xft:Monospace:size=9
+URxvt*font: xft:Monospace:size=9
 !*background: #242424
 
 URxvt.letterSpace: -1
-*background: #1c1c1c
-*foreground: #dddddd
 
-!URxvt.letterSpace: -2
+!LuciusDark
 
-*color4: RoyalBlue
-*color12: RoyalBlue
+*background:  #303030
+*foreground:  #d7d7d7
+*cursorColor: #87afd7
+*color0:      #303030
+*color8:      #303030
+*color1:      #ff5f5f
+*color9:      #ff5f5f
+*color2:      #afd787
+*color10:     #afd787
+*color3:      #d7d7af
+*color11:     #d7d7af
+*color4:      #87d7ff
+*color12:     #87d7ff
+*color5:      #d7afd7
+*color13:     #d7afd7
+*color6:      #87d7af
+*color14:     #87d7af
+*color7:      #d7d7d7
+*color15:     #d7d7d7
+
+
+
+
+
+!!! !*background: #1c1c1c
+!!! *background: #000000
+!!! *foreground: #dddddd
+!!! 
+!!! 
+!!! 
+!!! *color4: RoyalBlue
+!!! *color12: RoyalBlue
+!!! 
+!!! *color2:     #00AF00
+!!! *color10:    #00AF00
+!!! 
+!!! 
+!!! ! Cyan
+!!! *color6:   #4bb5c1
+!!! *color14:  #4bb5c1
+!!! 
+!!! 
+!!! ! Yellow
+!!! *color3:   #dccd35
+!!! *color11:  #B5C865
+!!! 
+!!! ! ! White
+!!! *color7:   #cccccc
+!!! *color15:  #e2e2e5
 
 ! 
 ! ! Black
@@ -85,7 +135,6 @@ Xterm*savelines: 16000
 !Xterm*foreground: #EEEEEE
 Xterm*bellIsUrgent: true
 Xterm*geometry: 80x35
-Xterm*fontSize: 14
 
 Xterm*termName: xterm-256color
 !
@@ -107,10 +156,10 @@ URxvt.termName: rxvt-256color
 URxvt.scrollBar:         false
 URxvt.scrollstyle: plain
 URxvt.urgentOnBell: true
-URxvt.transparent: true
+URxvt.transparent: false
 
-URxvt.shading:     20
-URxvt.tint:         #131313
+!URxvt.shading:     200
+!URxvt.tint:         #eeeeee
 !URxvt*tint:         #333333
 URxvt.geometry: 80x33
 
@@ -124,10 +173,10 @@ URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
 
 !!{{{ URxvt Colors
 !
-URxvt*tabbed*tabbar-fg: 3
-URxvt*tabbed*tabbar-bg: 0
-URxvt*tabbed*tab-bg: 4
-URxvt*tabbed*tab-fg: 3
+URxvt*tabbed*tabbar-fg: 4
+URxvt*tabbed*tabbar-bg: 7
+URxvt*tabbed*tab-bg: 15
+URxvt*tabbed*tab-fg: 4
 !}}}
  
 !{{{ alsamixer scheme
