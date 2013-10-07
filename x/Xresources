@@ -15,7 +15,8 @@
 !*font: -misc-fixed-medium-r-normal-*-15-*-100-100-c-90-iso8859-1
 !*boldFont: -misc-fixed-medium-r-normal--12-*-*-*-*-*-iso10646-1
 !*font: -xos4-*-medium-*-normal-*-12-*-*-*-*-60-iso10646-1
-!*boldFont: -misc-fixed-medium-r-semicondensed--12-*-*-*-*-*-iso10646-1
+*font: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso10646-1
+*boldFont: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso10646-1
 
 !*font: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
 !*boldFont: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
@@ -32,32 +33,41 @@ Xft.hinting:    hint
 Xft.hintstyle:  hintslight
 !}}}
 
-URxvt*font: xft:Monospace:size=9
+!URxvt*font: xft:Monospace
+!URxvt*font: -*-dina-medium-r-normal-*-12-*-*-*-*-*-*-*
+!URxvt*font: xft:Inconsolata:size=10
 !*background: #242424
 
-URxvt.letterSpace: -1
+!URxvt.letterSpace: -1
 
 !LuciusDark
 
-*background:  #303030
+*background:  #202020
 *foreground:  #d7d7d7
 *cursorColor: #87afd7
-*color0:      #303030
-*color8:      #303030
-*color1:      #ff5f5f
-*color9:      #ff5f5f
-*color2:      #afd787
-*color10:     #afd787
-*color3:      #d7d7af
-*color11:     #d7d7af
-*color4:      #87d7ff
-*color12:     #87d7ff
-*color5:      #d7afd7
-*color13:     #d7afd7
-*color6:      #87d7af
-*color14:     #87d7af
-*color7:      #d7d7d7
-*color15:     #d7d7d7
+!*color0:      #303030
+!*color8:      #505050
+!
+!*color1:      #af5f5f
+!*color9:      #ff5f5f
+!
+!*color2:      #afd787
+!*color10:     #aff787
+!
+!*color3:      #d7d7af
+!*color11:     #f7f7af
+!
+*color4:      RoyalBlue
+*color12:     #005fd7
+!
+!*color5:      #d7afd7
+!*color13:     #f7aff7
+!
+!*color6:      #87d7af
+!*color14:     #87f7af
+!
+!*color7:      #d7d7d7
+!*color15:     #f7f7f7
 
 
 
@@ -173,10 +183,10 @@ URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
 
 !!{{{ URxvt Colors
 !
-URxvt*tabbed*tabbar-fg: 4
-URxvt*tabbed*tabbar-bg: 7
-URxvt*tabbed*tab-bg: 15
-URxvt*tabbed*tab-fg: 4
+URxvt*tabbed*tabbar-fg: 7
+URxvt*tabbed*tabbar-bg: 0
+URxvt*tabbed*tab-bg: 0
+URxvt*tabbed*tab-fg: 1
 !}}}
  
 !{{{ alsamixer scheme

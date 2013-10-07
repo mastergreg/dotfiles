@@ -29,6 +29,7 @@ alias ftp='noglob command ftp'
 alias sftp='noglob command sftp'
 
 alias -s c=vim
+alias -s pdf=zathura
 alias -s cpp=vim
 alias -s h=vim
 alias -s html=vim
@@ -54,6 +55,8 @@ alias wget='wget -c'
 
 #VI ftw
 alias info='info --vi-keys'
+
+source ~/.zsh_alias_debian
 
 #emerge eix gentoo stuff
 alias es='sudo eix-sync'

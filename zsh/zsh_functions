@@ -57,7 +57,7 @@ function open () {
 if [[ -f "$1" ]]; then
     case "$1" in
         *.JPG | *.jpeg | *jpg | *.png)      gpicview     "$1" &   ;;
-        *.pdf | *.eps | *.ps)               evince     "$1" &> /dev/null &   ;;
+        *.pdf | *.eps | *.ps)               zathura     "$1" &> /dev/null &   ;;
         *.odt | *.doc)                      libreoffice "$1" &> /dev/null &   ;;
         *.avi)                              mplayer     "$1"    ;;
         *)                                  vim "$1"            ;;

@@ -164,8 +164,9 @@ else
     "colo molokai 
     "colo dante
     "colo zenburn 
+    let g:lucius_style='dark'
+    let g:lucius_contrast='low'
     colo lucius
-    let g:lucius_style='light'
 endif
 
 if has("gui_running")
@@ -295,7 +296,7 @@ autocmd bufwritepost,filewritepost *.pzc,*pzh  execute "normal `a"
 
 "{{{ Texing
 "autocmd BufNewFile,BufRead *.tex setlocal keymap=greek
-autocmd BufNewFile,BufRead *.tex setlocal smartindent tw=78
+autocmd BufNewFile,BufRead *.tex setlocal smartindent tw=80
 "autocmd BufNewFile,BufRead *.tex setlocal spell! spelllang=el,en<CR>
 autocmd BufNewFile,BufRead *.tex setlocal spellsuggest=best,3
 "}}}
@@ -305,7 +306,7 @@ autocmd BufNewFile *.markdown,*.md so /home/master/.vim/md_template
 autocmd Bufwritepre,filewritepre *.markdown,*.md  execute "normal ma"
 autocmd BufNewFile,Bufwritepre,filewritepre  *.markdown,*.md  exe "1, 3  g/Date:.*/s//Date: " .strftime("%Y-%m-%d %H:%M")
 autocmd bufwritepost,filewritepost *.markdown,*.md  execute "normal `a"
-autocmd BufNewFile,BufRead *.markdown,*.md setlocal smartindent tw=78
+autocmd BufNewFile,BufRead *.markdown,*.md setlocal smartindent tw=80
 autocmd BufNewFile,BufRead *.markdown,*.md setlocal spell! spelllang=en_us
 autocmd BufNewFile,BufRead *.markdown,*.md setlocal spellsuggest=best,3
 "}}}
@@ -324,7 +325,8 @@ autocmd BufRead *.bob setlocal syntax=c
 "}}}
 "
 "{{{ mutt
-au BufRead /tmp/mutt-* setlocal tw=72
+"au BufRead /tmp/mutt-* setlocal tw=80
+"au BufRead /tmp/mutt-* setlocal spell
 "}}}
 
 endif " has("autocmd")

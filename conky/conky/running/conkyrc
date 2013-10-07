@@ -16,7 +16,7 @@ draw_shades no
 draw_outline no
 draw_borders no
 draw_graph_borders no
-alignment top_left
+alignment top_right
 maximum_width 400
 minimum_size 400 0
 max_port_monitor_connections 64

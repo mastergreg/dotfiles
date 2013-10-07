@@ -13,7 +13,7 @@ draw_shades no
 draw_outline no
 draw_borders no
 draw_graph_borders no
-alignment top_left
+alignment top_right
 maximum_width 500
 minimum_size 500 0
 max_port_monitor_connections 64
@@ -21,7 +21,7 @@ max_specials 512
 max_user_text 16384
 #minimum_size 310
 gap_x 55
-gap_y 600
+gap_y 450
 net_avg_samples 2
 out_to_console no
 stippled_borders 2
