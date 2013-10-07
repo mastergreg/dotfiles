@@ -11,6 +11,7 @@ function zsh
     ln -f -s `pwd`/zsh/zprofile ~/.zprofile
     ln -f -s `pwd`/zsh/zsh_functions ~/.zsh_functions
     ln -f -s `pwd`/zsh/zsh_alias ~/.zsh_alias
+    ln -f -s `pwd`/zsh/zsh_alias_debian ~/.zsh_alias_debian
 }
 function xinit
 {

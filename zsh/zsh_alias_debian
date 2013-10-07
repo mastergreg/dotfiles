@@ -1,0 +1,2 @@
+alias aupg='sudo apt-get update && sudo apt-get upgrade -y'
+alias ains='sudo apt-get install'
