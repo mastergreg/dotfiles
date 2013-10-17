@@ -15,8 +15,8 @@
 !*font: -misc-fixed-medium-r-normal-*-15-*-100-100-c-90-iso8859-1
 !*boldFont: -misc-fixed-medium-r-normal--12-*-*-*-*-*-iso10646-1
 !*font: -xos4-*-medium-*-normal-*-12-*-*-*-*-60-iso10646-1
-*font: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso10646-1
-*boldFont: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso10646-1
+!*font: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso10646-1
+!*boldFont: -misc-fixed-medium-r-normal--13-*-*-*-*-*-iso10646-1
 
 !*font: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
 !*boldFont: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
@@ -33,8 +33,9 @@ Xft.hinting:    hint
 Xft.hintstyle:  hintslight
 !}}}
 
-!URxvt*font: xft:Monospace
-!URxvt*font: -*-dina-medium-r-normal-*-12-*-*-*-*-*-*-*
+!URxvt*font: xft:Monospace:size=9
+!URxvt*font: xft:Bitstream Vera Sans Mono:size=9
+URxvt*font: -misc-fixed-medium-r-normal--13-120-75-75-c-70-iso8859-7
 !URxvt*font: xft:Inconsolata:size=10
 !*background: #242424
 
@@ -166,9 +167,9 @@ URxvt.termName: rxvt-256color
 URxvt.scrollBar:         false
 URxvt.scrollstyle: plain
 URxvt.urgentOnBell: true
-URxvt.transparent: false
+URxvt.transparent: true
 
-!URxvt.shading:     200
+URxvt.shading:     10
 !URxvt.tint:         #eeeeee
 !URxvt*tint:         #333333
 URxvt.geometry: 80x33
@@ -176,7 +177,7 @@ URxvt.geometry: 80x33
 URxvt.cursorBlink: 1
 
 URxvt.perl-ext-common: default,matcher
-URxvt.urlLauncher: x-www-browser
+URxvt.urlLauncher: firefox
 URxvt.matcher.button: 1
 URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
 !}}}

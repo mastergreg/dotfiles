@@ -97,9 +97,9 @@ setopt hist_ignore_all_dups
 setopt nohup
 setopt NO_cdable_vars
 
-
 welcome
 keys
 export GNUPLOT_DEFAULT_GDFONT=/usr/share/fonts/dejavu/DejaVuSansMono.ttf 
 export I_HATE_GAME_HINTS=1
+eval `dircolors ~/.dir_colors`
 

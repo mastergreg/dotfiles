@@ -108,4 +108,3 @@ function mkpost() {
         vim `date +"%Y-%m-%d-%H-%M_"`"$1"
     fi
 }
-

@@ -1,7 +1,6 @@
 syn on
-"set relativenumber
-set rnu
-"set number 
+set number 
+set relativenumber
 set nocp
 "
 "set expandtab
@@ -158,15 +157,15 @@ else
     "colo delek
     "colo slate
     "colo ir_black
-    "colo vimbrant
+    colo vimbrant
     "colo hybrid
     "colo ir_black
     "colo molokai 
     "colo dante
     "colo zenburn 
-    let g:lucius_style='dark'
-    let g:lucius_contrast='low'
-    colo lucius
+    "let g:lucius_style='dark'
+    "let g:lucius_contrast='low'
+    "colo lucius
 endif
 
 if has("gui_running")
@@ -328,5 +327,9 @@ autocmd BufRead *.bob setlocal syntax=c
 "au BufRead /tmp/mutt-* setlocal tw=80
 "au BufRead /tmp/mutt-* setlocal spell
 "}}}
+"
+au FocusLost * setlocal number
+au FocusGained * setlocal relativenumber
+
 
 endif " has("autocmd")

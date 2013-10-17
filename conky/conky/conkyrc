@@ -1,8 +1,9 @@
 #vim: filetype=conkyrc
 background yes
-use_xft no
-xftfont Bitstream Vera Sans Mono:size=8
+use_xft yes
+xftfont Monospace:style=Regular:size=9
 xftalpha 0.8
+#font -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1
 #font -misc-fixed-medium-r-*--13-*-*-*-*-*-iso10646-1
 update_interval 2.0
 total_run_times 0
@@ -15,19 +16,20 @@ draw_shades no
 draw_outline no
 draw_borders no
 draw_graph_borders no
-alignment top_left
-#maximum_width 310
+alignment top_right
+maximum_width 400
+minimum_size 400 0
 max_port_monitor_connections 64
 max_specials 512
 max_user_text 16384
 #minimum_size 310
-gap_x 5
-gap_y 20
+gap_x 55
+gap_y 100
 net_avg_samples 2
 out_to_console no
 stippled_borders 2
 uppercase no
-use_spacer yes
+use_spacer right
 lua_load ~/.conky/draw_bg.lua
 lua_draw_hook_pre draw_bg
 mpd_host localhost
@@ -38,11 +40,11 @@ if_up_strictness address
 #color1  00BBFF
 #color2  00BBFF 
 #color3  55FF55
-default_color AAAAAA
-color0  AAAAAA
+default_color DDDDDD
+color0  DDDDDD
 color1  00FF00 
-color2  0071FF
-color3  FFD000
+color2  ee4444
+color3  4169E1
 TEXT
 ${color1}System:
  ${color3}$nodename     ${color2}${alignc}$sysname $kernel ${alignr}${color0}${time %l:%M:%S %p}
@@ -67,44 +69,3 @@ ${color1}Top Processes:
  ${color0} ${top_mem name 2} ${alignr}${top_mem pid 2}   ${top_mem mem_res 2}
  ${color0} ${top_mem name 3} ${alignr}${top_mem pid 3}   ${top_mem mem_res 3}
  ${color0} ${top_mem name 4} ${alignr}${top_mem pid 4}   ${top_mem mem_res 4}
-${color1}File systems: 
- ${color3}/          ${color0}${alignr}${fs_used /}/${fs_size /}   ${color }${fs_bar 5,120 /}
- ${color3}/home      ${color0}${alignr}${fs_used /home}/${fs_size /home}   ${color }${fs_bar 5,120 /home}
-${color1}Networking:
- ${color3}Ethernet:${color } ${if_up eth0}
-  Down ${color2}${downspeed eth0}/s ${alignr}${color0}Up ${color2}${upspeed eth0}/s
-  ${downspeedgraph eth0 25,100 000000 55FF55} ${alignr}${upspeedgraph eth0 25,100 000000 0077FF}
-  ${color0}Total:  ${color2}${totaldown eth0}${color0} ${alignr}Total:  ${color2}${totalup eth0}${color0}
-  Ethernet IP: $alignr ${color2}${addr eth0}${color0}
-  External IP: ${alignr}${color2}${execi   3600 wget -q -O - checkip.dyndns.org | sed -e 's/[^[:digit:]\|.]//g'}${color0}
-  ${else} ${alignr}${color2}No Ethernet Connection${endif}
- ${color3}WiFi:${color }${if_up wlan0}${color }${color }                 ${alignr}Rate: ${color2}${wireless_bitrate wlan0}${color }
-  Link quality: ${color2}${wireless_link_qual_perc wlan0}${color }% ${alignr}${wireless_link_bar 4,120 wlan0}
-  ${color }Down ${color }${color2}${downspeed wlan0}/s ${alignc}${color0}ESSID: ${color2}${wireless_essid wlan0}${color } $alignr${color }Up ${color2}${upspeed wlan0}/s
-  ${color }${downspeedgraph wlan0 25,100 000000 55FF55} ${alignr}${color }${upspeedgraph wlan0 25,100 000000 0077FF}
-  ${color }Total: ${color2}${totaldown wlan0}  ${alignr}${color }Total: ${color2}${totalup wlan0}
-  ${color }WiFi IP: ${alignr}${color2}${addr wlan0}
-  ${color }External IP: ${alignr}${color2}${execi   3600 wget -q -O - checkip.dyndns.org | sed -e 's/[^[:digit:]\|.]//g'}${color0}
-  ${color }AP Mode: ${wireless_mode wlan0} ${alignr}AP MAC: ${color2}${wireless_ap wlan0}
- ${else} ${alignr}${color2}No Wireless Connection${endif}
- ${color3}3G:${color } ${if_up ppp0}
-  Down ${color2}${downspeed ppp0}/s ${alignr}${color0}Up ${color2}${upspeed ppp0}/s
-  ${downspeedgraph ppp0 25,100 000000 55FF55} ${alignr}${upspeedgraph ppp0 25,100 000000 0077FF}
-  ${color0}Total:  ${color2}${totaldown ppp0}${color0} ${alignr}Total:  ${color2}${totalup ppp0}${color0}
-  3G IP: $alignr ${color2}${addr ppp0}${color0} ${else} ${alignr}${color2}No 3G Connection${endif}
- ${color3}Connections: ${alignr}${color0}ALL: ${color2}${tcp_portmon 1 65535 count}
-  ${color0}Inbound: ${color2}${tcp_portmon 1 32767 count} ${alignr} ${color0}Local Service/Port${color0}
-  ${color0} ${tcp_portmon 1 32767 rhost 0} ${alignr}${color2} ${tcp_portmon 1 32767 lservice 0}
-  ${color0} ${tcp_portmon 1 32767 rhost 1} ${alignr}${color2} ${tcp_portmon 1 32767 lservice 1}
-  ${color0} ${tcp_portmon 1 32767 rhost 2} ${alignr}${color2} ${tcp_portmon 1 32767 lservice 2}
-  ${color0}Outbound: ${color2}${tcp_portmon 32768 61000 count}${alignr} ${color0}Remote Service/Port${color0}
-  ${color0} ${tcp_portmon 32768 61000 rhost 0} ${alignr}${color2} ${tcp_portmon 32768 61000 rservice 0}
-  ${color0} ${tcp_portmon 32768 61000 rhost 1} ${alignr}${color2} ${tcp_portmon 32768 61000 rservice 1}
-  ${color0} ${tcp_portmon 32768 61000 rhost 2} ${alignr}${color2} ${tcp_portmon 32768 61000 rservice 2}
-
-${color1}MPD:${if_mpd_playing}
- ${color3}Artist: ${alignr}${color }$mpd_artist
- ${color3}Album: ${alignr}${color }$mpd_album
- ${color3}Track: ${alignr}${color }$mpd_smart
- $mpd_status ${color2}${mpd_elapsed}/${mpd_length}${alignr}${color3}${mpd_bar 5,160} 
- ${else} ${color2 }MPD not running${endif}

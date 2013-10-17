@@ -20,17 +20,31 @@
 #TO BE USED WITH LATEX
 TARGET = 
 CC = gcc
-CCFLAGS +=
+CCFLAGS += -march=native
+CCFLAGS += -Wno-variadic-macros 
 OPT = 2
 
-DEBUG = "y"
+DEBUG ?= "y"
 
 ifeq ($(DEBUG),"y")
-	CCFLAGS += -D$(TARGET)_DEBUG=1 -D$(TARGET)
+	LDFLAGS += -lfence
+	CCFLAGS += -DSET_DEBUG=1
 	CCFLAGS += -g -O0 -Werror -Wall -Wextra -Wuninitialized
+
+	#CCFLAGS += -ggdb -O0 -Wunused-result -Wall -Wextra -Wuninitialized
+	#CCFLAGS += -Wall -Wextra -pedantic -Wbad-function-cast \
+	#	   -Wstrict-prototypes -Wold-style-definition \
+	#	   -Wmissing-prototypes -Wmissing-declarations -Wconversion \
+	#	   -Wfloat-equal -Wformat=2 -Winit-self -Winline \
+	#	   -Wmissing-include-dirs -Wredundant-decls -Wshadow \
+	#	   -Wstack-protector -Wswitch-default -Wswitch-enum \
+	#	   -Winvalid-pch -Wstrict-aliasing=2 -Wunknown-pragmas \
+	#	   -Wundef -Wunsafe-loop-optimizations -Wpointer-arith \
+	#	   -Wcast-qual -Wwrite-strings -Winline -Wvolatile-register-var\
+	#	   -Wno-unused-parameter -Wno-variadic-macros
 else
-	CCFLAGS += -D$(TARGET)_DEBUG=0 -D$(TARGET)
-	CCFLAGS += -O$(OPT) -Werror -Wall
+	CCFLAGS += -DSET_DEBUG=0
+	CCFLAGS += -O$(OPT) -s -Werror -Wall
 endif
 
 CCFILES += $(wildcard *.c)
@@ -51,7 +65,7 @@ $(TARGET): $(OBJ) $(DEPENDS)
 clean:
 	rm -f $(OBJ) $(TARGET)
 indent:
-	astyle --style=linux $(CCFILES)
+	astyle --style=linux $(CCFILES) $(DEPENDS)
 tags:
 	ctags -R *
 .
