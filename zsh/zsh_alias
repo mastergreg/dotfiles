@@ -58,7 +58,10 @@ alias info='info --vi-keys'
 
 source ~/.zsh_alias_debian
 
+alias ypwd='pwd | xclip'
+
 alias ack='ack-grep'
+alias note='echo $* >> ~/notes.txt'
 
 #emerge eix gentoo stuff
 alias es='sudo eix-sync'

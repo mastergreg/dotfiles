@@ -1,5 +1,5 @@
 syn on
-set number 
+set number
 set relativenumber
 set nocp
 "
@@ -12,7 +12,7 @@ set nocp
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set expandtab 
+set expandtab
 set diffopt+=iwhite
 set smarttab                    "Indent instead of tab at start of line
 set shiftround                  "Round spaces to nearest shiftwidth multiple
@@ -99,8 +99,8 @@ set ruler               " show cursor position in status line
 set showmode            " show mode in status line
 set showcmd             " show partial commands in status line
 "set statusline=%r%h%w\ %([%{&ff}]%)%(:%y%)%(:[%{&fenc}]%)\ BUFF[%1.20n]%=%1.7l,%1.7c\ \ [%p%%]
-" shows: filename, position, eof, syntax, encoding, format 
-set statusline=%-3.3n\ %f\ %r%#Error#%m%#Statusline#\ (%l/%L,\ %c)\ %P%=%h%w\ %y\ [%1.20n]:[%{&encoding}:%{&fileformat}]\ 
+" shows: filename, position, eof, syntax, encoding, format
+set statusline=%-3.3n\ %f\ %r%#Error#%m%#Statusline#\ (%l/%L,\ %c)\ %P%=%h%w\ %y\ [%1.20n]:[%{&encoding}:%{&fileformat}]\
 set cursorline
 
 set colorcolumn=80
@@ -126,7 +126,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
    " let Vundle manage Vundle
-   "  " required! 
+   "  " required!
 Bundle 'gmarik/vundle'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'tpope/vim-markdown'
@@ -138,6 +138,7 @@ Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'jimenezrick/vimerl'
 Bundle 'pyflakes.vim'
 Bundle 'jonathanfilip/vim-lucius'
+Bundle 'bronson/vim-trailing-whitespace'
 
 hi SignColumn ctermbg=none
 hi SpellBad cterm=underline ctermbg=none ctermfg=10
@@ -153,23 +154,23 @@ if &term=~"linux"
 else
     set t_Co=256
     "colo wombat256mod
-	"colo lucius
+    "colo lucius
     "colo delek
     "colo slate
     "colo ir_black
     colo vimbrant
     "colo hybrid
     "colo ir_black
-    "colo molokai 
+    "colo molokai
     "colo dante
-    "colo zenburn 
+    "colo zenburn
     "let g:lucius_style='dark'
     "let g:lucius_contrast='low'
     "colo lucius
 endif
 
 if has("gui_running")
-    "colo zenburn 
+    "colo zenburn
     "colo candycode
     "colo ir_black
     "colo rdark
@@ -194,6 +195,8 @@ if has("autocmd")
 
 autocmd InsertLeave * set nopaste
 autocmd BufWritePost .vimrc source %
+autocmd BufWritePre * :FixWhitespace
+
 
 "{{{"Templates for c and c++ files
 autocmd BufNewFile *.c,*.cpp,*.h so /home/master/.vim/c_template
@@ -250,9 +253,9 @@ autocmd BufNewFile,BufRead *.yap setlocal smartindent syntax=prolog
 "}}}
 
 "{{{Templates indentation and syntax for java
-autocmd BufNewFile,BufRead *.java setlocal smartindent cinwords cinwords=if,else,for,do,while,switch,class,try,finally 
+autocmd BufNewFile,BufRead *.java setlocal smartindent cinwords cinwords=if,else,for,do,while,switch,class,try,finally
 autocmd BufNewFile *.java so /home/master/.vim/java_template
-autocmd BufNewFile *.java setlocal smartindent 
+autocmd BufNewFile *.java setlocal smartindent
 autocmd BufNewFile *.java exe "1," . 6 . "g/File Name :.*/s//File Name : " .expand("%")
 autocmd BufNewFile *.java exe "1," . 6 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
 autocmd Bufwritepre,filewritepre *.java execute "normal ma"
@@ -274,7 +277,7 @@ autocmd BufNewFile,BufRead *.cilk setlocal foldmethod=syntax smartindent cinword
 "{{{Templates indentation and syntax for python
 autocmd BufNewFile,BufRead *.py setlocal foldmethod=indent smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class sw=4 ts=4 expandtab
 autocmd BufNewFile *.py so /home/master/.vim/python_template
-autocmd BufNewFile *.py setlocal smartindent 
+autocmd BufNewFile *.py setlocal smartindent
 autocmd BufNewFile *.py exe "1," . 10 . "g/File Name :.*/s//File Name : " .expand("%")
 autocmd BufNewFile *.py exe "1," . 10 . "g/Creation Date :.*/s//Creation Date : " .strftime("%d-%m-%Y")
 autocmd Bufwritepre,filewritepre *.py execute "normal ma"
