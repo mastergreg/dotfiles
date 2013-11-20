@@ -1,6 +1,7 @@
 :insert
 #TO BE USED WITH LATEX
 #TARGET =
+#DIST_TARGET =
 #CC = xelatex
 #CCFLAGS = -shell-escape -synctex=1 --interaction=nonstopmode
 #TEXFILES = $(wildcard *.tex)
@@ -10,18 +11,36 @@
 #%.pdf:	$(TEXFILES) title/* files/*
 #	$(CC) $(CCFLAGS) $<
 #
-#
 #.PHONY:	clean all spell
+#dist: clean all dist-clean
+#	sha256sum $(TARGET).pdf > $(TARGET).sha256sum
+#	mkdir $(DIST_TARGET)
+#	cp $(TARGET).pdf $(DIST_TARGET)
+#	cp $(TARGET).sha256sum $(DIST_TARGET)
+#	tar -czvf $(DIST_TARGET).tar.gz $(DIST_TARGET)
+#	rm -rf $(DIST_TARGET)
+#
+#
+#dist-clean:
+#	rm -f *log
+#	rm -f *aux
+#	rm -f *pyg
+#	rm -f *synctex.gz
 #clean:
-#	rm -f $(TARGET).{pdf,log,aux,pyg}
+#	rm -f $(TARGET).pdf
+#	rm -f *log
+#	rm -f *aux
+#	rm -f *pyg
+#	rm -f *synctex.gz
+#
 #
 #spell:
-#	aspell -l el_gr --ignore-case=true -c $(TARGET).tex
+#	aspell -l en_uk --ignore-case=true -c $(TEXFILES)
 #TO BE USED WITH LATEX
-TARGET = 
+TARGET =
 CC = gcc
 CCFLAGS += -march=native
-CCFLAGS += -Wno-variadic-macros 
+CCFLAGS += -Wno-variadic-macros
 OPT = 2
 
 DEBUG ?= "y"
@@ -49,7 +68,7 @@ endif
 
 CCFILES += $(wildcard *.c)
 OBJ +=  $(patsubst %.c,%.o,$(CCFILES))
-DEPENDS += $(wildcard *.h) 
+DEPENDS += $(wildcard *.h)
 
 
 all: $(TARGET)

@@ -103,7 +103,7 @@ set showcmd             " show partial commands in status line
 set statusline=%-3.3n\ %f\ %r%#Error#%m%#Statusline#\ (%l/%L,\ %c)\ %P%=%h%w\ %y\ [%1.20n]:[%{&encoding}:%{&fileformat}]\
 set cursorline
 
-set colorcolumn=80
+set colorcolumn=81
 
 set listchars=tab:,.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
 set pastetoggle=<F12>
@@ -132,10 +132,10 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'tpope/vim-markdown'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'AutoComplPop'
-Bundle 'rosenfeld/conque-term'
+"Bundle 'rosenfeld/conque-term'
 Bundle 'scrooloose/nerdtree'
-Bundle 'LaTeX-Box-Team/LaTeX-Box'
-Bundle 'jimenezrick/vimerl'
+"Bundle 'LaTeX-Box-Team/LaTeX-Box'
+"Bundle 'jimenezrick/vimerl'
 Bundle 'pyflakes.vim'
 Bundle 'jonathanfilip/vim-lucius'
 Bundle 'bronson/vim-trailing-whitespace'
@@ -164,7 +164,7 @@ else
     "colo molokai
     "colo dante
     "colo zenburn
-    "let g:lucius_style='dark'
+    let g:lucius_style='light'
     "let g:lucius_contrast='low'
     "colo lucius
 endif
@@ -275,7 +275,7 @@ autocmd BufNewFile,BufRead *.cilk setlocal foldmethod=syntax smartindent cinword
 "}}}
 
 "{{{Templates indentation and syntax for python
-autocmd BufNewFile,BufRead *.py setlocal foldmethod=indent smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class sw=4 ts=4 expandtab
+autocmd BufNewFile,BufRead *.py setlocal foldmethod=indent smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class sw=2 ts=2 expandtab
 autocmd BufNewFile *.py so /home/master/.vim/python_template
 autocmd BufNewFile *.py setlocal smartindent
 autocmd BufNewFile *.py exe "1," . 10 . "g/File Name :.*/s//File Name : " .expand("%")

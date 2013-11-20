@@ -11,7 +11,7 @@ ZSH_THEME="master-clean-minimal"
 #ZSH_THEME="juanghurtado"
 
 
-DISABLE_AUTO_TITLE="true" 
+DISABLE_AUTO_TITLE="true"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -97,9 +97,9 @@ setopt hist_ignore_all_dups
 setopt nohup
 setopt NO_cdable_vars
 
-welcome
+#welcome
 keys
-export GNUPLOT_DEFAULT_GDFONT=/usr/share/fonts/dejavu/DejaVuSansMono.ttf 
+export GNUPLOT_DEFAULT_GDFONT=/usr/share/fonts/dejavu/DejaVuSansMono.ttf
 export I_HATE_GAME_HINTS=1
 eval `dircolors ~/.dir_colors`
 
