@@ -40,11 +40,11 @@ URxvt*font: xft:Monospace:size=9
 !URxvt*font: xft:Inconsolata:size=10
 !*background: #242424
 
-!URxvt.letterSpace: -1
+URxvt.letterSpace: -1
 
 !LuciusDark
 *background:  #202020
-*foreground:  #d7d7d7
+*foreground:  #EEEEEE
 *cursorColor: #87afd7
 
 !*background:  #EEEEEE

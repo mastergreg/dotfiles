@@ -9,9 +9,9 @@ set nocp
 "
 
 "Linux Kernel
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 set diffopt+=iwhite
 set smarttab                    "Indent instead of tab at start of line
@@ -63,6 +63,7 @@ let NERDTreeIgnore=['.*\.o$']
 let NERDTreeIgnore+=['.*\.pyc$']
 let NERDTreeIgnore+=['.*\.aux$']
 let NERDTreeIgnore+=['.*\.pyg$']
+let NERDTreeIgnore+=['.*\.class$']
 let NERDTreeIgnore+=['.*\~$']
 let NERDTreeIgnore+=['.*\.out$']
 let NERDTreeIgnore+=['.*\.so$', '.*\.a$']
@@ -74,8 +75,8 @@ noremap <F5> :make<CR>
 
 nnoremap Y y$
 
-nnoremap <buffer> <leader>e :call EvinceNearestLabel()<CR>
-nnoremap <buffer> <LocalLeader>e :call EvinceNearestLabel()<CR>
+"nnoremap <buffer> <leader>e :call EvinceNearestLabel()<CR>
+"nnoremap <buffer> <LocalLeader>e :call EvinceNearestLabel()<CR>
 
 
 
@@ -146,6 +147,8 @@ hi SpellBad cterm=underline ctermbg=none ctermfg=10
 filetype plugin indent on     " required!
 
 let g:gitgutter_sign_column_always = 1
+let g:gitgutter_eager = 0
+let g:gitgutter_realtime = 0
 
 hi SignColumn  ctermfg=252     ctermbg=234     cterm=none      guifg=#e3e0d7   guibg=#242424   gui=none
 
@@ -254,6 +257,7 @@ autocmd BufNewFile,BufRead *.yap setlocal smartindent syntax=prolog
 
 "{{{Templates indentation and syntax for java
 autocmd BufNewFile,BufRead *.java setlocal smartindent cinwords cinwords=if,else,for,do,while,switch,class,try,finally
+autocmd BufNewFile,BufRead *.java setlocal foldmethod=syntax
 autocmd BufNewFile *.java so /home/master/.vim/java_template
 autocmd BufNewFile *.java setlocal smartindent
 autocmd BufNewFile *.java exe "1," . 6 . "g/File Name :.*/s//File Name : " .expand("%")
