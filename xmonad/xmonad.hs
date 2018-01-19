@@ -24,6 +24,7 @@ import XMonad.Hooks.FadeInactive as FI
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import XMonad.Util.Themes
+import XMonad.Util.Dzen
 import XMonad.Layout.Grid
 import XMonad.Layout.Cross
 import XMonad.Layout.Named
@@ -41,13 +42,17 @@ import XMonad.Layout.IM
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.Reflect
 import XMonad.Actions.GridSelect
+import XMonad.Actions.Volume
 import XMonad.Util.NamedScratchpad
 import Data.Ratio ((%))
-import XMonad.Util.Scratchpad 
+import XMonad.Util.Scratchpad
 import XMonad.Hooks.SetWMName
 --import XMonad.Hooks.EwmhDesktops
 	--import XMonad.Layout.Reflect
 	--import XMonad.Layout.LayoutHints
+
+import Graphics.X11.ExtraTypes.XF86
+
 
 
 
@@ -97,14 +102,16 @@ myNumlockMask   = mod2Mask
 	-- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 	--
 myWorkspaces = ["1","2","3","4","5","6","7","8","9","0"]
- 
+
 	--    where miscs = map (("misc" ++) . show) . (flip take) [1..]
 	--isFullscreen = (== "fullscreen")
 
 	-- Border colors for unfocused and focused windows, respectively.
 	--
 --myNormalBorderColor  = "#333333"
-myNormalBorderColor = "#3465a4"
+--Previous
+--myNormalBorderColor = "#3465a4"
+myNormalBorderColor = "#646464"
 --myNormalBorderColor = "#616161"
 --myNormalBorderColor = "#444444"
 --myFocusedBorderColor = "#285577"
@@ -114,7 +121,9 @@ myNormalBorderColor = "#3465a4"
 
 
 --myFocusedBorderColor = "#3465a4"
-myFocusedBorderColor = "#ff950e"
+--Previous
+--myFocusedBorderColor = "#ff950e"
+myFocusedBorderColor = "green"
 
 	-- Default offset of drawable screen boundaries from each physical
 	-- screen. Anything non-zero here will leave a gap of that many pixels
@@ -134,6 +143,13 @@ myDefaultGaps   = [(0,0,0,0)]
 	-- Key bindings. Add, modify or remove key bindings here.
 myWorkspaceSwichKeys=[xK_1 .. xK_9]++[xK_0]++[xK_minus]++[xK_equal]
 
+alert = dzenConfig centered . show . round
+centered =
+        onCurr (center 150 66)
+    >=> font "-*-helvetica-*-r-*-*-64-*-*-*-*-*-*-*"
+    >=> addArgs ["-fg", "#80c0ff"]
+    >=> addArgs ["-bg", "#000040"]
+
 		--
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
@@ -149,9 +165,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     --launch dmenu
 	--, ((modMask , xK_p     ), spawn "dmenu_run")
 
-	-- close focused window 
+	-- close focused window
 	, ((modMask .|. shiftMask, xK_c     ), kill)
-     
+
     -- use gridselect
 	, ((modMask,               xK_g ), goToSelected defaultGSConfig)
 
@@ -235,13 +251,13 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 	--
 	-- my Additional Keybindings
 	--
-	[((mod4Mask             , xK_f     ), spawn "firefox > /dev/null")
+	[((mod4Mask             , xK_f     ), spawn "google-chrome > /dev/null")
 	, ((mod4Mask             , xK_x     ), spawn myTerminal)
 	--, ((mod1Mask             , xK_Shift_L     ), spawn "switch_layout")
 	--, ((mod4Mask             , xK_s     ), spawn ("pidgin"))
 	, ((mod4Mask             , xK_s     ), spawn "skype")
 	, ((mod4Mask.|. shiftMask, xK_s     ), spawn (myTerminal ++ " -T irssi -e 'irssi.sh'"))
-	, ((mod4Mask             , xK_m     ), spawn (myTerminal ++ " -T mutt -e 'mutt'"))
+	, ((mod4Mask             , xK_m     ), spawn (myTerminal ++ " -T mutt -e 'neomutt'"))
 	--, ((mod4Mask             , xK_m     ), spawn ("thunderbird"))
 	, ((mod4Mask             , xK_F10     ), spawn "set_screen")
 	, ((mod4Mask.|. shiftMask, xK_F10     ), spawn "set_screen_off")
@@ -256,20 +272,26 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((mod4Mask             ,xK_t), spawn "pcmanfm")
 	, ((0                    ,xK_Print), spawn  "scrot -e 'mv $f ~/Pictures/Screenshots'")
 	, ((mod4Mask             ,xK_Print), spawn  "scrot -e 'mv $f ~/Dropbox/Screenshots'")
-	, ((0                    ,0x1008ff11),spawn "volbar -d 1")
-	, ((0                    ,0x1008ff13),spawn "volbar -i 1")
-	, ((0                    ,0x1008ff12),spawn "volbar -t")
+	--, ((0                    ,0x1008ff11),spawn "volbar -d 1")
+	--, ((0                    ,0x1008ff13),spawn "volbar -i 1")
+	--, ((0                    ,0x1008ff12),spawn "volbar -t")
+	--, ((0                    ,xF86XK_AudioLowerVolume),spawn "pactl set-sink-volume 0 -1.5%")
+	--, ((0                    ,xF86XK_AudioRaiseVolume),spawn "pactl set-sink-volume 0 +1.5%")
+	--, ((0                    ,xF86XK_AudioMute),spawn "pactl set-sink-mute 0 toggle")
+	, ((0                    ,xF86XK_AudioLowerVolume), lowerVolume 4 >>= alert)
+	, ((0                    ,xF86XK_AudioRaiseVolume), raiseVolume 4 >>= alert)
+	, ((0                    ,xF86XK_AudioMute), toggleMute >> return())
 	, ((mod4Mask            ,xK_a),spawn (myTerminal++" -T music -e tmisc"))
   , ((0                    ,0x1008ff14),spawn "mpc toggle")
   , ((0                    ,0x1008ff16),spawn "mpc prev")
   , ((0                    ,0x1008ff17),spawn "mpc next")
-	]	
+	]
 
 
 	------------------------------------------------------------------------
 	-- Mouse bindings: default actions bound to mouse events
 	--
-myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList 
+myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList
 
 	-- mod-button1, Set the window to floating mode and move by dragging
 	[ ((modMask, button1), \w -> focus w >> mouseMoveWindow w)
@@ -325,7 +347,7 @@ grid = named "#" $ avoidStruts Grid
 
 myLayout =  chat $ circ $ gimp $ full normal where
 normal = tallLayout ||| wideLayout ||| tabbedOne ||| tabbedTwo
-chat = onWorkspace "7" imlayout 
+chat = onWorkspace "7" imlayout
 circ = onWorkspace "1" circleLayout
 gimp = onWorkspace "9" $ wideLayout ||| gimplayout
 full = onWorkspace "0" $ noBorders Full
@@ -353,12 +375,12 @@ full = onWorkspace "0" $ noBorders Full
 myScratchpads = [
   -- run gvim, find by role, don't float
   NS "notes" "gvim --role notes ~/notes.txt" (role =? "notes") defaultFloating,
-  -- run pcmanfm 
+  -- run pcmanfm
   NS "files" "pcmanfm --class files" (className =? "files") defaultFloating
   ] where role = stringProperty "WM_WINDOW_ROLE"
 
 
-myManageHook = manageDocks <+> myFloatHook <+> myscratchpadManageHook <+> manageHook defaultConfig
+myManageHook = myFloatHook <+> myscratchpadManageHook <+> manageHook defaultConfig
 myFloatHook = composeAll
 	[
         className =? "Gimp"  --> moveToGimp
@@ -398,10 +420,11 @@ myFloatHook = composeAll
         , title =? "mail 0" --> moveToMail
         , className =? "Mail" --> moveToMail
         , resource =? "Mail" --> moveToMail
+        , className =? "google-chrome" --> moveToWeb
+        , resource =? "google-chrome" --> moveToWeb
         , className =? "Chromium" --> moveToWeb
         , className =? "Firefox" --> moveToWeb
         , className =? "Iceweasel" --> moveToWeb
-        , className =? "google-chrome" --> moveToWeb
         , className =? "uzbl-tabbed" --> moveToWeb
         , manageDocks] where
     unfloat = ask >>= doF . W.sink
@@ -415,7 +438,7 @@ myFloatHook = composeAll
     moveToDia = doF $ W.shift "6"
     moveToFull = doF $ W.shift "0"
 myscratchpadManageHook :: ManageHook
-myscratchpadManageHook = scratchpadManageHook (W.RationalRect 0.00 0.023 1.00 0.30)
+myscratchpadManageHook = scratchpadManageHook (W.RationalRect 0.00 0.019 1.00 0.30)
     -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
 myFocusFollowsMouse = True
@@ -445,7 +468,7 @@ myStartupHook = setWMName "LG3D"
 --	ppTitle = xmobarColor "green" "". shorten 50
 --}) >> fadeInactiveLogHook 0xbbbbbbbb
 
---myLogHook = dynamicLogWithPP byorgeyPP 
+--myLogHook = dynamicLogWithPP byorgeyPP
 	--
 
 	-- Copy of xmobarStrip from darcs version of DynamicLog.hs
@@ -462,9 +485,9 @@ myStartupHook = setWMName "LG3D"
 	------------------------------------------------------------------------
 	-- Default Config
 	-- A structure containing your configuration settings, overriding
-	-- fields in the default config. Any you don't override, will 
+	-- fields in the default config. Any you don't override, will
 	-- use the defaults defined in xmonad/XMonad/Config.hs
-	-- 
+	--
 	-- No need to modify this.
 	--
 defaults = defaultConfig {
@@ -506,7 +529,7 @@ pythonDzenPP = defaultPP {
                      , ppWsSep    = ""
 -- Run xmonad with the settings you specify. No need to modify this.
                      , ppSep      = ""
-                     , ppLayout   = 
+                     , ppLayout   =
                                     dzenColor "#000007" "#000070" .
                                     (\ x -> case x of
                                               "tall" -> " TTT "
@@ -548,12 +571,12 @@ myxmobarPP = xmobarPP{ ppCurrent  = xmobarColor "yellow" ""
                      , ppSort = fmap (.scratchpadFilterOutWorkspace) $ ppSort xmobarPP
                      }
 
-main = do 
+main = do
   xmproc <- spawnPipe "xmobar";
   --xmproc <- spawnPipe "killall python3; dzen_python"
-  xmonad $ withUrgencyHook  NoUrgencyHook defaults {
+  xmonad $ docks $ withUrgencyHook  NoUrgencyHook defaults {
       logHook   = dynamicLogWithPP $ myxmobarPP {
       --logHook   = dynamicLogWithPP $ pythonDzenPP {
-					ppOutput = hPutStrLn xmproc 
-				}	
+					ppOutput = hPutStrLn xmproc
+				}
 }

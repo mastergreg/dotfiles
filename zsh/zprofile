@@ -3,7 +3,6 @@ export PYTHON_CMD
 export PATH=$PATH:~/bin
 export PAGER="less"
 export EDITOR=vim
-source ~/.pithos/pithos
 export HISTSIZE=1000
 export SAVEHIST=1000
 export HISTFILE=~/.zsh_history
@@ -14,6 +13,6 @@ export MOZ_DISABLE_PANGO=1
 #  #exec xinit -- /usr/bin/X -nolisten tcp vt7
 #fi
 
-export GNUPLOT_DEFAULT_GDFONT=/usr/share/fonts/dejavu/DejaVuSansMono.ttf 
+export GNUPLOT_DEFAULT_GDFONT=/usr/share/fonts/dejavu/DejaVuSansMono.ttf
 
 #export VTECH_LICENSE_FILE=@scirouter.cslab.ece.ntua.gr

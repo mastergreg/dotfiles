@@ -1,3 +1,4 @@
+# vim: ft=python
 :insert
 #!/usr/bin/env python
 # -*- coding: utf-8
@@ -10,6 +11,7 @@
 #_._._._._._._._._._._._._._._._._._._._._.*/
 
 def main():
+    pass
 
 if __name__=="__main__":
     main()

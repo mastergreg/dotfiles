@@ -1,6 +1,6 @@
 # Bell on new line
 function precmd() {
-    /bin/echo -ne "\a"
+    #/bin/echo -ne "\a"
 }
 case "${TERM}" in
     screen*)

@@ -133,11 +133,12 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'tpope/vim-markdown'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'AutoComplPop'
+"Bundle 'pyflakes.vim'
+Bundle 'vim-syntastic/syntastic'
 "Bundle 'rosenfeld/conque-term'
 Bundle 'scrooloose/nerdtree'
 "Bundle 'LaTeX-Box-Team/LaTeX-Box'
 "Bundle 'jimenezrick/vimerl'
-Bundle 'pyflakes.vim'
 Bundle 'jonathanfilip/vim-lucius'
 Bundle 'bronson/vim-trailing-whitespace'
 
@@ -146,7 +147,18 @@ hi SpellBad cterm=underline ctermbg=none ctermfg=10
 
 filetype plugin indent on     " required!
 
-let g:gitgutter_sign_column_always = 1
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
+set signcolumn=yes
 let g:gitgutter_eager = 0
 let g:gitgutter_realtime = 0
 
@@ -188,7 +200,7 @@ if has("gui_running")
     set guioptions-=r
     "set guifont=dejavu\ sans\ mono\ 10
     "set guifont=lucidaconsole\ 8
-    set guifont=monospace\ 9
+    set guifont=monospace\ 10
     "set guifont=monaco\ 8
     "set guifont=fixed\ 9
 endif "has("gui_running")

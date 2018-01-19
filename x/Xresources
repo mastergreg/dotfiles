@@ -33,7 +33,8 @@ Xft.hinting:    hint
 Xft.hintstyle:  hintslight
 !}}}
 
-URxvt*font: xft:Monospace:size=9
+!URxvt*font: xft:Monospace:size=10
+URxvt*font: xft:Bitstream Vera Sans Mono:size=9:bold:antialias=true
 !URxvt*font: -windows-*-medium-r-normal-*-13-*-*-*-*-*-*-*
 !URxvt*font: xft:Bitstream Vera Sans Mono:size=9
 !URxvt*font: -misc-fixed-medium-r-normal--13-120-75-75-c-70-iso8859-7
@@ -150,7 +151,6 @@ Xterm*savelines: 16000
 !Xterm*background: #0A0A0A
 !Xterm*foreground: #FFFFFF
 !Xterm*foreground: #EEEEEE
-Xterm*bellIsUrgent: true
 Xterm*geometry: 80x35
 
 Xterm*termName: xterm-256color
@@ -172,8 +172,8 @@ Xterm*termName: xterm-256color
 URxvt.termName: rxvt-256color
 URxvt.scrollBar:         false
 URxvt.scrollstyle: plain
-URxvt.urgentOnBell: true
 URxvt.transparent: true
+
 
 URxvt.shading:     30
 !URxvt.tint:         #eeeeee
